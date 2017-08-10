@@ -106,13 +106,13 @@ r.GET("/", c.IndexHandler)
 r.GET("/posts/:id", c.ShowHandler)
 ```
 
-Then run the server on port 4000:
+Run the server on port 4000:
 
 ```bash
 go run main.go -port 4000
 ```
 
-Then you can visit the `index` page on: http://localhost:4000.
+Now you can visit the `index` page on: http://localhost:4000.
 
 ## What's next?
 
