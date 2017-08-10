@@ -97,7 +97,13 @@ Then we go to the generated `go_app` directory to make two web pages, an `index`
 
 We need make two template files named `index.tmpl` and `show.tmpl` under the `views` directory at first, and create a controller file named `post_controller.go` in controller directory, the controller file have two `handler` functions: a `IndexHandler` and a `ShowHandler`.
 
-And at last edit the `main.go` to add two router paths to pages.
+And at last edit the `main.go` to add two router paths to pages. Then run the server on port 4000:
+
+```bash
+go run main.go -port 4000
+```
+
+Then you can visit the `index` page on: http://localhost:4000.
 
 ## What's next?
 
