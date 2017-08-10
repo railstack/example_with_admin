@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Post Index</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  {{ range . }}
+  <h1>{{ .Title }}</h1>
+  <p>{{ .Content }}</p>
+  <a href="/posts/{{ .Id }}">Read... </a>
+  {{ end }}
+</body>
+</html>

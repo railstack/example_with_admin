@@ -1,0 +1,1353 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = ;
+	document.CALLGRAPH = ;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "/Users/binjoy/projects/GoOnRails/examples/simple_example_with_admin/go_app/models"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package models includes the functions on the model Post.
+</p>
+<p>
+Package models includes the functions on the model User.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#AllPosts">func AllPosts() (posts []Post, err error)</a></dd>
+			
+				
+				<dd><a href="#AllUsers">func AllUsers() (users []User, err error)</a></dd>
+			
+				
+				<dd><a href="#CreatePost">func CreatePost(am map[string]interface{}) (int64, error)</a></dd>
+			
+				
+				<dd><a href="#CreateUser">func CreateUser(am map[string]interface{}) (int64, error)</a></dd>
+			
+				
+				<dd><a href="#DestroyPost">func DestroyPost(id int64) error</a></dd>
+			
+				
+				<dd><a href="#DestroyPosts">func DestroyPosts(ids ...int64) (int64, error)</a></dd>
+			
+				
+				<dd><a href="#DestroyPostsWhere">func DestroyPostsWhere(where string, args ...interface{}) (int64, error)</a></dd>
+			
+				
+				<dd><a href="#DestroyUser">func DestroyUser(id int64) error</a></dd>
+			
+				
+				<dd><a href="#DestroyUsers">func DestroyUsers(ids ...int64) (int64, error)</a></dd>
+			
+				
+				<dd><a href="#DestroyUsersWhere">func DestroyUsersWhere(where string, args ...interface{}) (int64, error)</a></dd>
+			
+				
+				<dd><a href="#FindPosts">func FindPosts(ids ...int64) ([]Post, error)</a></dd>
+			
+				
+				<dd><a href="#FindPostsBy">func FindPostsBy(field string, val interface{}) (_posts []Post, err error)</a></dd>
+			
+				
+				<dd><a href="#FindPostsBySql">func FindPostsBySql(sql string, args ...interface{}) (posts []Post, err error)</a></dd>
+			
+				
+				<dd><a href="#FindPostsWhere">func FindPostsWhere(where string, args ...interface{}) (posts []Post, err error)</a></dd>
+			
+				
+				<dd><a href="#FindUsers">func FindUsers(ids ...int64) ([]User, error)</a></dd>
+			
+				
+				<dd><a href="#FindUsersBy">func FindUsersBy(field string, val interface{}) (_users []User, err error)</a></dd>
+			
+				
+				<dd><a href="#FindUsersBySql">func FindUsersBySql(sql string, args ...interface{}) (users []User, err error)</a></dd>
+			
+				
+				<dd><a href="#FindUsersWhere">func FindUsersWhere(where string, args ...interface{}) (users []User, err error)</a></dd>
+			
+				
+				<dd><a href="#FirstPosts">func FirstPosts(n uint32) ([]Post, error)</a></dd>
+			
+				
+				<dd><a href="#FirstUsers">func FirstUsers(n uint32) ([]User, error)</a></dd>
+			
+				
+				<dd><a href="#LastPosts">func LastPosts(n uint32) ([]Post, error)</a></dd>
+			
+				
+				<dd><a href="#LastUsers">func LastUsers(n uint32) ([]User, error)</a></dd>
+			
+				
+				<dd><a href="#PostCount">func PostCount() (c int64, err error)</a></dd>
+			
+				
+				<dd><a href="#PostCountWhere">func PostCountWhere(where string, args ...interface{}) (c int64, err error)</a></dd>
+			
+				
+				<dd><a href="#PostIds">func PostIds() (ids []int64, err error)</a></dd>
+			
+				
+				<dd><a href="#PostIdsWhere">func PostIdsWhere(where string, args ...interface{}) ([]int64, error)</a></dd>
+			
+				
+				<dd><a href="#PostIncludesWhere">func PostIncludesWhere(assocs []string, sql string, args ...interface{}) (_posts []Post, err error)</a></dd>
+			
+				
+				<dd><a href="#PostIntCol">func PostIntCol(col, where string, args ...interface{}) (intColRecs []int64, err error)</a></dd>
+			
+				
+				<dd><a href="#PostStrCol">func PostStrCol(col, where string, args ...interface{}) (strColRecs []string, err error)</a></dd>
+			
+				
+				<dd><a href="#UpdatePost">func UpdatePost(id int64, am map[string]interface{}) error</a></dd>
+			
+				
+				<dd><a href="#UpdatePostsBySql">func UpdatePostsBySql(sql string, args ...interface{}) (int64, error)</a></dd>
+			
+				
+				<dd><a href="#UpdateUser">func UpdateUser(id int64, am map[string]interface{}) error</a></dd>
+			
+				
+				<dd><a href="#UpdateUsersBySql">func UpdateUsersBySql(sql string, args ...interface{}) (int64, error)</a></dd>
+			
+				
+				<dd><a href="#UserCount">func UserCount() (c int64, err error)</a></dd>
+			
+				
+				<dd><a href="#UserCountWhere">func UserCountWhere(where string, args ...interface{}) (c int64, err error)</a></dd>
+			
+				
+				<dd><a href="#UserGetPosts">func UserGetPosts(id int64) ([]Post, error)</a></dd>
+			
+				
+				<dd><a href="#UserIds">func UserIds() (ids []int64, err error)</a></dd>
+			
+				
+				<dd><a href="#UserIdsWhere">func UserIdsWhere(where string, args ...interface{}) ([]int64, error)</a></dd>
+			
+				
+				<dd><a href="#UserIncludesWhere">func UserIncludesWhere(assocs []string, sql string, args ...interface{}) (_users []User, err error)</a></dd>
+			
+				
+				<dd><a href="#UserIntCol">func UserIntCol(col, where string, args ...interface{}) (intColRecs []int64, err error)</a></dd>
+			
+				
+				<dd><a href="#UserStrCol">func UserStrCol(col, where string, args ...interface{}) (strColRecs []string, err error)</a></dd>
+			
+			
+				
+				<dd><a href="#Post">type Post</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindPost">func FindPost(id int64) (*Post, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindPostBy">func FindPostBy(field string, val interface{}) (*Post, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindPostBySql">func FindPostBySql(sql string, args ...interface{}) (*Post, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FirstPost">func FirstPost() (*Post, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#LastPost">func LastPost() (*Post, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Post.Create">func (_post *Post) Create() (int64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Post.CreateUser">func (_post *Post) CreateUser(am map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Post.Destroy">func (_post *Post) Destroy() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Post.Save">func (_post *Post) Save() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Post.Update">func (_post *Post) Update(am map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Post.UpdateAttributes">func (_post *Post) UpdateAttributes(am map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Post.UpdateColumns">func (_post *Post) UpdateColumns(am map[string]interface{}) error</a></dd>
+				
+			
+				
+				<dd><a href="#User">type User</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindUser">func FindUser(id int64) (*User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindUserBy">func FindUserBy(field string, val interface{}) (*User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindUserBySql">func FindUserBySql(sql string, args ...interface{}) (*User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FirstUser">func FirstUser() (*User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#LastUser">func LastUser() (*User, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#User.Create">func (_user *User) Create() (int64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#User.Destroy">func (_user *User) Destroy() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#User.GetPosts">func (_user *User) GetPosts() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#User.PostsCreate">func (_user *User) PostsCreate(am map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#User.Save">func (_user *User) Save() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#User.Update">func (_user *User) Update(am map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#User.UpdateAttributes">func (_user *User) UpdateAttributes(am map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#User.UpdateColumns">func (_user *User) UpdateColumns(am map[string]interface{}) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/db.go">db.go</a>
+			
+				<a href="/gor_post.go">gor_post.go</a>
+			
+				<a href="/gor_user.go">gor_user.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+			
+			
+			<h2 id="AllPosts">func <a href="/gor_post.go?s=3758:3799#L127">AllPosts</a>
+				<a class="permalink" href="#AllPosts">&#xb6;</a>
+			</h2>
+			<pre>func AllPosts() (posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+AllPosts get all the Post records
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AllUsers">func <a href="/gor_user.go?s=4648:4689#L135">AllUsers</a>
+				<a class="permalink" href="#AllUsers">&#xb6;</a>
+			</h2>
+			<pre>func AllUsers() (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+AllUsers get all the User records
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreatePost">func <a href="/gor_post.go?s=8515:8572#L298">CreatePost</a>
+				<a class="permalink" href="#CreatePost">&#xb6;</a>
+			</h2>
+			<pre>func CreatePost(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+CreatePost use a named params to create a single Post record.
+A named params is key-value map like map[string]interface{}{&#34;first_name&#34;: &#34;John&#34;, &#34;age&#34;: 23} .
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateUser">func <a href="/gor_user.go?s=9916:9973#L326">CreateUser</a>
+				<a class="permalink" href="#CreateUser">&#xb6;</a>
+			</h2>
+			<pre>func CreateUser(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+CreateUser use a named params to create a single User record.
+A named params is key-value map like map[string]interface{}{&#34;first_name&#34;: &#34;John&#34;, &#34;age&#34;: 23} .
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DestroyPost">func <a href="/gor_post.go?s=10459:10491#L374">DestroyPost</a>
+				<a class="permalink" href="#DestroyPost">&#xb6;</a>
+			</h2>
+			<pre>func DestroyPost(id <a href="/pkg/builtin/#int64">int64</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+DestroyPost will destroy a Post record specified by id parameter.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DestroyPosts">func <a href="/gor_post.go?s=10718:10764#L384">DestroyPosts</a>
+				<a class="permalink" href="#DestroyPosts">&#xb6;</a>
+			</h2>
+			<pre>func DestroyPosts(ids ...<a href="/pkg/builtin/#int64">int64</a>) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+DestroyPosts will destroy Post records those specified by the ids parameters.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DestroyPostsWhere">func <a href="/gor_post.go?s=11459:11531#L411">DestroyPostsWhere</a>
+				<a class="permalink" href="#DestroyPostsWhere">&#xb6;</a>
+			</h2>
+			<pre>func DestroyPostsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+DestroyPostsWhere delete records by a where clause
+like: DestroyPostsWhere(&#34;name = ?&#34;, &#34;John&#34;)
+And this func will not call the association dependent action
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DestroyUser">func <a href="/gor_user.go?s=12720:12752#L419">DestroyUser</a>
+				<a class="permalink" href="#DestroyUser">&#xb6;</a>
+			</h2>
+			<pre>func DestroyUser(id <a href="/pkg/builtin/#int64">int64</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+DestroyUser will destroy a User record specified by id parameter.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DestroyUsers">func <a href="/gor_user.go?s=12979:13025#L429">DestroyUsers</a>
+				<a class="permalink" href="#DestroyUsers">&#xb6;</a>
+			</h2>
+			<pre>func DestroyUsers(ids ...<a href="/pkg/builtin/#int64">int64</a>) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+DestroyUsers will destroy User records those specified by the ids parameters.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DestroyUsersWhere">func <a href="/gor_user.go?s=13720:13792#L456">DestroyUsersWhere</a>
+				<a class="permalink" href="#DestroyUsersWhere">&#xb6;</a>
+			</h2>
+			<pre>func DestroyUsersWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+DestroyUsersWhere delete records by a where clause
+like: DestroyUsersWhere(&#34;name = ?&#34;, &#34;John&#34;)
+And this func will not call the association dependent action
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindPosts">func <a href="/gor_post.go?s=2443:2487#L80">FindPosts</a>
+				<a class="permalink" href="#FindPosts">&#xb6;</a>
+			</h2>
+			<pre>func FindPosts(ids ...<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindPosts find one or more posts by one or more ids
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindPostsBy">func <a href="/gor_post.go?s=3416:3490#L115">FindPostsBy</a>
+				<a class="permalink" href="#FindPostsBy">&#xb6;</a>
+			</h2>
+			<pre>func FindPostsBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (_posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindPostsBy find all posts by a field name and a value
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindPostsBySql">func <a href="/gor_post.go?s=8057:8135#L282">FindPostsBySql</a>
+				<a class="permalink" href="#FindPostsBySql">&#xb6;</a>
+			</h2>
+			<pre>func FindPostsBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindPostsBySql query use a complete SQL clause
+with placeholders, eg: FindUsersBySql(&#34;SELECT * FROM users WHERE first_name = ? AND age &gt; ?&#34;, &#34;John&#34;, 18)
+will return those records in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindPostsWhere">func <a href="/gor_post.go?s=6839:6919#L243">FindPostsWhere</a>
+				<a class="permalink" href="#FindPostsWhere">&#xb6;</a>
+			</h2>
+			<pre>func FindPostsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindPostsWhere query use a partial SQL clause that usually following after WHERE
+with placeholders, eg: FindUsersWhere(&#34;first_name = ? AND age &gt; ?&#34;, &#34;John&#34;, 18)
+will return those records in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindUsers">func <a href="/gor_user.go?s=3333:3377#L88">FindUsers</a>
+				<a class="permalink" href="#FindUsers">&#xb6;</a>
+			</h2>
+			<pre>func FindUsers(ids ...<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindUsers find one or more users by one or more ids
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindUsersBy">func <a href="/gor_user.go?s=4306:4380#L123">FindUsersBy</a>
+				<a class="permalink" href="#FindUsersBy">&#xb6;</a>
+			</h2>
+			<pre>func FindUsersBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (_users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindUsersBy find all users by a field name and a value
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindUsersBySql">func <a href="/gor_user.go?s=9458:9536#L310">FindUsersBySql</a>
+				<a class="permalink" href="#FindUsersBySql">&#xb6;</a>
+			</h2>
+			<pre>func FindUsersBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindUsersBySql query use a complete SQL clause
+with placeholders, eg: FindUsersBySql(&#34;SELECT * FROM users WHERE first_name = ? AND age &gt; ?&#34;, &#34;John&#34;, 18)
+will return those records in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindUsersWhere">func <a href="/gor_user.go?s=8240:8320#L271">FindUsersWhere</a>
+				<a class="permalink" href="#FindUsersWhere">&#xb6;</a>
+			</h2>
+			<pre>func FindUsersWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FindUsersWhere query use a partial SQL clause that usually following after WHERE
+with placeholders, eg: FindUsersWhere(&#34;first_name = ? AND age &gt; ?&#34;, &#34;John&#34;, 18)
+will return those records in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FirstPosts">func <a href="/gor_post.go?s=1514:1555#L45">FirstPosts</a>
+				<a class="permalink" href="#FirstPosts">&#xb6;</a>
+			</h2>
+			<pre>func FirstPosts(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FirstPosts find the first N posts by id ASC order
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FirstUsers">func <a href="/gor_user.go?s=2404:2445#L53">FirstUsers</a>
+				<a class="permalink" href="#FirstUsers">&#xb6;</a>
+			</h2>
+			<pre>func FirstUsers(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+FirstUsers find the first N users by id ASC order
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="LastPosts">func <a href="/gor_post.go?s=2116:2156#L68">LastPosts</a>
+				<a class="permalink" href="#LastPosts">&#xb6;</a>
+			</h2>
+			<pre>func LastPosts(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+LastPosts find the last N posts by id DESC order
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="LastUsers">func <a href="/gor_user.go?s=3006:3046#L76">LastUsers</a>
+				<a class="permalink" href="#LastUsers">&#xb6;</a>
+			</h2>
+			<pre>func LastUsers(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+LastUsers find the last N users by id DESC order
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PostCount">func <a href="/gor_post.go?s=3980:4017#L137">PostCount</a>
+				<a class="permalink" href="#PostCount">&#xb6;</a>
+			</h2>
+			<pre>func PostCount() (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PostCount get the count of all the Post records
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PostCountWhere">func <a href="/gor_post.go?s=4217:4292#L147">PostCountWhere</a>
+				<a class="permalink" href="#PostCountWhere">&#xb6;</a>
+			</h2>
+			<pre>func PostCountWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PostCountWhere get the count of all the Post records with a where clause
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PostIds">func <a href="/gor_post.go?s=5236:5275#L187">PostIds</a>
+				<a class="permalink" href="#PostIds">&#xb6;</a>
+			</h2>
+			<pre>func PostIds() (ids []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PostIds get all the Ids of Post records
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PostIdsWhere">func <a href="/gor_post.go?s=5471:5540#L197">PostIdsWhere</a>
+				<a class="permalink" href="#PostIdsWhere">&#xb6;</a>
+			</h2>
+			<pre>func PostIdsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) ([]<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PostIdsWhere get all the Ids of Post records by where restriction
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PostIncludesWhere">func <a href="/gor_post.go?s=4682:4781#L166">PostIncludesWhere</a>
+				<a class="permalink" href="#PostIncludesWhere">&#xb6;</a>
+			</h2>
+			<pre>func PostIncludesWhere(assocs []<a href="/pkg/builtin/#string">string</a>, sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (_posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PostIncludesWhere get the Post associated models records, it&#39;s just the eager_load function
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PostIntCol">func <a href="/gor_post.go?s=5680:5767#L203">PostIntCol</a>
+				<a class="permalink" href="#PostIntCol">&#xb6;</a>
+			</h2>
+			<pre>func PostIntCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (intColRecs []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PostIntCol get some int64 typed column of Post by where restriction
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PostStrCol">func <a href="/gor_post.go?s=6162:6250#L222">PostStrCol</a>
+				<a class="permalink" href="#PostStrCol">&#xb6;</a>
+			</h2>
+			<pre>func PostStrCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (strColRecs []<a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+PostStrCol get some string typed column of Post by where restriction
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdatePost">func <a href="/gor_post.go?s=12756:12814#L454">UpdatePost</a>
+				<a class="permalink" href="#UpdatePost">&#xb6;</a>
+			</h2>
+			<pre>func UpdatePost(id <a href="/pkg/builtin/#int64">int64</a>, am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+UpdatePost is used to update a record with a id and map[string]interface{} typed key-value parameters.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdatePostsBySql">func <a href="/gor_post.go?s=14288:14357#L508">UpdatePostsBySql</a>
+				<a class="permalink" href="#UpdatePostsBySql">&#xb6;</a>
+			</h2>
+			<pre>func UpdatePostsBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UpdatePostsBySql is used to update Post records by a SQL clause
+that use &#39;?&#39; binding syntax
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdateUser">func <a href="/gor_user.go?s=15361:15419#L499">UpdateUser</a>
+				<a class="permalink" href="#UpdateUser">&#xb6;</a>
+			</h2>
+			<pre>func UpdateUser(id <a href="/pkg/builtin/#int64">int64</a>, am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+UpdateUser is used to update a record with a id and map[string]interface{} typed key-value parameters.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdateUsersBySql">func <a href="/gor_user.go?s=16893:16962#L553">UpdateUsersBySql</a>
+				<a class="permalink" href="#UpdateUsersBySql">&#xb6;</a>
+			</h2>
+			<pre>func UpdateUsersBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UpdateUsersBySql is used to update User records by a SQL clause
+that use &#39;?&#39; binding syntax
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UserCount">func <a href="/gor_user.go?s=4870:4907#L145">UserCount</a>
+				<a class="permalink" href="#UserCount">&#xb6;</a>
+			</h2>
+			<pre>func UserCount() (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UserCount get the count of all the User records
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UserCountWhere">func <a href="/gor_user.go?s=5107:5182#L155">UserCountWhere</a>
+				<a class="permalink" href="#UserCountWhere">&#xb6;</a>
+			</h2>
+			<pre>func UserCountWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UserCountWhere get the count of all the User records with a where clause
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UserGetPosts">func <a href="/gor_user.go?s=12307:12350#L404">UserGetPosts</a>
+				<a class="permalink" href="#UserGetPosts">&#xb6;</a>
+			</h2>
+			<pre>func UserGetPosts(id <a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UserGetPosts a helper fuction used to get associated objects for UserIncludesWhere()
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UserIds">func <a href="/gor_user.go?s=6637:6676#L215">UserIds</a>
+				<a class="permalink" href="#UserIds">&#xb6;</a>
+			</h2>
+			<pre>func UserIds() (ids []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UserIds get all the Ids of User records
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UserIdsWhere">func <a href="/gor_user.go?s=6872:6941#L225">UserIdsWhere</a>
+				<a class="permalink" href="#UserIdsWhere">&#xb6;</a>
+			</h2>
+			<pre>func UserIdsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) ([]<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UserIdsWhere get all the Ids of User records by where restriction
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UserIncludesWhere">func <a href="/gor_user.go?s=5572:5671#L174">UserIncludesWhere</a>
+				<a class="permalink" href="#UserIncludesWhere">&#xb6;</a>
+			</h2>
+			<pre>func UserIncludesWhere(assocs []<a href="/pkg/builtin/#string">string</a>, sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (_users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UserIncludesWhere get the User associated models records, it&#39;s just the eager_load function
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UserIntCol">func <a href="/gor_user.go?s=7081:7168#L231">UserIntCol</a>
+				<a class="permalink" href="#UserIntCol">&#xb6;</a>
+			</h2>
+			<pre>func UserIntCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (intColRecs []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UserIntCol get some int64 typed column of User by where restriction
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UserStrCol">func <a href="/gor_user.go?s=7563:7651#L250">UserStrCol</a>
+				<a class="permalink" href="#UserStrCol">&#xb6;</a>
+			</h2>
+			<pre>func UserStrCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (strColRecs []<a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+UserStrCol get some string typed column of User by where restriction
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Post">type <a href="/gor_post.go?s=273:832#L9">Post</a>
+				<a class="permalink" href="#Post">&#xb6;</a>
+			</h2>
+			<pre>type Post struct {
+    Id        <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;id,omitempty&#34; db:&#34;id&#34; valid:&#34;-&#34;`
+    Title     <a href="/pkg/builtin/#string">string</a>    `json:&#34;title,omitempty&#34; db:&#34;title&#34; valid:&#34;required,length(10|50)&#34;`
+    Content   <a href="/pkg/builtin/#string">string</a>    `json:&#34;content,omitempty&#34; db:&#34;content&#34; valid:&#34;required,length(20|4294967295)&#34;`
+    UserId    <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;user_id,omitempty&#34; db:&#34;user_id&#34; valid:&#34;-&#34;`
+    CreatedAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;created_at,omitempty&#34; db:&#34;created_at&#34; valid:&#34;-&#34;`
+    UpdatedAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;updated_at,omitempty&#34; db:&#34;updated_at&#34; valid:&#34;-&#34;`
+    User      <a href="#User">User</a>      `json:&#34;user,omitempty&#34; db:&#34;user&#34; valid:&#34;-&#34;`
+}</pre>
+			
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="FindPost">func <a href="/gor_post.go?s=874:912#L20">FindPost</a>
+					<a class="permalink" href="#FindPost">&#xb6;</a>
+				</h3>
+				<pre>func FindPost(id <a href="/pkg/builtin/#int64">int64</a>) (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindPost find a single post by an id
+</p>
+
+				
+				
+			
+				
+				<h3 id="FindPostBy">func <a href="/gor_post.go?s=3044:3105#L102">FindPostBy</a>
+					<a class="permalink" href="#FindPostBy">&#xb6;</a>
+				</h3>
+				<pre>func FindPostBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindPostBy find a single post by a field name and a value
+</p>
+
+				
+				
+			
+				
+				<h3 id="FindPostBySql">func <a href="/gor_post.go?s=7502:7568#L264">FindPostBySql</a>
+					<a class="permalink" href="#FindPostBySql">&#xb6;</a>
+				</h3>
+				<pre>func FindPostBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindPostBySql query use a complete SQL clause
+with placeholders, eg: FindUserBySql(&#34;SELECT * FROM users WHERE first_name = ? AND age &gt; ? ORDER BY DESC LIMIT 1&#34;, &#34;John&#34;, 18)
+will return only One record in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18
+</p>
+
+				
+				
+			
+				
+				<h3 id="FirstPost">func <a href="/gor_post.go?s=1235:1266#L34">FirstPost</a>
+					<a class="permalink" href="#FirstPost">&#xb6;</a>
+				</h3>
+				<pre>func FirstPost() (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FirstPost find the first one post by id ASC order
+</p>
+
+				
+				
+			
+				
+				<h3 id="LastPost">func <a href="/gor_post.go?s=1838:1868#L57">LastPost</a>
+					<a class="permalink" href="#LastPost">&#xb6;</a>
+				</h3>
+				<pre>func LastPost() (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LastPost find the last one post by id DESC order
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Post.Create">func (*Post) <a href="/gor_post.go?s=9251:9293#L330">Create</a>
+					<a class="permalink" href="#Post.Create">&#xb6;</a>
+				</h3>
+				<pre>func (_post *<a href="#Post">Post</a>) Create() (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Create is a method for Post to create a record
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Post.CreateUser">func (*Post) <a href="/gor_post.go?s=10026:10088#L358">CreateUser</a>
+					<a class="permalink" href="#Post.CreateUser">&#xb6;</a>
+				</h3>
+				<pre>func (_post *<a href="#Post">Post</a>) CreateUser(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+CreateUser is a method for a Post object to create an associated User record
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Post.Destroy">func (*Post) <a href="/gor_post.go?s=10219:10253#L365">Destroy</a>
+					<a class="permalink" href="#Post.Destroy">&#xb6;</a>
+				</h3>
+				<pre>func (_post *<a href="#Post">Post</a>) Destroy() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+Destroy is method used for a Post object to be destroyed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Post.Save">func (*Post) <a href="/gor_post.go?s=12055:12086#L432">Save</a>
+					<a class="permalink" href="#Post.Save">&#xb6;</a>
+				</h3>
+				<pre>func (_post *<a href="#Post">Post</a>) Save() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+Save method is used for a Post object to update an existed record mainly.
+If no id provided a new record will be created. A UPSERT action will be implemented further.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Post.Update">func (*Post) <a href="/gor_post.go?s=13468:13526#L481">Update</a>
+					<a class="permalink" href="#Post.Update">&#xb6;</a>
+				</h3>
+				<pre>func (_post *<a href="#Post">Post</a>) Update(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+Update is a method used to update a Post record with the map[string]interface{} typed key-value parameters.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Post.UpdateAttributes">func (*Post) <a href="/gor_post.go?s=13666:13734#L489">UpdateAttributes</a>
+					<a class="permalink" href="#Post.UpdateAttributes">&#xb6;</a>
+				</h3>
+				<pre>func (_post *<a href="#Post">Post</a>) UpdateAttributes(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Post.UpdateColumns">func (*Post) <a href="/gor_post.go?s=13985:14050#L498">UpdateColumns</a>
+					<a class="permalink" href="#Post.UpdateColumns">&#xb6;</a>
+				</h3>
+				<pre>func (_post *<a href="#Post">Post</a>) UpdateColumns(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+UpdateColumns method is supposed to be used to update Post records as corresponding update_columns in Rails
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="User">type <a href="/gor_user.go?s=273:1722#L9">User</a>
+				<a class="permalink" href="#User">&#xb6;</a>
+			</h2>
+			<pre>type User struct {
+    Id                  <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;id,omitempty&#34; db:&#34;id&#34; valid:&#34;-&#34;`
+    Email               <a href="/pkg/builtin/#string">string</a>    `json:&#34;email,omitempty&#34; db:&#34;email&#34; valid:&#34;required,matches(\A[^@\s]+@[^@\s]+\z)&#34;`
+    EncryptedPassword   <a href="/pkg/builtin/#string">string</a>    `json:&#34;encrypted_password,omitempty&#34; db:&#34;encrypted_password&#34; valid:&#34;-&#34;`
+    ResetPasswordToken  <a href="/pkg/builtin/#string">string</a>    `json:&#34;reset_password_token,omitempty&#34; db:&#34;reset_password_token&#34; valid:&#34;-&#34;`
+    ResetPasswordSentAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;reset_password_sent_at,omitempty&#34; db:&#34;reset_password_sent_at&#34; valid:&#34;-&#34;`
+    RememberCreatedAt   <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;remember_created_at,omitempty&#34; db:&#34;remember_created_at&#34; valid:&#34;-&#34;`
+    SignInCount         <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;sign_in_count,omitempty&#34; db:&#34;sign_in_count&#34; valid:&#34;-&#34;`
+    CurrentSignInAt     <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;current_sign_in_at,omitempty&#34; db:&#34;current_sign_in_at&#34; valid:&#34;-&#34;`
+    LastSignInAt        <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;last_sign_in_at,omitempty&#34; db:&#34;last_sign_in_at&#34; valid:&#34;-&#34;`
+    CurrentSignInIp     <a href="/pkg/builtin/#string">string</a>    `json:&#34;current_sign_in_ip,omitempty&#34; db:&#34;current_sign_in_ip&#34; valid:&#34;-&#34;`
+    LastSignInIp        <a href="/pkg/builtin/#string">string</a>    `json:&#34;last_sign_in_ip,omitempty&#34; db:&#34;last_sign_in_ip&#34; valid:&#34;-&#34;`
+    CreatedAt           <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;created_at,omitempty&#34; db:&#34;created_at&#34; valid:&#34;-&#34;`
+    UpdatedAt           <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;updated_at,omitempty&#34; db:&#34;updated_at&#34; valid:&#34;-&#34;`
+    Role                <a href="/pkg/builtin/#string">string</a>    `json:&#34;role,omitempty&#34; db:&#34;role&#34; valid:&#34;-&#34;`
+    Posts               []<a href="#Post">Post</a>    `json:&#34;posts,omitempty&#34; db:&#34;posts&#34; valid:&#34;-&#34;`
+}</pre>
+			
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="FindUser">func <a href="/gor_user.go?s=1764:1802#L28">FindUser</a>
+					<a class="permalink" href="#FindUser">&#xb6;</a>
+				</h3>
+				<pre>func FindUser(id <a href="/pkg/builtin/#int64">int64</a>) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindUser find a single user by an id
+</p>
+
+				
+				
+			
+				
+				<h3 id="FindUserBy">func <a href="/gor_user.go?s=3934:3995#L110">FindUserBy</a>
+					<a class="permalink" href="#FindUserBy">&#xb6;</a>
+				</h3>
+				<pre>func FindUserBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindUserBy find a single user by a field name and a value
+</p>
+
+				
+				
+			
+				
+				<h3 id="FindUserBySql">func <a href="/gor_user.go?s=8903:8969#L292">FindUserBySql</a>
+					<a class="permalink" href="#FindUserBySql">&#xb6;</a>
+				</h3>
+				<pre>func FindUserBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindUserBySql query use a complete SQL clause
+with placeholders, eg: FindUserBySql(&#34;SELECT * FROM users WHERE first_name = ? AND age &gt; ? ORDER BY DESC LIMIT 1&#34;, &#34;John&#34;, 18)
+will return only One record in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18
+</p>
+
+				
+				
+			
+				
+				<h3 id="FirstUser">func <a href="/gor_user.go?s=2125:2156#L42">FirstUser</a>
+					<a class="permalink" href="#FirstUser">&#xb6;</a>
+				</h3>
+				<pre>func FirstUser() (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FirstUser find the first one user by id ASC order
+</p>
+
+				
+				
+			
+				
+				<h3 id="LastUser">func <a href="/gor_user.go?s=2728:2758#L65">LastUser</a>
+					<a class="permalink" href="#LastUser">&#xb6;</a>
+				</h3>
+				<pre>func LastUser() (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LastUser find the last one user by id DESC order
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="User.Create">func (*User) <a href="/gor_user.go?s=10652:10694#L358">Create</a>
+					<a class="permalink" href="#User.Create">&#xb6;</a>
+				</h3>
+				<pre>func (_user *<a href="#User">User</a>) Create() (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Create is a method for User to create a record
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="User.Destroy">func (*User) <a href="/gor_user.go?s=12480:12514#L410">Destroy</a>
+					<a class="permalink" href="#User.Destroy">&#xb6;</a>
+				</h3>
+				<pre>func (_user *<a href="#User">User</a>) Destroy() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+Destroy is method used for a User object to be destroyed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="User.GetPosts">func (*User) <a href="/gor_user.go?s=12084:12119#L395">GetPosts</a>
+					<a class="permalink" href="#User.GetPosts">&#xb6;</a>
+				</h3>
+				<pre>func (_user *<a href="#User">User</a>) GetPosts() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+GetPosts is used for User to get associated objects Posts
+Say you have a User object named user, when you call user.GetPosts(),
+the object will get the associated Posts attributes evaluated in the struct
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="User.PostsCreate">func (*User) <a href="/gor_user.go?s=11738:11801#L386">PostsCreate</a>
+					<a class="permalink" href="#User.PostsCreate">&#xb6;</a>
+				</h3>
+				<pre>func (_user *<a href="#User">User</a>) PostsCreate(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+PostsCreate is used for User to create the associated objects Posts
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="User.Save">func (*User) <a href="/gor_user.go?s=14316:14347#L477">Save</a>
+					<a class="permalink" href="#User.Save">&#xb6;</a>
+				</h3>
+				<pre>func (_user *<a href="#User">User</a>) Save() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+Save method is used for a User object to update an existed record mainly.
+If no id provided a new record will be created. A UPSERT action will be implemented further.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="User.Update">func (*User) <a href="/gor_user.go?s=16073:16131#L526">Update</a>
+					<a class="permalink" href="#User.Update">&#xb6;</a>
+				</h3>
+				<pre>func (_user *<a href="#User">User</a>) Update(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+Update is a method used to update a User record with the map[string]interface{} typed key-value parameters.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="User.UpdateAttributes">func (*User) <a href="/gor_user.go?s=16271:16339#L534">UpdateAttributes</a>
+					<a class="permalink" href="#User.UpdateAttributes">&#xb6;</a>
+				</h3>
+				<pre>func (_user *<a href="#User">User</a>) UpdateAttributes(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="User.UpdateColumns">func (*User) <a href="/gor_user.go?s=16590:16655#L543">UpdateColumns</a>
+					<a class="permalink" href="#User.UpdateColumns">&#xb6;</a>
+				</h3>
+				<pre>func (_user *<a href="#User">User</a>) UpdateColumns(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+UpdateColumns method is supposed to be used to update User records as corresponding update_columns in Rails
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	
+
+
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="doc/">doc</a>
+						</td>
+						<td class="pkg-synopsis">
+							
+						</td>
+					</tr>
+				
+			
+		</table>
+	</div>
+
+
+	
+
