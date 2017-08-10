@@ -3,7 +3,7 @@
 This is a little more advanced example for [go-on-rails](https://github.com/goonr/go-on-rails) generator. There's a [simple one](https://github.com/goonr/example_simple) if you're new to go-on-rails.
 
 The example shows:
-* How to use the gems [devise](https://github.com/plataformatec/devise/), [rails_admin](https://github.com/sferik/rails_admin) and [cancancan](https://github.com/CanCanCommunity/cancancan) to implement a admin console to manage a `Post` model,
+* How to use the gems [devise](https://github.com/plataformatec/devise/), [rails_admin](https://github.com/sferik/rails_admin) and [cancancan](https://github.com/CanCanCommunity/cancancan) to implement an admin console to manage a `Post` model
 * And use the gem go-on-rails to generate Go APIs codes, make an `index` and a `show` web page
 
 The highlight or primary purpose of the example is using Rails as a tool to `write` Go web app, and give it an admin console in less than 10 minutes.
