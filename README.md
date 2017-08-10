@@ -1,4 +1,4 @@
-# An Example of go-on-rails Generator: Integrating Go APIs in a Rails Project
+# An Example: Integrating Go APIs in a Rails Project
 
 This is a little more advanced example for [go-on-rails](https://github.com/goonr/go-on-rails) generator. There's a [simple one](https://github.com/goonr/example_simple) if you're new to go-on-rails.
 
