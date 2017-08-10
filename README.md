@@ -116,5 +116,8 @@ Then you can visit the `index` page on: http://localhost:4000.
 
 ## What's next?
 
-We'll do `User` authentication in Go app by JWT tokens...
+We'll do next:
+* Add CSS to pages,
+* Paginate post list in `index` page
+* `User` authentication in Go app by JWT tokens...
 
