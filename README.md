@@ -99,7 +99,14 @@ We need make two template files named `index.tmpl` and `show.tmpl` under the `vi
 
 We use the `Gin` framework, more details you can refer to its doc: https://github.com/gin-gonic/gin.
 
-And at last edit the `main.go` to add two router paths to pages. Then run the server on port 4000:
+And at last edit the `main.go` to add two router paths to pages:
+
+```go
+r.GET("/", c.IndexHandler)
+r.GET("/posts/:id", c.ShowHandler)
+```
+
+Then run the server on port 4000:
 
 ```bash
 go run main.go -port 4000
