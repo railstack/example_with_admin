@@ -60,6 +60,8 @@ Package models includes the functions on the model User.
 			<dl>
 			
 			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
 			
 				
 				<dd><a href="#AllPosts">func AllPosts() (posts []Post, err error)</a></dd>
@@ -227,6 +229,20 @@ Package models includes the functions on the model User.
 				
 			
 				
+				<dd><a href="#PostPage">type PostPage</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PostPage.Current">func (_p *PostPage) Current() ([]Post, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PostPage.Next">func (_p *PostPage) Next() ([]Post, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PostPage.Previous">func (_p *PostPage) Previous() ([]Post, error)</a></dd>
+				
+			
+				
 				<dd><a href="#User">type User</a></dd>
 				
 					
@@ -268,6 +284,20 @@ Package models includes the functions on the model User.
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#User.UpdateColumns">func (_user *User) UpdateColumns(am map[string]interface{}) error</a></dd>
+				
+			
+				
+				<dd><a href="#UserPage">type UserPage</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#UserPage.Current">func (_p *UserPage) Current() ([]User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#UserPage.Next">func (_p *UserPage) Next() ([]User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#UserPage.Previous">func (_p *UserPage) Previous() ([]User, error)</a></dd>
 				
 			
 			
@@ -332,10 +362,16 @@ Package models includes the functions on the model User.
 
 		
 		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<pre>var <span id="DB">DB</span> *<a href="/pkg/github.com/jmoiron/sqlx/">sqlx</a>.<a href="/pkg/github.com/jmoiron/sqlx/#DB">DB</a></pre>
+				
+			
+		
 		
 			
 			
-			<h2 id="AllPosts">func <a href="/gor_post.go?s=3758:3799#L127">AllPosts</a>
+			<h2 id="AllPosts">func <a href="/gor_post.go?s=8591:8632#L298">AllPosts</a>
 				<a class="permalink" href="#AllPosts">&#xb6;</a>
 			</h2>
 			<pre>func AllPosts() (posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -349,7 +385,7 @@ AllPosts get all the Post records
 		
 			
 			
-			<h2 id="AllUsers">func <a href="/gor_user.go?s=4648:4689#L135">AllUsers</a>
+			<h2 id="AllUsers">func <a href="/gor_user.go?s=9481:9522#L306">AllUsers</a>
 				<a class="permalink" href="#AllUsers">&#xb6;</a>
 			</h2>
 			<pre>func AllUsers() (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -363,7 +399,7 @@ AllUsers get all the User records
 		
 			
 			
-			<h2 id="CreatePost">func <a href="/gor_post.go?s=8515:8572#L298">CreatePost</a>
+			<h2 id="CreatePost">func <a href="/gor_post.go?s=13348:13405#L469">CreatePost</a>
 				<a class="permalink" href="#CreatePost">&#xb6;</a>
 			</h2>
 			<pre>func CreatePost(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -378,7 +414,7 @@ A named params is key-value map like map[string]interface{}{&#34;first_name&#34;
 		
 			
 			
-			<h2 id="CreateUser">func <a href="/gor_user.go?s=9916:9973#L326">CreateUser</a>
+			<h2 id="CreateUser">func <a href="/gor_user.go?s=14749:14806#L497">CreateUser</a>
 				<a class="permalink" href="#CreateUser">&#xb6;</a>
 			</h2>
 			<pre>func CreateUser(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -393,12 +429,12 @@ A named params is key-value map like map[string]interface{}{&#34;first_name&#34;
 		
 			
 			
-			<h2 id="DestroyPost">func <a href="/gor_post.go?s=10459:10491#L374">DestroyPost</a>
+			<h2 id="DestroyPost">func <a href="/gor_post.go?s=15296:15328#L545">DestroyPost</a>
 				<a class="permalink" href="#DestroyPost">&#xb6;</a>
 			</h2>
 			<pre>func DestroyPost(id <a href="/pkg/builtin/#int64">int64</a>) <a href="/pkg/builtin/#error">error</a></pre>
 			<p>
-DestroyPost will destroy a Post record specified by id parameter.
+DestroyPost will destroy a Post record specified by the id parameter.
 </p>
 
 			
@@ -407,7 +443,7 @@ DestroyPost will destroy a Post record specified by id parameter.
 		
 			
 			
-			<h2 id="DestroyPosts">func <a href="/gor_post.go?s=10718:10764#L384">DestroyPosts</a>
+			<h2 id="DestroyPosts">func <a href="/gor_post.go?s=15555:15601#L555">DestroyPosts</a>
 				<a class="permalink" href="#DestroyPosts">&#xb6;</a>
 			</h2>
 			<pre>func DestroyPosts(ids ...<a href="/pkg/builtin/#int64">int64</a>) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -421,13 +457,13 @@ DestroyPosts will destroy Post records those specified by the ids parameters.
 		
 			
 			
-			<h2 id="DestroyPostsWhere">func <a href="/gor_post.go?s=11459:11531#L411">DestroyPostsWhere</a>
+			<h2 id="DestroyPostsWhere">func <a href="/gor_post.go?s=16308:16380#L582">DestroyPostsWhere</a>
 				<a class="permalink" href="#DestroyPostsWhere">&#xb6;</a>
 			</h2>
 			<pre>func DestroyPostsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-DestroyPostsWhere delete records by a where clause
-like: DestroyPostsWhere(&#34;name = ?&#34;, &#34;John&#34;)
+DestroyPostsWhere delete records by a where clause restriction.
+e.g. DestroyPostsWhere(&#34;name = ?&#34;, &#34;John&#34;)
 And this func will not call the association dependent action
 </p>
 
@@ -437,12 +473,12 @@ And this func will not call the association dependent action
 		
 			
 			
-			<h2 id="DestroyUser">func <a href="/gor_user.go?s=12720:12752#L419">DestroyUser</a>
+			<h2 id="DestroyUser">func <a href="/gor_user.go?s=17557:17589#L590">DestroyUser</a>
 				<a class="permalink" href="#DestroyUser">&#xb6;</a>
 			</h2>
 			<pre>func DestroyUser(id <a href="/pkg/builtin/#int64">int64</a>) <a href="/pkg/builtin/#error">error</a></pre>
 			<p>
-DestroyUser will destroy a User record specified by id parameter.
+DestroyUser will destroy a User record specified by the id parameter.
 </p>
 
 			
@@ -451,7 +487,7 @@ DestroyUser will destroy a User record specified by id parameter.
 		
 			
 			
-			<h2 id="DestroyUsers">func <a href="/gor_user.go?s=12979:13025#L429">DestroyUsers</a>
+			<h2 id="DestroyUsers">func <a href="/gor_user.go?s=17816:17862#L600">DestroyUsers</a>
 				<a class="permalink" href="#DestroyUsers">&#xb6;</a>
 			</h2>
 			<pre>func DestroyUsers(ids ...<a href="/pkg/builtin/#int64">int64</a>) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -465,13 +501,13 @@ DestroyUsers will destroy User records those specified by the ids parameters.
 		
 			
 			
-			<h2 id="DestroyUsersWhere">func <a href="/gor_user.go?s=13720:13792#L456">DestroyUsersWhere</a>
+			<h2 id="DestroyUsersWhere">func <a href="/gor_user.go?s=18569:18641#L627">DestroyUsersWhere</a>
 				<a class="permalink" href="#DestroyUsersWhere">&#xb6;</a>
 			</h2>
 			<pre>func DestroyUsersWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-DestroyUsersWhere delete records by a where clause
-like: DestroyUsersWhere(&#34;name = ?&#34;, &#34;John&#34;)
+DestroyUsersWhere delete records by a where clause restriction.
+e.g. DestroyUsersWhere(&#34;name = ?&#34;, &#34;John&#34;)
 And this func will not call the association dependent action
 </p>
 
@@ -481,12 +517,12 @@ And this func will not call the association dependent action
 		
 			
 			
-			<h2 id="FindPosts">func <a href="/gor_post.go?s=2443:2487#L80">FindPosts</a>
+			<h2 id="FindPosts">func <a href="/gor_post.go?s=7276:7320#L251">FindPosts</a>
 				<a class="permalink" href="#FindPosts">&#xb6;</a>
 			</h2>
 			<pre>func FindPosts(ids ...<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-FindPosts find one or more posts by one or more ids
+FindPosts find one or more posts by the given ID(s)
 </p>
 
 			
@@ -495,7 +531,7 @@ FindPosts find one or more posts by one or more ids
 		
 			
 			
-			<h2 id="FindPostsBy">func <a href="/gor_post.go?s=3416:3490#L115">FindPostsBy</a>
+			<h2 id="FindPostsBy">func <a href="/gor_post.go?s=8249:8323#L286">FindPostsBy</a>
 				<a class="permalink" href="#FindPostsBy">&#xb6;</a>
 			</h2>
 			<pre>func FindPostsBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (_posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -509,7 +545,7 @@ FindPostsBy find all posts by a field name and a value
 		
 			
 			
-			<h2 id="FindPostsBySql">func <a href="/gor_post.go?s=8057:8135#L282">FindPostsBySql</a>
+			<h2 id="FindPostsBySql">func <a href="/gor_post.go?s=12890:12968#L453">FindPostsBySql</a>
 				<a class="permalink" href="#FindPostsBySql">&#xb6;</a>
 			</h2>
 			<pre>func FindPostsBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -525,7 +561,7 @@ will return those records in the table &#34;users&#34; whose first_name is &#34;
 		
 			
 			
-			<h2 id="FindPostsWhere">func <a href="/gor_post.go?s=6839:6919#L243">FindPostsWhere</a>
+			<h2 id="FindPostsWhere">func <a href="/gor_post.go?s=11672:11752#L414">FindPostsWhere</a>
 				<a class="permalink" href="#FindPostsWhere">&#xb6;</a>
 			</h2>
 			<pre>func FindPostsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -541,12 +577,12 @@ will return those records in the table &#34;users&#34; whose first_name is &#34;
 		
 			
 			
-			<h2 id="FindUsers">func <a href="/gor_user.go?s=3333:3377#L88">FindUsers</a>
+			<h2 id="FindUsers">func <a href="/gor_user.go?s=8166:8210#L259">FindUsers</a>
 				<a class="permalink" href="#FindUsers">&#xb6;</a>
 			</h2>
 			<pre>func FindUsers(ids ...<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-FindUsers find one or more users by one or more ids
+FindUsers find one or more users by the given ID(s)
 </p>
 
 			
@@ -555,7 +591,7 @@ FindUsers find one or more users by one or more ids
 		
 			
 			
-			<h2 id="FindUsersBy">func <a href="/gor_user.go?s=4306:4380#L123">FindUsersBy</a>
+			<h2 id="FindUsersBy">func <a href="/gor_user.go?s=9139:9213#L294">FindUsersBy</a>
 				<a class="permalink" href="#FindUsersBy">&#xb6;</a>
 			</h2>
 			<pre>func FindUsersBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (_users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -569,7 +605,7 @@ FindUsersBy find all users by a field name and a value
 		
 			
 			
-			<h2 id="FindUsersBySql">func <a href="/gor_user.go?s=9458:9536#L310">FindUsersBySql</a>
+			<h2 id="FindUsersBySql">func <a href="/gor_user.go?s=14291:14369#L481">FindUsersBySql</a>
 				<a class="permalink" href="#FindUsersBySql">&#xb6;</a>
 			</h2>
 			<pre>func FindUsersBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -585,7 +621,7 @@ will return those records in the table &#34;users&#34; whose first_name is &#34;
 		
 			
 			
-			<h2 id="FindUsersWhere">func <a href="/gor_user.go?s=8240:8320#L271">FindUsersWhere</a>
+			<h2 id="FindUsersWhere">func <a href="/gor_user.go?s=13073:13153#L442">FindUsersWhere</a>
 				<a class="permalink" href="#FindUsersWhere">&#xb6;</a>
 			</h2>
 			<pre>func FindUsersWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -601,12 +637,12 @@ will return those records in the table &#34;users&#34; whose first_name is &#34;
 		
 			
 			
-			<h2 id="FirstPosts">func <a href="/gor_post.go?s=1514:1555#L45">FirstPosts</a>
+			<h2 id="FirstPosts">func <a href="/gor_post.go?s=6347:6388#L216">FirstPosts</a>
 				<a class="permalink" href="#FirstPosts">&#xb6;</a>
 			</h2>
 			<pre>func FirstPosts(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-FirstPosts find the first N posts by id ASC order
+FirstPosts find the first N posts by ID ASC order
 </p>
 
 			
@@ -615,12 +651,12 @@ FirstPosts find the first N posts by id ASC order
 		
 			
 			
-			<h2 id="FirstUsers">func <a href="/gor_user.go?s=2404:2445#L53">FirstUsers</a>
+			<h2 id="FirstUsers">func <a href="/gor_user.go?s=7237:7278#L224">FirstUsers</a>
 				<a class="permalink" href="#FirstUsers">&#xb6;</a>
 			</h2>
 			<pre>func FirstUsers(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-FirstUsers find the first N users by id ASC order
+FirstUsers find the first N users by ID ASC order
 </p>
 
 			
@@ -629,12 +665,12 @@ FirstUsers find the first N users by id ASC order
 		
 			
 			
-			<h2 id="LastPosts">func <a href="/gor_post.go?s=2116:2156#L68">LastPosts</a>
+			<h2 id="LastPosts">func <a href="/gor_post.go?s=6949:6989#L239">LastPosts</a>
 				<a class="permalink" href="#LastPosts">&#xb6;</a>
 			</h2>
 			<pre>func LastPosts(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-LastPosts find the last N posts by id DESC order
+LastPosts find the last N posts by ID DESC order
 </p>
 
 			
@@ -643,12 +679,12 @@ LastPosts find the last N posts by id DESC order
 		
 			
 			
-			<h2 id="LastUsers">func <a href="/gor_user.go?s=3006:3046#L76">LastUsers</a>
+			<h2 id="LastUsers">func <a href="/gor_user.go?s=7839:7879#L247">LastUsers</a>
 				<a class="permalink" href="#LastUsers">&#xb6;</a>
 			</h2>
 			<pre>func LastUsers(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-LastUsers find the last N users by id DESC order
+LastUsers find the last N users by ID DESC order
 </p>
 
 			
@@ -657,7 +693,7 @@ LastUsers find the last N users by id DESC order
 		
 			
 			
-			<h2 id="PostCount">func <a href="/gor_post.go?s=3980:4017#L137">PostCount</a>
+			<h2 id="PostCount">func <a href="/gor_post.go?s=8813:8850#L308">PostCount</a>
 				<a class="permalink" href="#PostCount">&#xb6;</a>
 			</h2>
 			<pre>func PostCount() (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -671,7 +707,7 @@ PostCount get the count of all the Post records
 		
 			
 			
-			<h2 id="PostCountWhere">func <a href="/gor_post.go?s=4217:4292#L147">PostCountWhere</a>
+			<h2 id="PostCountWhere">func <a href="/gor_post.go?s=9050:9125#L318">PostCountWhere</a>
 				<a class="permalink" href="#PostCountWhere">&#xb6;</a>
 			</h2>
 			<pre>func PostCountWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -685,12 +721,12 @@ PostCountWhere get the count of all the Post records with a where clause
 		
 			
 			
-			<h2 id="PostIds">func <a href="/gor_post.go?s=5236:5275#L187">PostIds</a>
+			<h2 id="PostIds">func <a href="/gor_post.go?s=10069:10108#L358">PostIds</a>
 				<a class="permalink" href="#PostIds">&#xb6;</a>
 			</h2>
 			<pre>func PostIds() (ids []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-PostIds get all the Ids of Post records
+PostIds get all the IDs of Post records
 </p>
 
 			
@@ -699,12 +735,12 @@ PostIds get all the Ids of Post records
 		
 			
 			
-			<h2 id="PostIdsWhere">func <a href="/gor_post.go?s=5471:5540#L197">PostIdsWhere</a>
+			<h2 id="PostIdsWhere">func <a href="/gor_post.go?s=10304:10373#L368">PostIdsWhere</a>
 				<a class="permalink" href="#PostIdsWhere">&#xb6;</a>
 			</h2>
 			<pre>func PostIdsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) ([]<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-PostIdsWhere get all the Ids of Post records by where restriction
+PostIdsWhere get all the IDs of Post records by where restriction
 </p>
 
 			
@@ -713,7 +749,7 @@ PostIdsWhere get all the Ids of Post records by where restriction
 		
 			
 			
-			<h2 id="PostIncludesWhere">func <a href="/gor_post.go?s=4682:4781#L166">PostIncludesWhere</a>
+			<h2 id="PostIncludesWhere">func <a href="/gor_post.go?s=9515:9614#L337">PostIncludesWhere</a>
 				<a class="permalink" href="#PostIncludesWhere">&#xb6;</a>
 			</h2>
 			<pre>func PostIncludesWhere(assocs []<a href="/pkg/builtin/#string">string</a>, sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (_posts []<a href="#Post">Post</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -727,7 +763,7 @@ PostIncludesWhere get the Post associated models records, it&#39;s just the eage
 		
 			
 			
-			<h2 id="PostIntCol">func <a href="/gor_post.go?s=5680:5767#L203">PostIntCol</a>
+			<h2 id="PostIntCol">func <a href="/gor_post.go?s=10513:10600#L374">PostIntCol</a>
 				<a class="permalink" href="#PostIntCol">&#xb6;</a>
 			</h2>
 			<pre>func PostIntCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (intColRecs []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -741,7 +777,7 @@ PostIntCol get some int64 typed column of Post by where restriction
 		
 			
 			
-			<h2 id="PostStrCol">func <a href="/gor_post.go?s=6162:6250#L222">PostStrCol</a>
+			<h2 id="PostStrCol">func <a href="/gor_post.go?s=10995:11083#L393">PostStrCol</a>
 				<a class="permalink" href="#PostStrCol">&#xb6;</a>
 			</h2>
 			<pre>func PostStrCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (strColRecs []<a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -755,7 +791,7 @@ PostStrCol get some string typed column of Post by where restriction
 		
 			
 			
-			<h2 id="UpdatePost">func <a href="/gor_post.go?s=12756:12814#L454">UpdatePost</a>
+			<h2 id="UpdatePost">func <a href="/gor_post.go?s=17605:17663#L625">UpdatePost</a>
 				<a class="permalink" href="#UpdatePost">&#xb6;</a>
 			</h2>
 			<pre>func UpdatePost(id <a href="/pkg/builtin/#int64">int64</a>, am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -769,13 +805,13 @@ UpdatePost is used to update a record with a id and map[string]interface{} typed
 		
 			
 			
-			<h2 id="UpdatePostsBySql">func <a href="/gor_post.go?s=14288:14357#L508">UpdatePostsBySql</a>
+			<h2 id="UpdatePostsBySql">func <a href="/gor_post.go?s=19274:19343#L680">UpdatePostsBySql</a>
 				<a class="permalink" href="#UpdatePostsBySql">&#xb6;</a>
 			</h2>
 			<pre>func UpdatePostsBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
 UpdatePostsBySql is used to update Post records by a SQL clause
-that use &#39;?&#39; binding syntax
+using the &#39;?&#39; binding syntax.
 </p>
 
 			
@@ -784,7 +820,7 @@ that use &#39;?&#39; binding syntax
 		
 			
 			
-			<h2 id="UpdateUser">func <a href="/gor_user.go?s=15361:15419#L499">UpdateUser</a>
+			<h2 id="UpdateUser">func <a href="/gor_user.go?s=20210:20268#L670">UpdateUser</a>
 				<a class="permalink" href="#UpdateUser">&#xb6;</a>
 			</h2>
 			<pre>func UpdateUser(id <a href="/pkg/builtin/#int64">int64</a>, am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -798,13 +834,13 @@ UpdateUser is used to update a record with a id and map[string]interface{} typed
 		
 			
 			
-			<h2 id="UpdateUsersBySql">func <a href="/gor_user.go?s=16893:16962#L553">UpdateUsersBySql</a>
+			<h2 id="UpdateUsersBySql">func <a href="/gor_user.go?s=21879:21948#L725">UpdateUsersBySql</a>
 				<a class="permalink" href="#UpdateUsersBySql">&#xb6;</a>
 			</h2>
 			<pre>func UpdateUsersBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
 UpdateUsersBySql is used to update User records by a SQL clause
-that use &#39;?&#39; binding syntax
+using the &#39;?&#39; binding syntax.
 </p>
 
 			
@@ -813,7 +849,7 @@ that use &#39;?&#39; binding syntax
 		
 			
 			
-			<h2 id="UserCount">func <a href="/gor_user.go?s=4870:4907#L145">UserCount</a>
+			<h2 id="UserCount">func <a href="/gor_user.go?s=9703:9740#L316">UserCount</a>
 				<a class="permalink" href="#UserCount">&#xb6;</a>
 			</h2>
 			<pre>func UserCount() (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -827,7 +863,7 @@ UserCount get the count of all the User records
 		
 			
 			
-			<h2 id="UserCountWhere">func <a href="/gor_user.go?s=5107:5182#L155">UserCountWhere</a>
+			<h2 id="UserCountWhere">func <a href="/gor_user.go?s=9940:10015#L326">UserCountWhere</a>
 				<a class="permalink" href="#UserCountWhere">&#xb6;</a>
 			</h2>
 			<pre>func UserCountWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -841,7 +877,7 @@ UserCountWhere get the count of all the User records with a where clause
 		
 			
 			
-			<h2 id="UserGetPosts">func <a href="/gor_user.go?s=12307:12350#L404">UserGetPosts</a>
+			<h2 id="UserGetPosts">func <a href="/gor_user.go?s=17140:17183#L575">UserGetPosts</a>
 				<a class="permalink" href="#UserGetPosts">&#xb6;</a>
 			</h2>
 			<pre>func UserGetPosts(id <a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -855,12 +891,12 @@ UserGetPosts a helper fuction used to get associated objects for UserIncludesWhe
 		
 			
 			
-			<h2 id="UserIds">func <a href="/gor_user.go?s=6637:6676#L215">UserIds</a>
+			<h2 id="UserIds">func <a href="/gor_user.go?s=11470:11509#L386">UserIds</a>
 				<a class="permalink" href="#UserIds">&#xb6;</a>
 			</h2>
 			<pre>func UserIds() (ids []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-UserIds get all the Ids of User records
+UserIds get all the IDs of User records
 </p>
 
 			
@@ -869,12 +905,12 @@ UserIds get all the Ids of User records
 		
 			
 			
-			<h2 id="UserIdsWhere">func <a href="/gor_user.go?s=6872:6941#L225">UserIdsWhere</a>
+			<h2 id="UserIdsWhere">func <a href="/gor_user.go?s=11705:11774#L396">UserIdsWhere</a>
 				<a class="permalink" href="#UserIdsWhere">&#xb6;</a>
 			</h2>
 			<pre>func UserIdsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) ([]<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-UserIdsWhere get all the Ids of User records by where restriction
+UserIdsWhere get all the IDs of User records by where restriction
 </p>
 
 			
@@ -883,7 +919,7 @@ UserIdsWhere get all the Ids of User records by where restriction
 		
 			
 			
-			<h2 id="UserIncludesWhere">func <a href="/gor_user.go?s=5572:5671#L174">UserIncludesWhere</a>
+			<h2 id="UserIncludesWhere">func <a href="/gor_user.go?s=10405:10504#L345">UserIncludesWhere</a>
 				<a class="permalink" href="#UserIncludesWhere">&#xb6;</a>
 			</h2>
 			<pre>func UserIncludesWhere(assocs []<a href="/pkg/builtin/#string">string</a>, sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (_users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -897,7 +933,7 @@ UserIncludesWhere get the User associated models records, it&#39;s just the eage
 		
 			
 			
-			<h2 id="UserIntCol">func <a href="/gor_user.go?s=7081:7168#L231">UserIntCol</a>
+			<h2 id="UserIntCol">func <a href="/gor_user.go?s=11914:12001#L402">UserIntCol</a>
 				<a class="permalink" href="#UserIntCol">&#xb6;</a>
 			</h2>
 			<pre>func UserIntCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (intColRecs []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -911,7 +947,7 @@ UserIntCol get some int64 typed column of User by where restriction
 		
 			
 			
-			<h2 id="UserStrCol">func <a href="/gor_user.go?s=7563:7651#L250">UserStrCol</a>
+			<h2 id="UserStrCol">func <a href="/gor_user.go?s=12396:12484#L421">UserStrCol</a>
 				<a class="permalink" href="#UserStrCol">&#xb6;</a>
 			</h2>
 			<pre>func UserStrCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (strColRecs []<a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -926,7 +962,7 @@ UserStrCol get some string typed column of User by where restriction
 		
 			
 			
-			<h2 id="Post">type <a href="/gor_post.go?s=273:832#L9">Post</a>
+			<h2 id="Post">type <a href="/gor_post.go?s=281:840#L10">Post</a>
 				<a class="permalink" href="#Post">&#xb6;</a>
 			</h2>
 			<pre>type Post struct {
@@ -950,19 +986,19 @@ UserStrCol get some string typed column of User by where restriction
 
 			
 				
-				<h3 id="FindPost">func <a href="/gor_post.go?s=874:912#L20">FindPost</a>
+				<h3 id="FindPost">func <a href="/gor_post.go?s=5707:5745#L191">FindPost</a>
 					<a class="permalink" href="#FindPost">&#xb6;</a>
 				</h3>
 				<pre>func FindPost(id <a href="/pkg/builtin/#int64">int64</a>) (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-FindPost find a single post by an id
+FindPost find a single post by an ID
 </p>
 
 				
 				
 			
 				
-				<h3 id="FindPostBy">func <a href="/gor_post.go?s=3044:3105#L102">FindPostBy</a>
+				<h3 id="FindPostBy">func <a href="/gor_post.go?s=7877:7938#L273">FindPostBy</a>
 					<a class="permalink" href="#FindPostBy">&#xb6;</a>
 				</h3>
 				<pre>func FindPostBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -974,7 +1010,7 @@ FindPostBy find a single post by a field name and a value
 				
 			
 				
-				<h3 id="FindPostBySql">func <a href="/gor_post.go?s=7502:7568#L264">FindPostBySql</a>
+				<h3 id="FindPostBySql">func <a href="/gor_post.go?s=12335:12401#L435">FindPostBySql</a>
 					<a class="permalink" href="#FindPostBySql">&#xb6;</a>
 				</h3>
 				<pre>func FindPostBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -988,24 +1024,24 @@ will return only One record in the table &#34;users&#34; whose first_name is &#3
 				
 			
 				
-				<h3 id="FirstPost">func <a href="/gor_post.go?s=1235:1266#L34">FirstPost</a>
+				<h3 id="FirstPost">func <a href="/gor_post.go?s=6068:6099#L205">FirstPost</a>
 					<a class="permalink" href="#FirstPost">&#xb6;</a>
 				</h3>
 				<pre>func FirstPost() (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-FirstPost find the first one post by id ASC order
+FirstPost find the first one post by ID ASC order
 </p>
 
 				
 				
 			
 				
-				<h3 id="LastPost">func <a href="/gor_post.go?s=1838:1868#L57">LastPost</a>
+				<h3 id="LastPost">func <a href="/gor_post.go?s=6671:6701#L228">LastPost</a>
 					<a class="permalink" href="#LastPost">&#xb6;</a>
 				</h3>
 				<pre>func LastPost() (*<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-LastPost find the last one post by id DESC order
+LastPost find the last one post by ID DESC order
 </p>
 
 				
@@ -1014,7 +1050,7 @@ LastPost find the last one post by id DESC order
 
 			
 				
-				<h3 id="Post.Create">func (*Post) <a href="/gor_post.go?s=9251:9293#L330">Create</a>
+				<h3 id="Post.Create">func (*Post) <a href="/gor_post.go?s=14084:14126#L501">Create</a>
 					<a class="permalink" href="#Post.Create">&#xb6;</a>
 				</h3>
 				<pre>func (_post *<a href="#Post">Post</a>) Create() (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -1027,7 +1063,7 @@ Create is a method for Post to create a record
 				
 			
 				
-				<h3 id="Post.CreateUser">func (*Post) <a href="/gor_post.go?s=10026:10088#L358">CreateUser</a>
+				<h3 id="Post.CreateUser">func (*Post) <a href="/gor_post.go?s=14859:14921#L529">CreateUser</a>
 					<a class="permalink" href="#Post.CreateUser">&#xb6;</a>
 				</h3>
 				<pre>func (_post *<a href="#Post">Post</a>) CreateUser(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -1040,7 +1076,7 @@ CreateUser is a method for a Post object to create an associated User record
 				
 			
 				
-				<h3 id="Post.Destroy">func (*Post) <a href="/gor_post.go?s=10219:10253#L365">Destroy</a>
+				<h3 id="Post.Destroy">func (*Post) <a href="/gor_post.go?s=15052:15086#L536">Destroy</a>
 					<a class="permalink" href="#Post.Destroy">&#xb6;</a>
 				</h3>
 				<pre>func (_post *<a href="#Post">Post</a>) Destroy() <a href="/pkg/builtin/#error">error</a></pre>
@@ -1053,7 +1089,7 @@ Destroy is method used for a Post object to be destroyed.
 				
 			
 				
-				<h3 id="Post.Save">func (*Post) <a href="/gor_post.go?s=12055:12086#L432">Save</a>
+				<h3 id="Post.Save">func (*Post) <a href="/gor_post.go?s=16904:16935#L603">Save</a>
 					<a class="permalink" href="#Post.Save">&#xb6;</a>
 				</h3>
 				<pre>func (_post *<a href="#Post">Post</a>) Save() <a href="/pkg/builtin/#error">error</a></pre>
@@ -1067,7 +1103,7 @@ If no id provided a new record will be created. A UPSERT action will be implemen
 				
 			
 				
-				<h3 id="Post.Update">func (*Post) <a href="/gor_post.go?s=13468:13526#L481">Update</a>
+				<h3 id="Post.Update">func (*Post) <a href="/gor_post.go?s=18317:18375#L652">Update</a>
 					<a class="permalink" href="#Post.Update">&#xb6;</a>
 				</h3>
 				<pre>func (_post *<a href="#Post">Post</a>) Update(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -1080,22 +1116,25 @@ Update is a method used to update a Post record with the map[string]interface{} 
 				
 			
 				
-				<h3 id="Post.UpdateAttributes">func (*Post) <a href="/gor_post.go?s=13666:13734#L489">UpdateAttributes</a>
+				<h3 id="Post.UpdateAttributes">func (*Post) <a href="/gor_post.go?s=18641:18709#L661">UpdateAttributes</a>
 					<a class="permalink" href="#Post.UpdateAttributes">&#xb6;</a>
 				</h3>
 				<pre>func (_post *<a href="#Post">Post</a>) UpdateAttributes(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
-				
+				<p>
+UpdateAttributes method is supposed to be used to update Post records as corresponding update_attributes in Ruby on Rails.
+</p>
+
 				
 				
 				
 			
 				
-				<h3 id="Post.UpdateColumns">func (*Post) <a href="/gor_post.go?s=13985:14050#L498">UpdateColumns</a>
+				<h3 id="Post.UpdateColumns">func (*Post) <a href="/gor_post.go?s=18969:19034#L670">UpdateColumns</a>
 					<a class="permalink" href="#Post.UpdateColumns">&#xb6;</a>
 				</h3>
 				<pre>func (_post *<a href="#Post">Post</a>) UpdateColumns(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
 				<p>
-UpdateColumns method is supposed to be used to update Post records as corresponding update_columns in Rails
+UpdateColumns method is supposed to be used to update Post records as corresponding update_columns in Ruby on Rails.
 </p>
 
 				
@@ -1105,7 +1144,80 @@ UpdateColumns method is supposed to be used to update Post records as correspond
 		
 			
 			
-			<h2 id="User">type <a href="/gor_user.go?s=273:1722#L9">User</a>
+			<h2 id="PostPage">type <a href="/gor_post.go?s=875:1105#L21">PostPage</a>
+				<a class="permalink" href="#PostPage">&#xb6;</a>
+			</h2>
+			<pre>type PostPage struct {
+    WhereString <a href="/pkg/builtin/#string">string</a>
+    WhereParams []interface{}
+    Order       map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
+    FirstId     <a href="/pkg/builtin/#int64">int64</a>
+    LastId      <a href="/pkg/builtin/#int64">int64</a>
+    PageNum     <a href="/pkg/builtin/#int">int</a>
+    PerPage     <a href="/pkg/builtin/#int">int</a>
+    TotalPages  <a href="/pkg/builtin/#int">int</a>
+    TotalItems  <a href="/pkg/builtin/#int64">int64</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+DataStruct for the pagination
+</p>
+
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="PostPage.Current">func (*PostPage) <a href="/gor_post.go?s=1173:1218#L35">Current</a>
+					<a class="permalink" href="#PostPage.Current">&#xb6;</a>
+				</h3>
+				<pre>func (_p *<a href="#PostPage">PostPage</a>) Current() ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Current get the current page of PostPage object for pagination
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PostPage.Next">func (*PostPage) <a href="/gor_post.go?s=2955:2997#L95">Next</a>
+					<a class="permalink" href="#PostPage.Next">&#xb6;</a>
+				</h3>
+				<pre>func (_p *<a href="#PostPage">PostPage</a>) Next() ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Current get the next page of PostPage object for pagination
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PostPage.Previous">func (*PostPage) <a href="/gor_post.go?s=2008:2054#L63">Previous</a>
+					<a class="permalink" href="#PostPage.Previous">&#xb6;</a>
+				</h3>
+				<pre>func (_p *<a href="#PostPage">PostPage</a>) Previous() ([]<a href="#Post">Post</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Current get the previous page of PostPage object for pagination
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="User">type <a href="/gor_user.go?s=281:1730#L10">User</a>
 				<a class="permalink" href="#User">&#xb6;</a>
 			</h2>
 			<pre>type User struct {
@@ -1137,19 +1249,19 @@ UpdateColumns method is supposed to be used to update Post records as correspond
 
 			
 				
-				<h3 id="FindUser">func <a href="/gor_user.go?s=1764:1802#L28">FindUser</a>
+				<h3 id="FindUser">func <a href="/gor_user.go?s=6597:6635#L199">FindUser</a>
 					<a class="permalink" href="#FindUser">&#xb6;</a>
 				</h3>
 				<pre>func FindUser(id <a href="/pkg/builtin/#int64">int64</a>) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-FindUser find a single user by an id
+FindUser find a single user by an ID
 </p>
 
 				
 				
 			
 				
-				<h3 id="FindUserBy">func <a href="/gor_user.go?s=3934:3995#L110">FindUserBy</a>
+				<h3 id="FindUserBy">func <a href="/gor_user.go?s=8767:8828#L281">FindUserBy</a>
 					<a class="permalink" href="#FindUserBy">&#xb6;</a>
 				</h3>
 				<pre>func FindUserBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -1161,7 +1273,7 @@ FindUserBy find a single user by a field name and a value
 				
 			
 				
-				<h3 id="FindUserBySql">func <a href="/gor_user.go?s=8903:8969#L292">FindUserBySql</a>
+				<h3 id="FindUserBySql">func <a href="/gor_user.go?s=13736:13802#L463">FindUserBySql</a>
 					<a class="permalink" href="#FindUserBySql">&#xb6;</a>
 				</h3>
 				<pre>func FindUserBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -1175,24 +1287,24 @@ will return only One record in the table &#34;users&#34; whose first_name is &#3
 				
 			
 				
-				<h3 id="FirstUser">func <a href="/gor_user.go?s=2125:2156#L42">FirstUser</a>
+				<h3 id="FirstUser">func <a href="/gor_user.go?s=6958:6989#L213">FirstUser</a>
 					<a class="permalink" href="#FirstUser">&#xb6;</a>
 				</h3>
 				<pre>func FirstUser() (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-FirstUser find the first one user by id ASC order
+FirstUser find the first one user by ID ASC order
 </p>
 
 				
 				
 			
 				
-				<h3 id="LastUser">func <a href="/gor_user.go?s=2728:2758#L65">LastUser</a>
+				<h3 id="LastUser">func <a href="/gor_user.go?s=7561:7591#L236">LastUser</a>
 					<a class="permalink" href="#LastUser">&#xb6;</a>
 				</h3>
 				<pre>func LastUser() (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-LastUser find the last one user by id DESC order
+LastUser find the last one user by ID DESC order
 </p>
 
 				
@@ -1201,7 +1313,7 @@ LastUser find the last one user by id DESC order
 
 			
 				
-				<h3 id="User.Create">func (*User) <a href="/gor_user.go?s=10652:10694#L358">Create</a>
+				<h3 id="User.Create">func (*User) <a href="/gor_user.go?s=15485:15527#L529">Create</a>
 					<a class="permalink" href="#User.Create">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) Create() (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -1214,7 +1326,7 @@ Create is a method for User to create a record
 				
 			
 				
-				<h3 id="User.Destroy">func (*User) <a href="/gor_user.go?s=12480:12514#L410">Destroy</a>
+				<h3 id="User.Destroy">func (*User) <a href="/gor_user.go?s=17313:17347#L581">Destroy</a>
 					<a class="permalink" href="#User.Destroy">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) Destroy() <a href="/pkg/builtin/#error">error</a></pre>
@@ -1227,7 +1339,7 @@ Destroy is method used for a User object to be destroyed.
 				
 			
 				
-				<h3 id="User.GetPosts">func (*User) <a href="/gor_user.go?s=12084:12119#L395">GetPosts</a>
+				<h3 id="User.GetPosts">func (*User) <a href="/gor_user.go?s=16917:16952#L566">GetPosts</a>
 					<a class="permalink" href="#User.GetPosts">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) GetPosts() <a href="/pkg/builtin/#error">error</a></pre>
@@ -1242,7 +1354,7 @@ the object will get the associated Posts attributes evaluated in the struct
 				
 			
 				
-				<h3 id="User.PostsCreate">func (*User) <a href="/gor_user.go?s=11738:11801#L386">PostsCreate</a>
+				<h3 id="User.PostsCreate">func (*User) <a href="/gor_user.go?s=16571:16634#L557">PostsCreate</a>
 					<a class="permalink" href="#User.PostsCreate">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) PostsCreate(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -1255,7 +1367,7 @@ PostsCreate is used for User to create the associated objects Posts
 				
 			
 				
-				<h3 id="User.Save">func (*User) <a href="/gor_user.go?s=14316:14347#L477">Save</a>
+				<h3 id="User.Save">func (*User) <a href="/gor_user.go?s=19165:19196#L648">Save</a>
 					<a class="permalink" href="#User.Save">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) Save() <a href="/pkg/builtin/#error">error</a></pre>
@@ -1269,7 +1381,7 @@ If no id provided a new record will be created. A UPSERT action will be implemen
 				
 			
 				
-				<h3 id="User.Update">func (*User) <a href="/gor_user.go?s=16073:16131#L526">Update</a>
+				<h3 id="User.Update">func (*User) <a href="/gor_user.go?s=20922:20980#L697">Update</a>
 					<a class="permalink" href="#User.Update">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) Update(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -1282,22 +1394,98 @@ Update is a method used to update a User record with the map[string]interface{} 
 				
 			
 				
-				<h3 id="User.UpdateAttributes">func (*User) <a href="/gor_user.go?s=16271:16339#L534">UpdateAttributes</a>
+				<h3 id="User.UpdateAttributes">func (*User) <a href="/gor_user.go?s=21246:21314#L706">UpdateAttributes</a>
 					<a class="permalink" href="#User.UpdateAttributes">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) UpdateAttributes(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
-				
+				<p>
+UpdateAttributes method is supposed to be used to update User records as corresponding update_attributes in Ruby on Rails.
+</p>
+
 				
 				
 				
 			
 				
-				<h3 id="User.UpdateColumns">func (*User) <a href="/gor_user.go?s=16590:16655#L543">UpdateColumns</a>
+				<h3 id="User.UpdateColumns">func (*User) <a href="/gor_user.go?s=21574:21639#L715">UpdateColumns</a>
 					<a class="permalink" href="#User.UpdateColumns">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) UpdateColumns(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
 				<p>
-UpdateColumns method is supposed to be used to update User records as corresponding update_columns in Rails
+UpdateColumns method is supposed to be used to update User records as corresponding update_columns in Ruby on Rails.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="UserPage">type <a href="/gor_user.go?s=1765:1995#L29">UserPage</a>
+				<a class="permalink" href="#UserPage">&#xb6;</a>
+			</h2>
+			<pre>type UserPage struct {
+    WhereString <a href="/pkg/builtin/#string">string</a>
+    WhereParams []interface{}
+    Order       map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
+    FirstId     <a href="/pkg/builtin/#int64">int64</a>
+    LastId      <a href="/pkg/builtin/#int64">int64</a>
+    PageNum     <a href="/pkg/builtin/#int">int</a>
+    PerPage     <a href="/pkg/builtin/#int">int</a>
+    TotalPages  <a href="/pkg/builtin/#int">int</a>
+    TotalItems  <a href="/pkg/builtin/#int64">int64</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+DataStruct for the pagination
+</p>
+
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="UserPage.Current">func (*UserPage) <a href="/gor_user.go?s=2063:2108#L43">Current</a>
+					<a class="permalink" href="#UserPage.Current">&#xb6;</a>
+				</h3>
+				<pre>func (_p *<a href="#UserPage">UserPage</a>) Current() ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Current get the current page of UserPage object for pagination
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="UserPage.Next">func (*UserPage) <a href="/gor_user.go?s=3845:3887#L103">Next</a>
+					<a class="permalink" href="#UserPage.Next">&#xb6;</a>
+				</h3>
+				<pre>func (_p *<a href="#UserPage">UserPage</a>) Next() ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Current get the next page of UserPage object for pagination
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="UserPage.Previous">func (*UserPage) <a href="/gor_user.go?s=2898:2944#L71">Previous</a>
+					<a class="permalink" href="#UserPage.Previous">&#xb6;</a>
+				</h3>
+				<pre>func (_p *<a href="#UserPage">UserPage</a>) Previous() ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Current get the previous page of UserPage object for pagination
 </p>
 
 				

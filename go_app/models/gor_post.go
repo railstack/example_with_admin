@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"math"
 	"strings"
 	"time"
 
@@ -26,13 +27,183 @@ type Post struct {
 	User      User      `json:"user,omitempty" db:"user" valid:"-"`
 }
 
-// FindPost find a single post by an id
+// DataStruct for the pagination
+type PostPage struct {
+	WhereString string
+	WhereParams []interface{}
+	Order       map[string]string
+	FirstId     int64
+	LastId      int64
+	PageNum     int
+	PerPage     int
+	TotalPages  int
+	TotalItems  int64
+	orderStr    string
+}
+
+// Current get the current page of PostPage object for pagination
+func (_p *PostPage) Current() ([]Post, error) {
+	if _, exist := _p.Order["id"]; !exist {
+		return nil, errors.New("No id order specified in Order map")
+	}
+	err := _p.buildPageCount()
+	if err != nil {
+		return nil, fmt.Errorf("Calculate page count error: %v", err)
+	}
+	if _p.orderStr == "" {
+		_p.buildOrder()
+	}
+	idStr, idParams := _p.buildIdRestrict("current")
+
+	whereStr := fmt.Sprintf("%s %s %s LIMIT %v", _p.WhereString, idStr, _p.orderStr, _p.PerPage)
+
+	whereParams := []interface{}{}
+	whereParams = append(append(whereParams, _p.WhereParams...), idParams...)
+	posts, err := FindPostsWhere(whereStr, whereParams...)
+	if err != nil {
+		return nil, err
+	}
+	if len(posts) != 0 {
+		_p.FirstId, _p.LastId = posts[0].Id, posts[len(posts)-1].Id
+	}
+	return posts, nil
+}
+
+// Current get the previous page of PostPage object for pagination
+func (_p *PostPage) Previous() ([]Post, error) {
+	if _p.PageNum == 0 {
+		return nil, errors.New("This's the first page, no previous page yet")
+	}
+	if _, exist := _p.Order["id"]; !exist {
+		return nil, errors.New("No id order specified in Order map")
+	}
+	err := _p.buildPageCount()
+	if err != nil {
+		return nil, fmt.Errorf("Calculate page count error: %v", err)
+	}
+	if _p.orderStr == "" {
+		_p.buildOrder()
+	}
+	idStr, idParams := _p.buildIdRestrict("previous")
+
+	whereStr := fmt.Sprintf("%s %s %s LIMIT %v", _p.WhereString, idStr, _p.orderStr, _p.PerPage)
+
+	whereParams := []interface{}{}
+	whereParams = append(append(whereParams, _p.WhereParams...), idParams...)
+	posts, err := FindPostsWhere(whereStr, whereParams...)
+	if err != nil {
+		return nil, err
+	}
+	if len(posts) != 0 {
+		_p.FirstId, _p.LastId = posts[0].Id, posts[len(posts)-1].Id
+	}
+	_p.PageNum -= 1
+	return posts, nil
+}
+
+// Current get the next page of PostPage object for pagination
+func (_p *PostPage) Next() ([]Post, error) {
+	if _p.PageNum == _p.TotalPages-1 {
+		return nil, errors.New("This's the last page, no next page yet")
+	}
+	if _, exist := _p.Order["id"]; !exist {
+		return nil, errors.New("No id order specified in Order map")
+	}
+	err := _p.buildPageCount()
+	if err != nil {
+		return nil, fmt.Errorf("Calculate page count error: %v", err)
+	}
+	if _p.orderStr == "" {
+		_p.buildOrder()
+	}
+	idStr, idParams := _p.buildIdRestrict("next")
+
+	whereStr := fmt.Sprintf("%s %s %s LIMIT %v", _p.WhereString, idStr, _p.orderStr, _p.PerPage)
+
+	whereParams := []interface{}{}
+	whereParams = append(append(whereParams, _p.WhereParams...), idParams...)
+	posts, err := FindPostsWhere(whereStr, whereParams...)
+	if err != nil {
+		return nil, err
+	}
+	if len(posts) != 0 {
+		_p.FirstId, _p.LastId = posts[0].Id, posts[len(posts)-1].Id
+	}
+	_p.PageNum += 1
+	return posts, nil
+}
+
+// buildOrder is for PostPage object to build SQL ORDER clause
+func (_p *PostPage) buildOrder() {
+	tempList := []string{}
+	for k, v := range _p.Order {
+		tempList = append(tempList, fmt.Sprintf("%v %v", k, v))
+	}
+	_p.orderStr = " ORDER BY " + strings.Join(tempList, ", ")
+}
+
+// buildIdRestrict is for PostPage object to build a SQL clause for ID restriction,
+// implementing a simple keyset style pagination
+func (_p *PostPage) buildIdRestrict(direction string) (idStr string, idParams []interface{}) {
+	switch direction {
+	case "previous":
+		if strings.ToLower(_p.Order["id"]) == "desc" {
+			idStr += "id > ? "
+			idParams = append(idParams, _p.FirstId)
+		} else {
+			idStr += "id < ? "
+			idParams = append(idParams, _p.FirstId)
+		}
+	case "current":
+		// trick to make Where function work
+		if _p.PageNum == 0 && _p.FirstId == 0 && _p.LastId == 0 {
+			idStr += "id > ? "
+			idParams = append(idParams, 0)
+		} else {
+			if strings.ToLower(_p.Order["id"]) == "desc" {
+				idStr += "id <= ? AND id >= ? "
+				idParams = append(idParams, _p.FirstId, _p.LastId)
+			} else {
+				idStr += "id >= ? AND id <= ? "
+				idParams = append(idParams, _p.FirstId, _p.LastId)
+			}
+		}
+	case "next":
+		if strings.ToLower(_p.Order["id"]) == "desc" {
+			idStr += "id < ? "
+			idParams = append(idParams, _p.LastId)
+		} else {
+			idStr += "id > ? "
+			idParams = append(idParams, _p.LastId)
+		}
+	}
+	if _p.WhereString != "" {
+		idStr = " AND " + idStr
+	}
+	return
+}
+
+// buildPageCount calculate the TotalItems/TotalPages for the PostPage object
+func (_p *PostPage) buildPageCount() error {
+	count, err := PostCountWhere(_p.WhereString, _p.WhereParams...)
+	if err != nil {
+		return err
+	}
+	_p.TotalItems = count
+	if _p.PerPage == 0 {
+		_p.PerPage = 10
+	}
+	_p.TotalPages = int(math.Ceil(float64(_p.TotalItems) / float64(_p.PerPage)))
+	return nil
+}
+
+// FindPost find a single post by an ID
 func FindPost(id int64) (*Post, error) {
 	if id == 0 {
-		return nil, errors.New("Invalid id: it can't be zero")
+		return nil, errors.New("Invalid ID: it can't be zero")
 	}
 	_post := Post{}
-	err := db.Get(&_post, db.Rebind(`SELECT * FROM posts WHERE id = ? LIMIT 1`), id)
+	err := DB.Get(&_post, DB.Rebind(`SELECT * FROM posts WHERE id = ? LIMIT 1`), id)
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -40,10 +211,10 @@ func FindPost(id int64) (*Post, error) {
 	return &_post, nil
 }
 
-// FirstPost find the first one post by id ASC order
+// FirstPost find the first one post by ID ASC order
 func FirstPost() (*Post, error) {
 	_post := Post{}
-	err := db.Get(&_post, db.Rebind(`SELECT * FROM posts ORDER BY id ASC LIMIT 1`))
+	err := DB.Get(&_post, DB.Rebind(`SELECT * FROM posts ORDER BY id ASC LIMIT 1`))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -51,11 +222,11 @@ func FirstPost() (*Post, error) {
 	return &_post, nil
 }
 
-// FirstPosts find the first N posts by id ASC order
+// FirstPosts find the first N posts by ID ASC order
 func FirstPosts(n uint32) ([]Post, error) {
 	_posts := []Post{}
 	sql := fmt.Sprintf("SELECT * FROM posts ORDER BY id ASC LIMIT %v", n)
-	err := db.Select(&_posts, db.Rebind(sql))
+	err := DB.Select(&_posts, DB.Rebind(sql))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -63,10 +234,10 @@ func FirstPosts(n uint32) ([]Post, error) {
 	return _posts, nil
 }
 
-// LastPost find the last one post by id DESC order
+// LastPost find the last one post by ID DESC order
 func LastPost() (*Post, error) {
 	_post := Post{}
-	err := db.Get(&_post, db.Rebind(`SELECT * FROM posts ORDER BY id DESC LIMIT 1`))
+	err := DB.Get(&_post, DB.Rebind(`SELECT * FROM posts ORDER BY id DESC LIMIT 1`))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -74,11 +245,11 @@ func LastPost() (*Post, error) {
 	return &_post, nil
 }
 
-// LastPosts find the last N posts by id DESC order
+// LastPosts find the last N posts by ID DESC order
 func LastPosts(n uint32) ([]Post, error) {
 	_posts := []Post{}
 	sql := fmt.Sprintf("SELECT * FROM posts ORDER BY id DESC LIMIT %v", n)
-	err := db.Select(&_posts, db.Rebind(sql))
+	err := DB.Select(&_posts, DB.Rebind(sql))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -86,7 +257,7 @@ func LastPosts(n uint32) ([]Post, error) {
 	return _posts, nil
 }
 
-// FindPosts find one or more posts by one or more ids
+// FindPosts find one or more posts by the given ID(s)
 func FindPosts(ids ...int64) ([]Post, error) {
 	if len(ids) == 0 {
 		msg := "At least one or more ids needed"
@@ -95,12 +266,12 @@ func FindPosts(ids ...int64) ([]Post, error) {
 	}
 	_posts := []Post{}
 	idsHolder := strings.Repeat(",?", len(ids)-1)
-	sql := db.Rebind(fmt.Sprintf(`SELECT * FROM posts WHERE id IN (?%s)`, idsHolder))
+	sql := DB.Rebind(fmt.Sprintf(`SELECT * FROM posts WHERE id IN (?%s)`, idsHolder))
 	idsT := []interface{}{}
 	for _, id := range ids {
 		idsT = append(idsT, interface{}(id))
 	}
-	err := db.Select(&_posts, sql, idsT...)
+	err := DB.Select(&_posts, sql, idsT...)
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -113,7 +284,7 @@ func FindPostBy(field string, val interface{}) (*Post, error) {
 	_post := Post{}
 	sqlFmt := `SELECT * FROM posts WHERE %s = ? LIMIT 1`
 	sqlStr := fmt.Sprintf(sqlFmt, field)
-	err := db.Get(&_post, db.Rebind(sqlStr), val)
+	err := DB.Get(&_post, DB.Rebind(sqlStr), val)
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -125,7 +296,7 @@ func FindPostBy(field string, val interface{}) (*Post, error) {
 func FindPostsBy(field string, val interface{}) (_posts []Post, err error) {
 	sqlFmt := `SELECT * FROM posts WHERE %s = ?`
 	sqlStr := fmt.Sprintf(sqlFmt, field)
-	err = db.Select(&_posts, db.Rebind(sqlStr), val)
+	err = DB.Select(&_posts, DB.Rebind(sqlStr), val)
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -135,7 +306,7 @@ func FindPostsBy(field string, val interface{}) (_posts []Post, err error) {
 
 // AllPosts get all the Post records
 func AllPosts() (posts []Post, err error) {
-	err = db.Select(&posts, "SELECT * FROM posts")
+	err = DB.Select(&posts, "SELECT * FROM posts")
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -145,7 +316,7 @@ func AllPosts() (posts []Post, err error) {
 
 // PostCount get the count of all the Post records
 func PostCount() (c int64, err error) {
-	err = db.Get(&c, "SELECT count(*) FROM posts")
+	err = DB.Get(&c, "SELECT count(*) FROM posts")
 	if err != nil {
 		log.Println(err)
 		return 0, err
@@ -159,7 +330,7 @@ func PostCountWhere(where string, args ...interface{}) (c int64, err error) {
 	if len(where) > 0 {
 		sql = sql + " WHERE " + where
 	}
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	if err != nil {
 		log.Println(err)
 		return 0, err
@@ -193,9 +364,9 @@ func PostIncludesWhere(assocs []string, sql string, args ...interface{}) (_posts
 	return _posts, nil
 }
 
-// PostIds get all the Ids of Post records
+// PostIds get all the IDs of Post records
 func PostIds() (ids []int64, err error) {
-	err = db.Select(&ids, "SELECT id FROM posts")
+	err = DB.Select(&ids, "SELECT id FROM posts")
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -203,7 +374,7 @@ func PostIds() (ids []int64, err error) {
 	return ids, nil
 }
 
-// PostIdsWhere get all the Ids of Post records by where restriction
+// PostIdsWhere get all the IDs of Post records by where restriction
 func PostIdsWhere(where string, args ...interface{}) ([]int64, error) {
 	ids, err := PostIntCol("id", where, args...)
 	return ids, err
@@ -215,7 +386,7 @@ func PostIntCol(col, where string, args ...interface{}) (intColRecs []int64, err
 	if len(where) > 0 {
 		sql = sql + " WHERE " + where
 	}
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -234,7 +405,7 @@ func PostStrCol(col, where string, args ...interface{}) (strColRecs []string, er
 	if len(where) > 0 {
 		sql = sql + " WHERE " + where
 	}
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -255,7 +426,7 @@ func FindPostsWhere(where string, args ...interface{}) (posts []Post, err error)
 	if len(where) > 0 {
 		sql = sql + " WHERE " + where
 	}
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -272,7 +443,7 @@ func FindPostsWhere(where string, args ...interface{}) (posts []Post, err error)
 // with placeholders, eg: FindUserBySql("SELECT * FROM users WHERE first_name = ? AND age > ? ORDER BY DESC LIMIT 1", "John", 18)
 // will return only One record in the table "users" whose first_name is "John" and age elder than 18
 func FindPostBySql(sql string, args ...interface{}) (*Post, error) {
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -290,7 +461,7 @@ func FindPostBySql(sql string, args ...interface{}) (*Post, error) {
 // with placeholders, eg: FindUsersBySql("SELECT * FROM users WHERE first_name = ? AND age > ?", "John", 18)
 // will return those records in the table "users" whose first_name is "John" and age elder than 18
 func FindPostsBySql(sql string, args ...interface{}) (posts []Post, err error) {
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -323,7 +494,7 @@ func CreatePost(am map[string]interface{}) (int64, error) {
 	}
 	sqlFmt := `INSERT INTO posts (%s) VALUES (%s)`
 	sqlStr := fmt.Sprintf(sqlFmt, strings.Join(keys, ","), ":"+strings.Join(keys, ",:"))
-	result, err := db.NamedExec(sqlStr, am)
+	result, err := DB.NamedExec(sqlStr, am)
 	if err != nil {
 		log.Println(err)
 		return 0, err
@@ -351,7 +522,7 @@ func (_post *Post) Create() (int64, error) {
 	_post.CreatedAt = t
 	_post.UpdatedAt = t
 	sql := `INSERT INTO posts (title,content,user_id,created_at,updated_at) VALUES (:title,:content,:user_id,:created_at,:updated_at)`
-	result, err := db.NamedExec(sql, _post)
+	result, err := DB.NamedExec(sql, _post)
 	if err != nil {
 		log.Println(err)
 		return 0, err
@@ -380,9 +551,9 @@ func (_post *Post) Destroy() error {
 	return err
 }
 
-// DestroyPost will destroy a Post record specified by id parameter.
+// DestroyPost will destroy a Post record specified by the id parameter.
 func DestroyPost(id int64) error {
-	stmt, err := db.Preparex(db.Rebind(`DELETE FROM posts WHERE id = ?`))
+	stmt, err := DB.Preparex(DB.Rebind(`DELETE FROM posts WHERE id = ?`))
 	_, err = stmt.Exec(id)
 	if err != nil {
 		return err
@@ -403,7 +574,7 @@ func DestroyPosts(ids ...int64) (int64, error) {
 	for _, id := range ids {
 		idsT = append(idsT, interface{}(id))
 	}
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	result, err := stmt.Exec(idsT...)
 	if err != nil {
 		return 0, err
@@ -415,8 +586,8 @@ func DestroyPosts(ids ...int64) (int64, error) {
 	return cnt, nil
 }
 
-// DestroyPostsWhere delete records by a where clause
-// like: DestroyPostsWhere("name = ?", "John")
+// DestroyPostsWhere delete records by a where clause restriction.
+// e.g. DestroyPostsWhere("name = ?", "John")
 // And this func will not call the association dependent action
 func DestroyPostsWhere(where string, args ...interface{}) (int64, error) {
 	sql := `DELETE FROM posts WHERE `
@@ -425,7 +596,7 @@ func DestroyPostsWhere(where string, args ...interface{}) (int64, error) {
 	} else {
 		return 0, errors.New("No WHERE conditions provided")
 	}
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	result, err := stmt.Exec(args...)
 	if err != nil {
 		return 0, err
@@ -456,7 +627,7 @@ func (_post *Post) Save() error {
 	_post.UpdatedAt = time.Now()
 	sqlFmt := `UPDATE posts SET %s WHERE id = %v`
 	sqlStr := fmt.Sprintf(sqlFmt, "title = :title, content = :content, user_id = :user_id, updated_at = :updated_at", _post.Id)
-	_, err = db.NamedExec(sqlStr, _post)
+	_, err = DB.NamedExec(sqlStr, _post)
 	return err
 }
 
@@ -479,7 +650,7 @@ func UpdatePost(id int64, am map[string]interface{}) error {
 		setKeysArr = append(setKeysArr, s)
 	}
 	sqlStr := fmt.Sprintf(sqlFmt, strings.Join(setKeysArr, ", "), id)
-	_, err := db.NamedExec(sqlStr, am)
+	_, err := DB.NamedExec(sqlStr, am)
 	if err != nil {
 		log.Println(err)
 		return err
@@ -496,6 +667,7 @@ func (_post *Post) Update(am map[string]interface{}) error {
 	return err
 }
 
+// UpdateAttributes method is supposed to be used to update Post records as corresponding update_attributes in Ruby on Rails.
 func (_post *Post) UpdateAttributes(am map[string]interface{}) error {
 	if _post.Id == 0 {
 		return errors.New("Invalid Id field: it can't be a zero value")
@@ -504,7 +676,7 @@ func (_post *Post) UpdateAttributes(am map[string]interface{}) error {
 	return err
 }
 
-// UpdateColumns method is supposed to be used to update Post records as corresponding update_columns in Rails
+// UpdateColumns method is supposed to be used to update Post records as corresponding update_columns in Ruby on Rails.
 func (_post *Post) UpdateColumns(am map[string]interface{}) error {
 	if _post.Id == 0 {
 		return errors.New("Invalid Id field: it can't be a zero value")
@@ -514,14 +686,14 @@ func (_post *Post) UpdateColumns(am map[string]interface{}) error {
 }
 
 // UpdatePostsBySql is used to update Post records by a SQL clause
-// that use '?' binding syntax
+// using the '?' binding syntax.
 func UpdatePostsBySql(sql string, args ...interface{}) (int64, error) {
 	if sql == "" {
 		return 0, errors.New("A blank SQL clause")
 	}
 	sql = strings.Replace(strings.ToLower(sql), "set", "set updated_at = ?, ", 1)
 	args = append([]interface{}{time.Now()}, args...)
-	stmt, err := db.Preparex(db.Rebind(sql))
+	stmt, err := DB.Preparex(DB.Rebind(sql))
 	result, err := stmt.Exec(args...)
 	if err != nil {
 		return 0, err
