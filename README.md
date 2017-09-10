@@ -73,7 +73,7 @@ class Post < ApplicationRecord
 end
 ```
 
-## User rails_admin to create some posts
+## Use rails_admin to create some posts
 
 Then we `rails s` to start the server and visit `http://localhost:3000/admin`, follow the steps to signup a user, but don't login immediately.
 
