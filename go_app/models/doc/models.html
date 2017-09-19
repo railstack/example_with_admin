@@ -364,8 +364,8 @@ Package models includes the functions on the model User.
 		
 			<h2 id="pkg-variables">Variables</h2>
 			
-				<pre>var <span id="DB">DB</span> *<a href="/pkg/github.com/jmoiron/sqlx/">sqlx</a>.<a href="/pkg/github.com/jmoiron/sqlx/#DB">DB</a></pre>
 				
+				<pre>var <span id="DB">DB</span> *<a href="/pkg/github.com/jmoiron/sqlx/">sqlx</a>.<a href="/pkg/github.com/jmoiron/sqlx/#DB">DB</a></pre>
 			
 		
 		
@@ -965,16 +965,16 @@ UserStrCol get some string typed column of User by where restriction
 			<h2 id="Post">type <a href="/gor_post.go?s=281:840#L10">Post</a>
 				<a class="permalink" href="#Post">&#xb6;</a>
 			</h2>
-			<pre>type Post struct {
-    Id        <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;id,omitempty&#34; db:&#34;id&#34; valid:&#34;-&#34;`
-    Title     <a href="/pkg/builtin/#string">string</a>    `json:&#34;title,omitempty&#34; db:&#34;title&#34; valid:&#34;required,length(10|50)&#34;`
-    Content   <a href="/pkg/builtin/#string">string</a>    `json:&#34;content,omitempty&#34; db:&#34;content&#34; valid:&#34;required,length(20|4294967295)&#34;`
-    UserId    <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;user_id,omitempty&#34; db:&#34;user_id&#34; valid:&#34;-&#34;`
-    CreatedAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;created_at,omitempty&#34; db:&#34;created_at&#34; valid:&#34;-&#34;`
-    UpdatedAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;updated_at,omitempty&#34; db:&#34;updated_at&#34; valid:&#34;-&#34;`
-    User      <a href="#User">User</a>      `json:&#34;user,omitempty&#34; db:&#34;user&#34; valid:&#34;-&#34;`
-}</pre>
 			
+			<pre>type Post struct {
+<span id="Post.Id"></span>    Id        <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;id,omitempty&#34; db:&#34;id&#34; valid:&#34;-&#34;`
+<span id="Post.Title"></span>    Title     <a href="/pkg/builtin/#string">string</a>    `json:&#34;title,omitempty&#34; db:&#34;title&#34; valid:&#34;required,length(10|50)&#34;`
+<span id="Post.Content"></span>    Content   <a href="/pkg/builtin/#string">string</a>    `json:&#34;content,omitempty&#34; db:&#34;content&#34; valid:&#34;required,length(20|4294967295)&#34;`
+<span id="Post.UserId"></span>    UserId    <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;user_id,omitempty&#34; db:&#34;user_id&#34; valid:&#34;-&#34;`
+<span id="Post.CreatedAt"></span>    CreatedAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;created_at,omitempty&#34; db:&#34;created_at&#34; valid:&#34;-&#34;`
+<span id="Post.UpdatedAt"></span>    UpdatedAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;updated_at,omitempty&#34; db:&#34;updated_at&#34; valid:&#34;-&#34;`
+<span id="Post.User"></span>    User      <a href="#User">User</a>      `json:&#34;user,omitempty&#34; db:&#34;user&#34; valid:&#34;-&#34;`
+}</pre>
 
 			
 
@@ -1147,22 +1147,22 @@ UpdateColumns method is supposed to be used to update Post records as correspond
 			<h2 id="PostPage">type <a href="/gor_post.go?s=875:1105#L21">PostPage</a>
 				<a class="permalink" href="#PostPage">&#xb6;</a>
 			</h2>
-			<pre>type PostPage struct {
-    WhereString <a href="/pkg/builtin/#string">string</a>
-    WhereParams []interface{}
-    Order       map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
-    FirstId     <a href="/pkg/builtin/#int64">int64</a>
-    LastId      <a href="/pkg/builtin/#int64">int64</a>
-    PageNum     <a href="/pkg/builtin/#int">int</a>
-    PerPage     <a href="/pkg/builtin/#int">int</a>
-    TotalPages  <a href="/pkg/builtin/#int">int</a>
-    TotalItems  <a href="/pkg/builtin/#int64">int64</a>
-    <span class="comment">// contains filtered or unexported fields</span>
-}</pre>
 			<p>
 DataStruct for the pagination
 </p>
 
+			<pre>type PostPage struct {
+<span id="PostPage.WhereString"></span>    WhereString <a href="/pkg/builtin/#string">string</a>
+<span id="PostPage.WhereParams"></span>    WhereParams []interface{}
+<span id="PostPage.Order"></span>    Order       map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
+<span id="PostPage.FirstId"></span>    FirstId     <a href="/pkg/builtin/#int64">int64</a>
+<span id="PostPage.LastId"></span>    LastId      <a href="/pkg/builtin/#int64">int64</a>
+<span id="PostPage.PageNum"></span>    PageNum     <a href="/pkg/builtin/#int">int</a>
+<span id="PostPage.PerPage"></span>    PerPage     <a href="/pkg/builtin/#int">int</a>
+<span id="PostPage.TotalPages"></span>    TotalPages  <a href="/pkg/builtin/#int">int</a>
+<span id="PostPage.TotalItems"></span>    TotalItems  <a href="/pkg/builtin/#int64">int64</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
 
 			
 
@@ -1220,24 +1220,24 @@ Current get the previous page of PostPage object for pagination
 			<h2 id="User">type <a href="/gor_user.go?s=281:1730#L10">User</a>
 				<a class="permalink" href="#User">&#xb6;</a>
 			</h2>
-			<pre>type User struct {
-    Id                  <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;id,omitempty&#34; db:&#34;id&#34; valid:&#34;-&#34;`
-    Email               <a href="/pkg/builtin/#string">string</a>    `json:&#34;email,omitempty&#34; db:&#34;email&#34; valid:&#34;required,matches(\A[^@\s]+@[^@\s]+\z)&#34;`
-    EncryptedPassword   <a href="/pkg/builtin/#string">string</a>    `json:&#34;encrypted_password,omitempty&#34; db:&#34;encrypted_password&#34; valid:&#34;-&#34;`
-    ResetPasswordToken  <a href="/pkg/builtin/#string">string</a>    `json:&#34;reset_password_token,omitempty&#34; db:&#34;reset_password_token&#34; valid:&#34;-&#34;`
-    ResetPasswordSentAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;reset_password_sent_at,omitempty&#34; db:&#34;reset_password_sent_at&#34; valid:&#34;-&#34;`
-    RememberCreatedAt   <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;remember_created_at,omitempty&#34; db:&#34;remember_created_at&#34; valid:&#34;-&#34;`
-    SignInCount         <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;sign_in_count,omitempty&#34; db:&#34;sign_in_count&#34; valid:&#34;-&#34;`
-    CurrentSignInAt     <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;current_sign_in_at,omitempty&#34; db:&#34;current_sign_in_at&#34; valid:&#34;-&#34;`
-    LastSignInAt        <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;last_sign_in_at,omitempty&#34; db:&#34;last_sign_in_at&#34; valid:&#34;-&#34;`
-    CurrentSignInIp     <a href="/pkg/builtin/#string">string</a>    `json:&#34;current_sign_in_ip,omitempty&#34; db:&#34;current_sign_in_ip&#34; valid:&#34;-&#34;`
-    LastSignInIp        <a href="/pkg/builtin/#string">string</a>    `json:&#34;last_sign_in_ip,omitempty&#34; db:&#34;last_sign_in_ip&#34; valid:&#34;-&#34;`
-    CreatedAt           <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;created_at,omitempty&#34; db:&#34;created_at&#34; valid:&#34;-&#34;`
-    UpdatedAt           <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;updated_at,omitempty&#34; db:&#34;updated_at&#34; valid:&#34;-&#34;`
-    Role                <a href="/pkg/builtin/#string">string</a>    `json:&#34;role,omitempty&#34; db:&#34;role&#34; valid:&#34;-&#34;`
-    Posts               []<a href="#Post">Post</a>    `json:&#34;posts,omitempty&#34; db:&#34;posts&#34; valid:&#34;-&#34;`
-}</pre>
 			
+			<pre>type User struct {
+<span id="User.Id"></span>    Id                  <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;id,omitempty&#34; db:&#34;id&#34; valid:&#34;-&#34;`
+<span id="User.Email"></span>    Email               <a href="/pkg/builtin/#string">string</a>    `json:&#34;email,omitempty&#34; db:&#34;email&#34; valid:&#34;required,matches(\A[^@\s]+@[^@\s]+\z)&#34;`
+<span id="User.EncryptedPassword"></span>    EncryptedPassword   <a href="/pkg/builtin/#string">string</a>    `json:&#34;encrypted_password,omitempty&#34; db:&#34;encrypted_password&#34; valid:&#34;-&#34;`
+<span id="User.ResetPasswordToken"></span>    ResetPasswordToken  <a href="/pkg/builtin/#string">string</a>    `json:&#34;reset_password_token,omitempty&#34; db:&#34;reset_password_token&#34; valid:&#34;-&#34;`
+<span id="User.ResetPasswordSentAt"></span>    ResetPasswordSentAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;reset_password_sent_at,omitempty&#34; db:&#34;reset_password_sent_at&#34; valid:&#34;-&#34;`
+<span id="User.RememberCreatedAt"></span>    RememberCreatedAt   <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;remember_created_at,omitempty&#34; db:&#34;remember_created_at&#34; valid:&#34;-&#34;`
+<span id="User.SignInCount"></span>    SignInCount         <a href="/pkg/builtin/#int64">int64</a>     `json:&#34;sign_in_count,omitempty&#34; db:&#34;sign_in_count&#34; valid:&#34;-&#34;`
+<span id="User.CurrentSignInAt"></span>    CurrentSignInAt     <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;current_sign_in_at,omitempty&#34; db:&#34;current_sign_in_at&#34; valid:&#34;-&#34;`
+<span id="User.LastSignInAt"></span>    LastSignInAt        <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;last_sign_in_at,omitempty&#34; db:&#34;last_sign_in_at&#34; valid:&#34;-&#34;`
+<span id="User.CurrentSignInIp"></span>    CurrentSignInIp     <a href="/pkg/builtin/#string">string</a>    `json:&#34;current_sign_in_ip,omitempty&#34; db:&#34;current_sign_in_ip&#34; valid:&#34;-&#34;`
+<span id="User.LastSignInIp"></span>    LastSignInIp        <a href="/pkg/builtin/#string">string</a>    `json:&#34;last_sign_in_ip,omitempty&#34; db:&#34;last_sign_in_ip&#34; valid:&#34;-&#34;`
+<span id="User.CreatedAt"></span>    CreatedAt           <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;created_at,omitempty&#34; db:&#34;created_at&#34; valid:&#34;-&#34;`
+<span id="User.UpdatedAt"></span>    UpdatedAt           <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `json:&#34;updated_at,omitempty&#34; db:&#34;updated_at&#34; valid:&#34;-&#34;`
+<span id="User.Role"></span>    Role                <a href="/pkg/builtin/#string">string</a>    `json:&#34;role,omitempty&#34; db:&#34;role&#34; valid:&#34;-&#34;`
+<span id="User.Posts"></span>    Posts               []<a href="#Post">Post</a>    `json:&#34;posts,omitempty&#34; db:&#34;posts&#34; valid:&#34;-&#34;`
+}</pre>
 
 			
 
@@ -1425,22 +1425,22 @@ UpdateColumns method is supposed to be used to update User records as correspond
 			<h2 id="UserPage">type <a href="/gor_user.go?s=1765:1995#L29">UserPage</a>
 				<a class="permalink" href="#UserPage">&#xb6;</a>
 			</h2>
-			<pre>type UserPage struct {
-    WhereString <a href="/pkg/builtin/#string">string</a>
-    WhereParams []interface{}
-    Order       map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
-    FirstId     <a href="/pkg/builtin/#int64">int64</a>
-    LastId      <a href="/pkg/builtin/#int64">int64</a>
-    PageNum     <a href="/pkg/builtin/#int">int</a>
-    PerPage     <a href="/pkg/builtin/#int">int</a>
-    TotalPages  <a href="/pkg/builtin/#int">int</a>
-    TotalItems  <a href="/pkg/builtin/#int64">int64</a>
-    <span class="comment">// contains filtered or unexported fields</span>
-}</pre>
 			<p>
 DataStruct for the pagination
 </p>
 
+			<pre>type UserPage struct {
+<span id="UserPage.WhereString"></span>    WhereString <a href="/pkg/builtin/#string">string</a>
+<span id="UserPage.WhereParams"></span>    WhereParams []interface{}
+<span id="UserPage.Order"></span>    Order       map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
+<span id="UserPage.FirstId"></span>    FirstId     <a href="/pkg/builtin/#int64">int64</a>
+<span id="UserPage.LastId"></span>    LastId      <a href="/pkg/builtin/#int64">int64</a>
+<span id="UserPage.PageNum"></span>    PageNum     <a href="/pkg/builtin/#int">int</a>
+<span id="UserPage.PerPage"></span>    PerPage     <a href="/pkg/builtin/#int">int</a>
+<span id="UserPage.TotalPages"></span>    TotalPages  <a href="/pkg/builtin/#int">int</a>
+<span id="UserPage.TotalItems"></span>    TotalItems  <a href="/pkg/builtin/#int64">int64</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
 
 			
 
