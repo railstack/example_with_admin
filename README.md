@@ -121,3 +121,99 @@ We'll do next:
 * Paginate post list in `index` page
 * `User` authentication in Go app by JWT tokens...
 
+Welcome back and let's go on ...
+
+## Make a nice page
+
+Now let's make things a little bit complicated, we'll abandon the templates we used above.
+
+Because Rails 5.1 released with a gem [webpacker](https://github.com/rails/webpacker), we'll use it to implement an independent frontend view to call our Go APIs to render an index and a post page.
+
+We try to make the steps clearer than previous sections due to the necessary details of new techniques.
+
+### Use webpacker to develop an independent frontend
+
+We can achieve this by simply following the webpacker's README file, one point to mention is to install some [prerequisites](https://github.com/rails/webpacker#prerequisites) before hand. After that we can begin to install webpacker:
+
+```ruby
+# Gemfile
+gem 'webpacker', '~> 3.0'
+```
+
+then bundle and install:
+
+```bash
+bundle
+bundle exec rails webpacker:install
+```
+
+Because we plan use React in our project, so install the React support of webpacker:
+
+```bash
+bundle exec rails webpacker:install:react
+```
+
+We can see a some directories and files generated into the Rails, the important directory is the `app/javascripts/packs`, we'll write our react programs all there by default webpacker config.
+
+### Install material-ui and react-router-dom
+
+[material-ui](https://github.com/callemall/material-ui) is a package of React components that implement Google's Material Design, use it can make some complex and beautiful pages easily. So we'll try it.
+
+And we have a index and a post page, so we need to make a frontend router for these different views. We use [react-router-dom](https://github.com/ReactTraining/react-router) to make it.
+
+Now let's install them by the package tool `yarn`(although you can use `npm` as well):
+
+```
+yarn add material-ui react-router-dom
+```
+
+### We need a Rails view as a server-side template
+
+Now let's create a controller and a page as a server-side template to integrate the webpacker's helper and React files. If you don't understand this currently, just keep it in mind, I'm sure you'll get it after steps.
+
+```bash
+rails g controller Pages home
+```
+
+Edit the view `app/views/pages/home.html.erb`, clear all the content of it and add the line below:
+
+```ruby
+<%= javascript_pack_tag 'hello_react' %>
+```
+
+Open another terminal and change to the our project's root directory, run:
+
+```bash
+./bin/webpack-dev-server
+```
+
+and meanwhile run `rails s` in the current terminal, then open `http://localhost:3000` in your browser, you can see it prints a "Hello React!". Now we make React and webpacker worked in Rails.
+
+Next let's remove this default installed `hello_react` example from our project:
+
+```bash
+rm app/javascripts/packs/hello_react.jsx
+```
+
+We will use another default installed file `app/javascripts/packs/application.jsx` as our main React programs, so we change the `javascript_pack_tag` reference file in our Rails view above from `hello_react` to `application`:
+
+```ruby
+<%= javascript_pack_tag 'application' %>
+```
+
+then we clear the content of `application.jsx` for further programming. And next we will add two more React files as React components corresponding to our `index` and `show` pages.
+
+### Write React components for `index` and `show` pages
+
+Firstly, let's construct the routes for the two views in `application.jsx`.
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { HashRouter, Route, Link } from 'react-router-dom'
+
+```
+
+Here we use `HashRouter` instead of `Router` directive because we need the server-side render at first, `/path` will be an invalid route for Rails while `/#path` will be manipulated by frontend.
+
+
