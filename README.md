@@ -127,13 +127,13 @@ Welcome back and let's go on ...
 
 Now let's make things a little bit complicated, we'll abandon the templates we used above.
 
-Because Rails 5.1 released with a gem [webpacker](https://github.com/rails/webpacker), we'll use it to implement an independent frontend view to call our Go APIs to render an index and a post page.
+Because Rails 5.1 released with a gem [webpacker](https://github.com/rails/webpacker), we'll use it to implement an independent frontend view to call our Go APIs to render an index and a post pages.
 
 We try to make the steps clearer than previous sections due to the necessary details of new techniques.
 
 ### Use webpacker to develop an independent frontend
 
-We can achieve this by simply following the webpacker's README file, one point to mention is to install some [prerequisites](https://github.com/rails/webpacker#prerequisites) before hand. After that we can begin to install webpacker:
+We can achieve this by simply following the webpacker's README file, here one point need to mention is to install some [prerequisites](https://github.com/rails/webpacker#prerequisites) before hand. After that we can begin to install webpacker:
 
 ```ruby
 # Gemfile
@@ -223,3 +223,4 @@ import { HashRouter, Route, Link } from 'react-router-dom'
 Here we use `HashRouter` instead of `Router` directive because we need the server-side render at first, `/path` will be an invalid route for Rails while `/#path` will be manipulated by frontend.
 
 
+(WIP)
