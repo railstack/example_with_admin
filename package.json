@@ -1,5 +1,10 @@
 {
   "name": "simple_example_with_admin",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^3.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.8.2"
+  }
 }
