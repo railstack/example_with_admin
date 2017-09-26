@@ -4,9 +4,11 @@
   "dependencies": {
     "@rails/webpacker": "^3.0.1",
     "babel-preset-react": "^6.24.1",
+    "material-ui": "^0.19.2",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react-dom": "^15.6.2",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.8.2"
