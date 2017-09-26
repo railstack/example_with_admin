@@ -175,6 +175,12 @@ Now let's create a controller and a page as a server-side template to integrate 
 rails g controller Pages home
 ```
 
+Change the route `get 'pages/home'` that Rails added by default in `config/routes.rb` to:
+
+```ruby
+root to: 'pages#home'
+```
+
 Edit the view `app/views/pages/home.html.erb`, clear all the content of it and add the line below:
 
 ```ruby
