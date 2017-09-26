@@ -153,7 +153,7 @@ Because we plan use React in our project, so install the React support of webpac
 bundle exec rails webpacker:install:react
 ```
 
-We can see a some directories and files generated into the Rails, the important directory is the `app/javascripts/packs`, we'll write our react programs all there by default webpacker config.
+We can see a some directories and files generated into the Rails, the important directory is the `app/javascript/packs`, we'll write our react programs all there by default webpacker config.
 
 ### Install material-ui and react-router-dom
 
@@ -198,10 +198,10 @@ and meanwhile run `rails s` in the current terminal, then open `http://localhost
 Next let's remove this default installed `hello_react` example from our project:
 
 ```bash
-rm app/javascripts/packs/hello_react.jsx
+rm app/javascript/packs/hello_react.jsx
 ```
 
-We will use another default installed file `app/javascripts/packs/application.jsx` as our main React programs, so we change the `javascript_pack_tag` reference file in our Rails view above from `hello_react` to `application`:
+We will use another default installed file `app/javascript/packs/application.jsx` as our main React programs, so we change the `javascript_pack_tag` reference file in our Rails view above from `hello_react` to `application`:
 
 ```ruby
 <%= javascript_pack_tag 'application' %>
