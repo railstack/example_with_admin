@@ -249,7 +249,7 @@ yarn add axios
 
 ### Server side changes
 
-Now we need set up Rails server to request APIs of our Go application, so we need to add CORS configuration to the Go server to make cross domains access. Because we use the Gin framework by default, so we choose a cors package for the Gin: github.com/gin-contrib/cors.
+Now when we set up the Rails server to request APIs of our Go application, we need to add a CORS configuration to the Go server to make cross domains accessible. Because we use the Gin framework by default, we choose a cors package specially for the Gin: [github.com/gin-contrib/cors](github.com/gin-contrib/cors).
 
 We just use its default configuration that allows all the Orgins can access our Go server for testing easily, here's [the details](https://github.com/gin-contrib/cors#default-allows-all-origins).
 
