@@ -253,5 +253,16 @@ Now we need set up Rails server to request APIs of our Go application, so we nee
 
 We just use its default configuration that allows all the Orgins can access our Go server for testing easily, here's [the details](https://github.com/gin-contrib/cors#default-allows-all-origins).
 
+### Try the new views
+
+In one terminal you set up the Go server in port 4000:
+
+```bash
+go run main.go --port 4000
+```
+
+In another one set up Rails server in default port 3000 just run `rails s`, and meanwhile to get the `./bin/webpack-dev-server` server up in a third terminal.
+
+Now visit the http://localhost:3000, you can see our new pages.
 
 (WIP)
