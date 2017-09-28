@@ -241,7 +241,7 @@ And we'll created three React components to get the job done:
 
 you can check the files to get the details.
 
-Here we use a javascript package named `axios` to do Ajax requests, and it's easy to handle. You can install it by yarn:
+Here we use a javascript package named `axios` to do Ajax requests, you can install it by yarn:
 
 ```bash
 yarn add axios
