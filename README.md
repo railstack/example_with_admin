@@ -255,7 +255,7 @@ We just use its default configuration that allows all the Orgins can access our 
 
 ### Try the new views
 
-In one terminal you set up the Go server in port 4000:
+In one terminal you set up the Go server in port 4000 under the `go_app` directory:
 
 ```bash
 go run main.go --port 4000
