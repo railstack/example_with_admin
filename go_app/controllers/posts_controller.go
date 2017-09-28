@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	m "../models"
-	"gopkg.in/gin-gonic/gin.v1"
+	"github.com/gin-gonic/gin"
 )
 
 func IndexHandler(c *gin.Context) {
@@ -14,7 +14,9 @@ func IndexHandler(c *gin.Context) {
 		c.String(http.StatusNotFound, "Posts not found or some error occurred!")
 		return
 	}
-	c.HTML(http.StatusOK, "index.tmpl", posts)
+	c.JSON(http.StatusOK, gin.H{
+		"data": posts,
+	})
 }
 
 func ShowHandler(c *gin.Context) {
@@ -24,7 +26,9 @@ func ShowHandler(c *gin.Context) {
 		c.String(http.StatusNotFound, "Post not found or some error occurred!")
 		return
 	}
-	c.HTML(http.StatusOK, "show.tmpl", post)
+	c.JSON(http.StatusOK, gin.H{
+		"data": post,
+	})
 }
 
 func ToInt(s string) (int64, error) {

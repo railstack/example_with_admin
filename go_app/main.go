@@ -3,11 +3,9 @@ package main
 import (
 	"flag"
 
-	"fmt"
-
 	c "./controllers"
-	m "./models"
-	"gopkg.in/gin-gonic/gin.v1"
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -15,9 +13,9 @@ func main() {
 	servePort := flag.String("port", "3000", "Http Server Port")
 	flag.Parse()
 
-	fmt.Printf("DB: %v", m.DB)
 	// Here we are instantiating the router
 	r := gin.Default()
+	r.Use(cors.Default())
 	// Switch to "release" mode in production
 	// gin.SetMode(gin.ReleaseMode)
 	r.LoadHTMLGlob("views/*")
