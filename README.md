@@ -217,10 +217,41 @@ Firstly, let's construct the routes for the two views in `application.jsx`.
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter, Route, Link } from 'react-router-dom'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import AppBar from 'material-ui/AppBar';
+
+import IndexCard from './index'
+import ShowCard from './show'
+
+// some routes
+
+<Route exact path="/" component={Index}/>
+<Route path="/posts/:id" component={Show}/>
 
 ```
 
 Here we use `HashRouter` instead of `Router` directive because we need the server-side render at first, `/path` will be an invalid route for Rails while `/#path` will be manipulated by frontend.
+
+
+And we'll created three React components to get the job done:
+
+* [application.jsx](https://github.com/goonr/example_with_admin/blob/master/app/javascript/packs/application.jsx)
+* [index.jsx](https://github.com/goonr/example_with_admin/blob/master/app/javascript/packs/index.jsx)
+* [show.jsx](https://github.com/goonr/example_with_admin/blob/master/app/javascript/packs/show.jsx)
+
+you can check the files to get the details.
+
+Here we use a javascript package named `axios` to do Ajax requests, and it's easy to handle. You can install it by yarn:
+
+```bash
+yarn add axios
+```
+
+### Server side changes
+
+Now we need set up Rails server to request APIs of our Go application, so we need to add CORS configuration to the Go server to make cross domains access. Because we use the Gin framework by default, so we choose a cors package for the Gin: github.com/gin-contrib/cors.
+
+We just use its default configuration that allows all the Orgins can access our Go server for testing easily, here's [the details](https://github.com/gin-contrib/cors#default-allows-all-origins).
 
 
 (WIP)

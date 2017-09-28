@@ -2,9 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter, Route, Link } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import AppBar from 'material-ui/AppBar';
+
 import IndexCard from './index'
 import ShowCard from './show'
-import AppBar from 'material-ui/AppBar';
 
 const App = (props) => {
     return (
