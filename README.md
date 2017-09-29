@@ -159,7 +159,7 @@ We can see a some directories and files generated into the Rails, the important 
 
 [material-ui](https://github.com/callemall/material-ui) is a package of React components that implement Google's Material Design, use it can make some complex and beautiful pages easily. So we'll try it.
 
-And we have a index and a post page, so we need to make a frontend router for these different views. We use [react-router-dom](https://github.com/ReactTraining/react-router) to make it.
+And we have a index and a post pages, so we need to make a frontend router for these different views. We use [react-router-dom](https://github.com/ReactTraining/react-router) to make it.
 
 Now let's install them by the package tool `yarn`(although you can use `npm` as well):
 
@@ -251,7 +251,7 @@ yarn add axios
 
 Now when we set up the Rails server to request APIs of our Go application, we need to add a CORS configuration to the Go server to make cross domains accessible. Because we use the Gin framework by default, we choose a cors package specially for the Gin: [github.com/gin-contrib/cors](github.com/gin-contrib/cors).
 
-We just use its default configuration that allows all the Orgins can access our Go server for testing easily, here's [the details](https://github.com/gin-contrib/cors#default-allows-all-origins).
+We just use its default configuration that allows all the Origins access our Go server for testing easily, here's [the details](https://github.com/gin-contrib/cors#default-allows-all-origins).
 
 ### Try the new views
 
@@ -261,7 +261,7 @@ In one terminal you set up the Go server in port 4000 under the `go_app` directo
 go run main.go --port 4000
 ```
 
-In another one set up Rails server in default port 3000 just run `rails s`, and meanwhile to get the `./bin/webpack-dev-server` server up in a third terminal.
+In another terminal set up the Rails server in default port 3000 just run `rails s`, and meanwhile to get the `./bin/webpack-dev-server` server up in a third terminal.
 
 Now visit the http://localhost:3000, you can see our new pages.
 
