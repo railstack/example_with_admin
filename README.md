@@ -261,7 +261,7 @@ In one terminal you set up the Go server in port 4000 under the `go_app` directo
 go run main.go --port 4000
 ```
 
-In another terminal set up the Rails server in default port 3000 just run `rails s`, and meanwhile to get the `./bin/webpack-dev-server` server up in a third terminal.
+In another terminal run `rails s` to set up the Rails server in default port 3000, and meanwhile to get the `./bin/webpack-dev-server` server up in a third terminal.
 
 Now visit the http://localhost:3000, you can see our new pages.
 
