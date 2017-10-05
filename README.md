@@ -147,13 +147,13 @@ bundle
 bundle exec rails webpacker:install
 ```
 
-Because we plan use React in our project, so install the React support of webpacker:
+Because we plan to use `React` in our project, we need install the React support of webpacker:
 
 ```bash
 bundle exec rails webpacker:install:react
 ```
 
-We can see a some directories and files generated into the Rails, the important directory is the `app/javascript/packs`, we'll write our react programs all there by default webpacker config.
+We can see some directories and files generated into the Rails, here the important directory is the `app/javascript/packs`, we'll write our react programs all there by default webpacker config.
 
 ### Install material-ui and react-router-dom
 
