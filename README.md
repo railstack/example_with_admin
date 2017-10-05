@@ -133,7 +133,7 @@ We try to make the steps clearer than previous sections due to the necessary det
 
 ### Use webpacker to develop an independent frontend
 
-We can install and configure it by simply following the webpacker's README file, but one thing need to mention is to make sure some [prerequisites](https://github.com/rails/webpacker#prerequisites) installed before hand. After that we can begin to install webpacker:
+We can install and configure the webpacker by simply following its [README](https://github.com/rails/webpacker) file, but one thing need to mention is to make sure some [prerequisites](https://github.com/rails/webpacker#prerequisites) installed before hand. After that we can begin to install webpacker:
 
 ```ruby
 # Gemfile
