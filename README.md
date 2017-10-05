@@ -95,7 +95,7 @@ rails g gor dev
 
 Then we go to the generated `go_app` directory to make two web pages, an `index` page to list all posts, and a `show` page to show a post content.
 
-We need make two template files named `index.tmpl` and `show.tmpl` under the `views` directory at first, and create a controller file named `post_controller.go` in controller directory, the controller file have two `handler` functions: a `IndexHandler` and a `ShowHandler`.
+We need to make two template files named `index.tmpl` and `show.tmpl` under the `views` directory at first, and create a controller file named `post_controller.go` in controller directory, the controller file have two `handler` functions: a `IndexHandler` and a `ShowHandler`.
 
 We use the `Gin` framework, more details you can refer to its doc: https://github.com/gin-gonic/gin.
 
@@ -147,7 +147,7 @@ bundle
 bundle exec rails webpacker:install
 ```
 
-Because we plan to use `React` in our project, we need install the React support of webpacker:
+Because we plan to use `React` in our project, we need to install the React support of webpacker:
 
 ```bash
 bundle exec rails webpacker:install:react
