@@ -21,7 +21,7 @@ rails new example_with_admin --database mysql --skip-bundle
 Then we edit `Gemfile` to add gems we need:
 
 ```ruby
-gem 'go-on-rails', '~> 0.1.8'
+gem 'go-on-rails', '~> 0.1.9'
 gem 'devise'
 gem 'rails_admin', '~> 1.2'
 gem 'cancancan', '~> 2.0'
