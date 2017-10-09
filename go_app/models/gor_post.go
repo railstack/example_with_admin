@@ -41,7 +41,7 @@ type PostPage struct {
 	orderStr    string
 }
 
-// Current() get the current page of PostPage object for pagination
+// Current get the current page of PostPage object for pagination
 func (_p *PostPage) Current() ([]Post, error) {
 	if _, exist := _p.Order["id"]; !exist {
 		return nil, errors.New("No id order specified in Order map")
@@ -69,7 +69,7 @@ func (_p *PostPage) Current() ([]Post, error) {
 	return posts, nil
 }
 
-// Previous() get the previous page of PostPage object for pagination
+// Previous get the previous page of PostPage object for pagination
 func (_p *PostPage) Previous() ([]Post, error) {
 	if _p.PageNum == 0 {
 		return nil, errors.New("This's the first page, no previous page yet")
@@ -101,7 +101,7 @@ func (_p *PostPage) Previous() ([]Post, error) {
 	return posts, nil
 }
 
-// Next() get the next page of PostPage object for pagination
+// Next get the next page of PostPage object for pagination
 func (_p *PostPage) Next() ([]Post, error) {
 	if _p.PageNum == _p.TotalPages-1 {
 		return nil, errors.New("This's the last page, no next page yet")
@@ -133,7 +133,7 @@ func (_p *PostPage) Next() ([]Post, error) {
 	return posts, nil
 }
 
-// GetPage() is a helper function for the PostPage object to return a corresponding page due to
+// GetPage is a helper function for the PostPage object to return a corresponding page due to
 // the parameter passed in, one of "previous, current or next"
 func (_p *PostPage) GetPage(direction string) (ps []Post, err error) {
 	switch direction {

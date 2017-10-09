@@ -49,7 +49,7 @@ type UserPage struct {
 	orderStr    string
 }
 
-// Current() get the current page of UserPage object for pagination
+// Current get the current page of UserPage object for pagination
 func (_p *UserPage) Current() ([]User, error) {
 	if _, exist := _p.Order["id"]; !exist {
 		return nil, errors.New("No id order specified in Order map")
@@ -77,7 +77,7 @@ func (_p *UserPage) Current() ([]User, error) {
 	return users, nil
 }
 
-// Previous() get the previous page of UserPage object for pagination
+// Previous get the previous page of UserPage object for pagination
 func (_p *UserPage) Previous() ([]User, error) {
 	if _p.PageNum == 0 {
 		return nil, errors.New("This's the first page, no previous page yet")
@@ -109,7 +109,7 @@ func (_p *UserPage) Previous() ([]User, error) {
 	return users, nil
 }
 
-// Next() get the next page of UserPage object for pagination
+// Next get the next page of UserPage object for pagination
 func (_p *UserPage) Next() ([]User, error) {
 	if _p.PageNum == _p.TotalPages-1 {
 		return nil, errors.New("This's the last page, no next page yet")
@@ -141,7 +141,7 @@ func (_p *UserPage) Next() ([]User, error) {
 	return users, nil
 }
 
-// GetPage() is a helper function for the UserPage object to return a corresponding page due to
+// GetPage is a helper function for the UserPage object to return a corresponding page due to
 // the parameter passed in, one of "previous, current or next"
 func (_p *UserPage) GetPage(direction string) (ps []User, err error) {
 	switch direction {
