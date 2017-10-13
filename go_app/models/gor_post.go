@@ -219,7 +219,7 @@ func FindPost(id int64) (*Post, error) {
 		return nil, errors.New("Invalid ID: it can't be zero")
 	}
 	_post := Post{}
-	err := DB.Get(&_post, DB.Rebind(`SELECT * FROM posts WHERE id = ? LIMIT 1`), id)
+	err := DB.Get(&_post, DB.Rebind(`SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts WHERE posts.id = ? LIMIT 1`), id)
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -230,7 +230,7 @@ func FindPost(id int64) (*Post, error) {
 // FirstPost find the first one post by ID ASC order
 func FirstPost() (*Post, error) {
 	_post := Post{}
-	err := DB.Get(&_post, DB.Rebind(`SELECT * FROM posts ORDER BY id ASC LIMIT 1`))
+	err := DB.Get(&_post, DB.Rebind(`SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts ORDER BY posts.id ASC LIMIT 1`))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -241,7 +241,7 @@ func FirstPost() (*Post, error) {
 // FirstPosts find the first N posts by ID ASC order
 func FirstPosts(n uint32) ([]Post, error) {
 	_posts := []Post{}
-	sql := fmt.Sprintf("SELECT * FROM posts ORDER BY id ASC LIMIT %v", n)
+	sql := fmt.Sprintf("SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts ORDER BY posts.id ASC LIMIT %v", n)
 	err := DB.Select(&_posts, DB.Rebind(sql))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
@@ -253,7 +253,7 @@ func FirstPosts(n uint32) ([]Post, error) {
 // LastPost find the last one post by ID DESC order
 func LastPost() (*Post, error) {
 	_post := Post{}
-	err := DB.Get(&_post, DB.Rebind(`SELECT * FROM posts ORDER BY id DESC LIMIT 1`))
+	err := DB.Get(&_post, DB.Rebind(`SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts ORDER BY posts.id DESC LIMIT 1`))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -264,7 +264,7 @@ func LastPost() (*Post, error) {
 // LastPosts find the last N posts by ID DESC order
 func LastPosts(n uint32) ([]Post, error) {
 	_posts := []Post{}
-	sql := fmt.Sprintf("SELECT * FROM posts ORDER BY id DESC LIMIT %v", n)
+	sql := fmt.Sprintf("SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts ORDER BY posts.id DESC LIMIT %v", n)
 	err := DB.Select(&_posts, DB.Rebind(sql))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
@@ -282,7 +282,7 @@ func FindPosts(ids ...int64) ([]Post, error) {
 	}
 	_posts := []Post{}
 	idsHolder := strings.Repeat(",?", len(ids)-1)
-	sql := DB.Rebind(fmt.Sprintf(`SELECT * FROM posts WHERE id IN (?%s)`, idsHolder))
+	sql := DB.Rebind(fmt.Sprintf(`SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts WHERE posts.id IN (?%s)`, idsHolder))
 	idsT := []interface{}{}
 	for _, id := range ids {
 		idsT = append(idsT, interface{}(id))
@@ -298,7 +298,7 @@ func FindPosts(ids ...int64) ([]Post, error) {
 // FindPostBy find a single post by a field name and a value
 func FindPostBy(field string, val interface{}) (*Post, error) {
 	_post := Post{}
-	sqlFmt := `SELECT * FROM posts WHERE %s = ? LIMIT 1`
+	sqlFmt := `SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts WHERE %s = ? LIMIT 1`
 	sqlStr := fmt.Sprintf(sqlFmt, field)
 	err := DB.Get(&_post, DB.Rebind(sqlStr), val)
 	if err != nil {
@@ -310,7 +310,7 @@ func FindPostBy(field string, val interface{}) (*Post, error) {
 
 // FindPostsBy find all posts by a field name and a value
 func FindPostsBy(field string, val interface{}) (_posts []Post, err error) {
-	sqlFmt := `SELECT * FROM posts WHERE %s = ?`
+	sqlFmt := `SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts WHERE %s = ?`
 	sqlStr := fmt.Sprintf(sqlFmt, field)
 	err = DB.Select(&_posts, DB.Rebind(sqlStr), val)
 	if err != nil {
@@ -322,7 +322,7 @@ func FindPostsBy(field string, val interface{}) (_posts []Post, err error) {
 
 // AllPosts get all the Post records
 func AllPosts() (posts []Post, err error) {
-	err = DB.Select(&posts, "SELECT * FROM posts")
+	err = DB.Select(&posts, "SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts")
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -438,7 +438,7 @@ func PostStrCol(col, where string, args ...interface{}) (strColRecs []string, er
 // with placeholders, eg: FindUsersWhere("first_name = ? AND age > ?", "John", 18)
 // will return those records in the table "users" whose first_name is "John" and age elder than 18
 func FindPostsWhere(where string, args ...interface{}) (posts []Post, err error) {
-	sql := "SELECT * FROM posts"
+	sql := "SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts"
 	if len(where) > 0 {
 		sql = sql + " WHERE " + where
 	}
