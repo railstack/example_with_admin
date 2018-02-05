@@ -33,7 +33,7 @@ Because we assume you're familiar with Rails, so below we'll not give too much d
 
 Firstly we will follow the `devise` doc to create a user model named `User`, and then we run `rails_admin` and `cancancan` installation also following corresponding steps in their github README doc.
 
-Some points we'll give here is:
+Some points we'll give here are:
 
 1. we add a `role` column to `User` model for `cancancan` to manage the authorization:
 
