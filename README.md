@@ -56,7 +56,7 @@ end
 Now let's create a `Post` model:
 
 ```bash
-rails g model Post title context:text user_id:integer
+rails g model Post title content:text user_id:integer
 ```
 
 then we edit them as `user` has many `posts` association.

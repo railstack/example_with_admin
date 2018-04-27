@@ -41,7 +41,7 @@ type PostPage struct {
 	orderStr    string
 }
 
-// Current get the current page of PostPage object for pagination
+// Current get the current page of PostPage object for pagination.
 func (_p *PostPage) Current() ([]Post, error) {
 	if _, exist := _p.Order["id"]; !exist {
 		return nil, errors.New("No id order specified in Order map")
@@ -69,7 +69,7 @@ func (_p *PostPage) Current() ([]Post, error) {
 	return posts, nil
 }
 
-// Previous get the previous page of PostPage object for pagination
+// Previous get the previous page of PostPage object for pagination.
 func (_p *PostPage) Previous() ([]Post, error) {
 	if _p.PageNum == 0 {
 		return nil, errors.New("This's the first page, no previous page yet")
@@ -101,7 +101,7 @@ func (_p *PostPage) Previous() ([]Post, error) {
 	return posts, nil
 }
 
-// Next get the next page of PostPage object for pagination
+// Next get the next page of PostPage object for pagination.
 func (_p *PostPage) Next() ([]Post, error) {
 	if _p.PageNum == _p.TotalPages-1 {
 		return nil, errors.New("This's the last page, no next page yet")
@@ -134,7 +134,7 @@ func (_p *PostPage) Next() ([]Post, error) {
 }
 
 // GetPage is a helper function for the PostPage object to return a corresponding page due to
-// the parameter passed in, one of "previous, current or next"
+// the parameter passed in, i.e. one of "previous, current or next".
 func (_p *PostPage) GetPage(direction string) (ps []Post, err error) {
 	switch direction {
 	case "previous":
@@ -149,7 +149,7 @@ func (_p *PostPage) GetPage(direction string) (ps []Post, err error) {
 	return
 }
 
-// buildOrder is for PostPage object to build SQL ORDER clause
+// buildOrder is for PostPage object to build a SQL ORDER BY clause.
 func (_p *PostPage) buildOrder() {
 	tempList := []string{}
 	for k, v := range _p.Order {
@@ -159,7 +159,7 @@ func (_p *PostPage) buildOrder() {
 }
 
 // buildIdRestrict is for PostPage object to build a SQL clause for ID restriction,
-// implementing a simple keyset style pagination
+// implementing a simple keyset style pagination.
 func (_p *PostPage) buildIdRestrict(direction string) (idStr string, idParams []interface{}) {
 	switch direction {
 	case "previous":
@@ -199,7 +199,7 @@ func (_p *PostPage) buildIdRestrict(direction string) (idStr string, idParams []
 	return
 }
 
-// buildPageCount calculate the TotalItems/TotalPages for the PostPage object
+// buildPageCount calculate the TotalItems/TotalPages for the PostPage object.
 func (_p *PostPage) buildPageCount() error {
 	count, err := PostCountWhere(_p.WhereString, _p.WhereParams...)
 	if err != nil {
@@ -213,7 +213,7 @@ func (_p *PostPage) buildPageCount() error {
 	return nil
 }
 
-// FindPost find a single post by an ID
+// FindPost find a single post by an ID.
 func FindPost(id int64) (*Post, error) {
 	if id == 0 {
 		return nil, errors.New("Invalid ID: it can't be zero")
@@ -227,7 +227,7 @@ func FindPost(id int64) (*Post, error) {
 	return &_post, nil
 }
 
-// FirstPost find the first one post by ID ASC order
+// FirstPost find the first one post by ID ASC order.
 func FirstPost() (*Post, error) {
 	_post := Post{}
 	err := DB.Get(&_post, DB.Rebind(`SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts ORDER BY posts.id ASC LIMIT 1`))
@@ -238,7 +238,7 @@ func FirstPost() (*Post, error) {
 	return &_post, nil
 }
 
-// FirstPosts find the first N posts by ID ASC order
+// FirstPosts find the first N posts by ID ASC order.
 func FirstPosts(n uint32) ([]Post, error) {
 	_posts := []Post{}
 	sql := fmt.Sprintf("SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts ORDER BY posts.id ASC LIMIT %v", n)
@@ -250,7 +250,7 @@ func FirstPosts(n uint32) ([]Post, error) {
 	return _posts, nil
 }
 
-// LastPost find the last one post by ID DESC order
+// LastPost find the last one post by ID DESC order.
 func LastPost() (*Post, error) {
 	_post := Post{}
 	err := DB.Get(&_post, DB.Rebind(`SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts ORDER BY posts.id DESC LIMIT 1`))
@@ -261,7 +261,7 @@ func LastPost() (*Post, error) {
 	return &_post, nil
 }
 
-// LastPosts find the last N posts by ID DESC order
+// LastPosts find the last N posts by ID DESC order.
 func LastPosts(n uint32) ([]Post, error) {
 	_posts := []Post{}
 	sql := fmt.Sprintf("SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts ORDER BY posts.id DESC LIMIT %v", n)
@@ -273,7 +273,7 @@ func LastPosts(n uint32) ([]Post, error) {
 	return _posts, nil
 }
 
-// FindPosts find one or more posts by the given ID(s)
+// FindPosts find one or more posts by the given ID(s).
 func FindPosts(ids ...int64) ([]Post, error) {
 	if len(ids) == 0 {
 		msg := "At least one or more ids needed"
@@ -295,7 +295,7 @@ func FindPosts(ids ...int64) ([]Post, error) {
 	return _posts, nil
 }
 
-// FindPostBy find a single post by a field name and a value
+// FindPostBy find a single post by a field name and a value.
 func FindPostBy(field string, val interface{}) (*Post, error) {
 	_post := Post{}
 	sqlFmt := `SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts WHERE %s = ? LIMIT 1`
@@ -308,7 +308,7 @@ func FindPostBy(field string, val interface{}) (*Post, error) {
 	return &_post, nil
 }
 
-// FindPostsBy find all posts by a field name and a value
+// FindPostsBy find all posts by a field name and a value.
 func FindPostsBy(field string, val interface{}) (_posts []Post, err error) {
 	sqlFmt := `SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts WHERE %s = ?`
 	sqlStr := fmt.Sprintf(sqlFmt, field)
@@ -320,7 +320,7 @@ func FindPostsBy(field string, val interface{}) (_posts []Post, err error) {
 	return _posts, nil
 }
 
-// AllPosts get all the Post records
+// AllPosts get all the Post records.
 func AllPosts() (posts []Post, err error) {
 	err = DB.Select(&posts, "SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts")
 	if err != nil {
@@ -330,7 +330,7 @@ func AllPosts() (posts []Post, err error) {
 	return posts, nil
 }
 
-// PostCount get the count of all the Post records
+// PostCount get the count of all the Post records.
 func PostCount() (c int64, err error) {
 	err = DB.Get(&c, "SELECT count(*) FROM posts")
 	if err != nil {
@@ -340,7 +340,7 @@ func PostCount() (c int64, err error) {
 	return c, nil
 }
 
-// PostCountWhere get the count of all the Post records with a where clause
+// PostCountWhere get the count of all the Post records with a where clause.
 func PostCountWhere(where string, args ...interface{}) (c int64, err error) {
 	sql := "SELECT count(*) FROM posts"
 	if len(where) > 0 {
@@ -359,7 +359,7 @@ func PostCountWhere(where string, args ...interface{}) (c int64, err error) {
 	return c, nil
 }
 
-// PostIncludesWhere get the Post associated models records, it's just the eager_load function
+// PostIncludesWhere get the Post associated models records, currently it's not same as the corresponding "includes" function but "preload" instead in Ruby on Rails. It means that the "sql" should be restricted on Post model.
 func PostIncludesWhere(assocs []string, sql string, args ...interface{}) (_posts []Post, err error) {
 	_posts, err = FindPostsWhere(sql, args...)
 	if err != nil {
@@ -380,7 +380,7 @@ func PostIncludesWhere(assocs []string, sql string, args ...interface{}) (_posts
 	return _posts, nil
 }
 
-// PostIds get all the IDs of Post records
+// PostIds get all the IDs of Post records.
 func PostIds() (ids []int64, err error) {
 	err = DB.Select(&ids, "SELECT id FROM posts")
 	if err != nil {
@@ -390,13 +390,13 @@ func PostIds() (ids []int64, err error) {
 	return ids, nil
 }
 
-// PostIdsWhere get all the IDs of Post records by where restriction
+// PostIdsWhere get all the IDs of Post records by where restriction.
 func PostIdsWhere(where string, args ...interface{}) ([]int64, error) {
 	ids, err := PostIntCol("id", where, args...)
 	return ids, err
 }
 
-// PostIntCol get some int64 typed column of Post by where restriction
+// PostIntCol get some int64 typed column of Post by where restriction.
 func PostIntCol(col, where string, args ...interface{}) (intColRecs []int64, err error) {
 	sql := "SELECT " + col + " FROM posts"
 	if len(where) > 0 {
@@ -415,7 +415,7 @@ func PostIntCol(col, where string, args ...interface{}) (intColRecs []int64, err
 	return intColRecs, nil
 }
 
-// PostStrCol get some string typed column of Post by where restriction
+// PostStrCol get some string typed column of Post by where restriction.
 func PostStrCol(col, where string, args ...interface{}) (strColRecs []string, err error) {
 	sql := "SELECT " + col + " FROM posts"
 	if len(where) > 0 {
@@ -436,7 +436,7 @@ func PostStrCol(col, where string, args ...interface{}) (strColRecs []string, er
 
 // FindPostsWhere query use a partial SQL clause that usually following after WHERE
 // with placeholders, eg: FindUsersWhere("first_name = ? AND age > ?", "John", 18)
-// will return those records in the table "users" whose first_name is "John" and age elder than 18
+// will return those records in the table "users" whose first_name is "John" and age elder than 18.
 func FindPostsWhere(where string, args ...interface{}) (posts []Post, err error) {
 	sql := "SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts"
 	if len(where) > 0 {
@@ -457,7 +457,7 @@ func FindPostsWhere(where string, args ...interface{}) (posts []Post, err error)
 
 // FindPostBySql query use a complete SQL clause
 // with placeholders, eg: FindUserBySql("SELECT * FROM users WHERE first_name = ? AND age > ? ORDER BY DESC LIMIT 1", "John", 18)
-// will return only One record in the table "users" whose first_name is "John" and age elder than 18
+// will return only One record in the table "users" whose first_name is "John" and age elder than 18.
 func FindPostBySql(sql string, args ...interface{}) (*Post, error) {
 	stmt, err := DB.Preparex(DB.Rebind(sql))
 	if err != nil {
@@ -475,7 +475,7 @@ func FindPostBySql(sql string, args ...interface{}) (*Post, error) {
 
 // FindPostsBySql query use a complete SQL clause
 // with placeholders, eg: FindUsersBySql("SELECT * FROM users WHERE first_name = ? AND age > ?", "John", 18)
-// will return those records in the table "users" whose first_name is "John" and age elder than 18
+// will return those records in the table "users" whose first_name is "John" and age elder than 18.
 func FindPostsBySql(sql string, args ...interface{}) (posts []Post, err error) {
 	stmt, err := DB.Preparex(DB.Rebind(sql))
 	if err != nil {
@@ -523,7 +523,7 @@ func CreatePost(am map[string]interface{}) (int64, error) {
 	return lastId, nil
 }
 
-// Create is a method for Post to create a record
+// Create is a method for Post to create a record.
 func (_post *Post) Create() (int64, error) {
 	ok, err := govalidator.ValidateStruct(_post)
 	if !ok {
@@ -551,7 +551,7 @@ func (_post *Post) Create() (int64, error) {
 	return lastId, nil
 }
 
-// CreateUser is a method for a Post object to create an associated User record
+// CreateUser is a method for a Post object to create an associated User record.
 func (_post *Post) CreateUser(am map[string]interface{}) error {
 	am["post_id"] = _post.Id
 	_, err := CreateUser(am)
@@ -625,7 +625,7 @@ func DestroyPostsWhere(where string, args ...interface{}) (int64, error) {
 }
 
 // Save method is used for a Post object to update an existed record mainly.
-// If no id provided a new record will be created. A UPSERT action will be implemented further.
+// If no id provided a new record will be created. FIXME: A UPSERT action will be implemented further.
 func (_post *Post) Save() error {
 	ok, err := govalidator.ValidateStruct(_post)
 	if !ok {
