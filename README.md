@@ -21,7 +21,7 @@ rails new example_with_admin --database mysql --skip-bundle
 Then we edit `Gemfile` to add gems we need:
 
 ```ruby
-gem 'go-on-rails', '~> 0.1.11'
+gem 'go-on-rails', '~> 0.3.0'
 gem 'devise'
 gem 'rails_admin', '~> 1.2'
 gem 'cancancan', '~> 2.0'
@@ -106,10 +106,10 @@ r.GET("/", c.IndexHandler)
 r.GET("/posts/:id", c.ShowHandler)
 ```
 
-Run the server on port 4000:
+Run the server(listen the port 4000 by default):
 
 ```bash
-go run main.go -port 4000
+go run main.go
 ```
 
 Now you can visit the `index` page on: http://localhost:4000.
@@ -255,10 +255,10 @@ We just use its default configuration that allows all the Origins access our Go 
 
 ### Try the new views
 
-In one terminal you set up the Go server in port 4000 under the `go_app` directory:
+In one terminal you set up the Go server under the `go_app` directory:
 
 ```bash
-go run main.go --port 4000
+go run main.go
 ```
 
 In another terminal run `rails s` to set up the Rails server in default port 3000, and meanwhile to get the `./bin/webpack-dev-server` server up in a third terminal.
