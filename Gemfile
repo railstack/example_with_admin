@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'go-on-rails', '~> 0.3.0'
+gem 'go-on-rails', '~> 0.4.0'
 gem 'devise'
 gem 'rails_admin', '~> 1.2'
 gem 'cancancan', '~> 2.0'

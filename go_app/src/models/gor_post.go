@@ -1,3 +1,5 @@
+
+
 // Package models includes the functions on the model Post.
 package models
 
@@ -18,13 +20,13 @@ func init() {
 }
 
 type Post struct {
-	Id        int64     `json:"id,omitempty" db:"id" valid:"-"`
-	Title     string    `json:"title,omitempty" db:"title" valid:"required,length(10|50)"`
-	Content   string    `json:"content,omitempty" db:"content" valid:"required,length(20|4294967295)"`
-	UserId    int64     `json:"user_id,omitempty" db:"user_id" valid:"-"`
-	CreatedAt time.Time `json:"created_at,omitempty" db:"created_at" valid:"-"`
-	UpdatedAt time.Time `json:"updated_at,omitempty" db:"updated_at" valid:"-"`
-	User      User      `json:"user,omitempty" db:"user" valid:"-"`
+	Id int64 `json:"id,omitempty" db:"id" valid:"-"`
+Title string `json:"title,omitempty" db:"title" valid:"required,length(10|50)"`
+Content string `json:"content,omitempty" db:"content" valid:"required,length(20|4294967295)"`
+UserId int64 `json:"user_id,omitempty" db:"user_id" valid:"-"`
+CreatedAt time.Time `json:"created_at,omitempty" db:"created_at" valid:"-"`
+UpdatedAt time.Time `json:"updated_at,omitempty" db:"updated_at" valid:"-"`
+User User `json:"user,omitempty" db:"user" valid:"-"`
 }
 
 // DataStruct for the pagination
@@ -207,6 +209,7 @@ func (_p *PostPage) buildPageCount() error {
 	return nil
 }
 
+
 // FindPost find a single post by an ID.
 func FindPost(id int64) (*Post, error) {
 	if id == 0 {
@@ -278,7 +281,7 @@ func FindPosts(ids ...int64) ([]Post, error) {
 	idsHolder := strings.Repeat(",?", len(ids)-1)
 	sql := DB.Rebind(fmt.Sprintf(`SELECT COALESCE(posts.title, '') AS title, COALESCE(posts.content, '') AS content, COALESCE(posts.user_id, 0) AS user_id, posts.id, posts.created_at, posts.updated_at FROM posts WHERE posts.id IN (?%s)`, idsHolder))
 	idsT := []interface{}{}
-	for _, id := range ids {
+	for _,id := range ids {
 		idsT = append(idsT, interface{}(id))
 	}
 	err := DB.Select(&_posts, sql, idsT...)
@@ -526,8 +529,8 @@ func (_post *Post) Create() (int64, error) {
 	t := time.Now()
 	_post.CreatedAt = t
 	_post.UpdatedAt = t
-	sql := `INSERT INTO posts (title,content,user_id,created_at,updated_at) VALUES (:title,:content,:user_id,:created_at,:updated_at)`
-	result, err := DB.NamedExec(sql, _post)
+    sql := `INSERT INTO posts (title,content,user_id,created_at,updated_at) VALUES (:title,:content,:user_id,:created_at,:updated_at)`
+    result, err := DB.NamedExec(sql, _post)
 	if err != nil {
 		log.Println(err)
 		return 0, err
@@ -539,6 +542,8 @@ func (_post *Post) Create() (int64, error) {
 	}
 	return lastId, nil
 }
+
+
 
 // CreateUser is a method for a Post object to create an associated User record.
 func (_post *Post) CreateUser(am map[string]interface{}) error {
@@ -576,7 +581,7 @@ func DestroyPosts(ids ...int64) (int64, error) {
 	idsHolder := strings.Repeat(",?", len(ids)-1)
 	sql := fmt.Sprintf(`DELETE FROM posts WHERE id IN (?%s)`, idsHolder)
 	idsT := []interface{}{}
-	for _, id := range ids {
+	for _,id := range ids {
 		idsT = append(idsT, interface{}(id))
 	}
 	stmt, err := DB.Preparex(DB.Rebind(sql))
@@ -613,6 +618,7 @@ func DestroyPostsWhere(where string, args ...interface{}) (int64, error) {
 	return cnt, nil
 }
 
+
 // Save method is used for a Post object to update an existed record mainly.
 // If no id provided a new record will be created. FIXME: A UPSERT action will be implemented further.
 func (_post *Post) Save() error {
@@ -632,8 +638,8 @@ func (_post *Post) Save() error {
 	_post.UpdatedAt = time.Now()
 	sqlFmt := `UPDATE posts SET %s WHERE id = %v`
 	sqlStr := fmt.Sprintf(sqlFmt, "title = :title, content = :content, user_id = :user_id, updated_at = :updated_at", _post.Id)
-	_, err = DB.NamedExec(sqlStr, _post)
-	return err
+    _, err = DB.NamedExec(sqlStr, _post)
+    return err
 }
 
 // UpdatePost is used to update a record with a id and map[string]interface{} typed key-value parameters.
@@ -645,7 +651,7 @@ func UpdatePost(id int64, am map[string]interface{}) error {
 	keys := allKeys(am)
 	sqlFmt := `UPDATE posts SET %s WHERE id = %v`
 	setKeysArr := []string{}
-	for _, v := range keys {
+	for _,v := range keys {
 		s := fmt.Sprintf(" %s = :%s", v, v)
 		setKeysArr = append(setKeysArr, s)
 	}

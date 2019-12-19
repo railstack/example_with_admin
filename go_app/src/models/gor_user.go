@@ -1,3 +1,5 @@
+
+
 // Package models includes the functions on the model User.
 package models
 
@@ -18,21 +20,21 @@ func init() {
 }
 
 type User struct {
-	Id                  int64     `json:"id,omitempty" db:"id" valid:"-"`
-	Email               string    `json:"email,omitempty" db:"email" valid:"required,matches(\A[^@\s]+@[^@\s]+\z)"`
-	EncryptedPassword   string    `json:"encrypted_password,omitempty" db:"encrypted_password" valid:"-"`
-	ResetPasswordToken  string    `json:"reset_password_token,omitempty" db:"reset_password_token" valid:"-"`
-	ResetPasswordSentAt time.Time `json:"reset_password_sent_at,omitempty" db:"reset_password_sent_at" valid:"-"`
-	RememberCreatedAt   time.Time `json:"remember_created_at,omitempty" db:"remember_created_at" valid:"-"`
-	SignInCount         int64     `json:"sign_in_count,omitempty" db:"sign_in_count" valid:"-"`
-	CurrentSignInAt     time.Time `json:"current_sign_in_at,omitempty" db:"current_sign_in_at" valid:"-"`
-	LastSignInAt        time.Time `json:"last_sign_in_at,omitempty" db:"last_sign_in_at" valid:"-"`
-	CurrentSignInIp     string    `json:"current_sign_in_ip,omitempty" db:"current_sign_in_ip" valid:"-"`
-	LastSignInIp        string    `json:"last_sign_in_ip,omitempty" db:"last_sign_in_ip" valid:"-"`
-	CreatedAt           time.Time `json:"created_at,omitempty" db:"created_at" valid:"-"`
-	UpdatedAt           time.Time `json:"updated_at,omitempty" db:"updated_at" valid:"-"`
-	Role                string    `json:"role,omitempty" db:"role" valid:"-"`
-	Posts               []Post    `json:"posts,omitempty" db:"posts" valid:"-"`
+	Id int64 `json:"id,omitempty" db:"id" valid:"-"`
+Email string `json:"email,omitempty" db:"email" valid:"required,matches(\A[^@\s]+@[^@\s]+\z)"`
+EncryptedPassword string `json:"encrypted_password,omitempty" db:"encrypted_password" valid:"-"`
+ResetPasswordToken string `json:"reset_password_token,omitempty" db:"reset_password_token" valid:"-"`
+ResetPasswordSentAt time.Time `json:"reset_password_sent_at,omitempty" db:"reset_password_sent_at" valid:"-"`
+RememberCreatedAt time.Time `json:"remember_created_at,omitempty" db:"remember_created_at" valid:"-"`
+SignInCount int64 `json:"sign_in_count,omitempty" db:"sign_in_count" valid:"-"`
+CurrentSignInAt time.Time `json:"current_sign_in_at,omitempty" db:"current_sign_in_at" valid:"-"`
+LastSignInAt time.Time `json:"last_sign_in_at,omitempty" db:"last_sign_in_at" valid:"-"`
+CurrentSignInIp string `json:"current_sign_in_ip,omitempty" db:"current_sign_in_ip" valid:"-"`
+LastSignInIp string `json:"last_sign_in_ip,omitempty" db:"last_sign_in_ip" valid:"-"`
+CreatedAt time.Time `json:"created_at,omitempty" db:"created_at" valid:"-"`
+UpdatedAt time.Time `json:"updated_at,omitempty" db:"updated_at" valid:"-"`
+Role string `json:"role,omitempty" db:"role" valid:"-"`
+Posts []Post `json:"posts,omitempty" db:"posts" valid:"-"`
 }
 
 // DataStruct for the pagination
@@ -215,6 +217,7 @@ func (_p *UserPage) buildPageCount() error {
 	return nil
 }
 
+
 // FindUser find a single user by an ID.
 func FindUser(id int64) (*User, error) {
 	if id == 0 {
@@ -286,7 +289,7 @@ func FindUsers(ids ...int64) ([]User, error) {
 	idsHolder := strings.Repeat(",?", len(ids)-1)
 	sql := DB.Rebind(fmt.Sprintf(`SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, COALESCE(users.role, '') AS role, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users WHERE users.id IN (?%s)`, idsHolder))
 	idsT := []interface{}{}
-	for _, id := range ids {
+	for _,id := range ids {
 		idsT = append(idsT, interface{}(id))
 	}
 	err := DB.Select(&_users, sql, idsT...)
@@ -382,21 +385,21 @@ func UserIncludesWhere(assocs []string, sql string, args ...interface{}) (_users
 	idsHolder := strings.Repeat(",?", len(ids)-1)
 	for _, assoc := range assocs {
 		switch assoc {
-		case "posts":
-			where := fmt.Sprintf("user_id IN (?%s)", idsHolder)
-			_posts, err := FindPostsWhere(where, ids...)
-			if err != nil {
-				log.Printf("Error when query associated objects: %v\n", assoc)
-				continue
-			}
-			for _, vv := range _posts {
-				for i, vvv := range _users {
-					if vv.UserId == vvv.Id {
-						vvv.Posts = append(vvv.Posts, vv)
-					}
-					_users[i].Posts = vvv.Posts
-				}
-			}
+				case "posts":
+							where := fmt.Sprintf("user_id IN (?%s)", idsHolder)
+						_posts, err := FindPostsWhere(where, ids...)
+						if err != nil {
+							log.Printf("Error when query associated objects: %v\n", assoc)
+							continue
+						}
+						for _, vv := range _posts {
+							for i, vvv := range  _users {
+									if vv.UserId == vvv.Id {
+										vvv.Posts = append(vvv.Posts, vv)
+									}
+								_users[i].Posts = vvv.Posts
+						    }
+					    }
 		}
 	}
 	return _users, nil
@@ -554,8 +557,8 @@ func (_user *User) Create() (int64, error) {
 	t := time.Now()
 	_user.CreatedAt = t
 	_user.UpdatedAt = t
-	sql := `INSERT INTO users (email,encrypted_password,reset_password_token,reset_password_sent_at,remember_created_at,sign_in_count,current_sign_in_at,last_sign_in_at,current_sign_in_ip,last_sign_in_ip,created_at,updated_at,role) VALUES (:email,:encrypted_password,:reset_password_token,:reset_password_sent_at,:remember_created_at,:sign_in_count,:current_sign_in_at,:last_sign_in_at,:current_sign_in_ip,:last_sign_in_ip,:created_at,:updated_at,:role)`
-	result, err := DB.NamedExec(sql, _user)
+    sql := `INSERT INTO users (email,encrypted_password,reset_password_token,reset_password_sent_at,remember_created_at,sign_in_count,current_sign_in_at,last_sign_in_at,current_sign_in_ip,last_sign_in_ip,created_at,updated_at,role) VALUES (:email,:encrypted_password,:reset_password_token,:reset_password_sent_at,:remember_created_at,:sign_in_count,:current_sign_in_at,:last_sign_in_at,:current_sign_in_ip,:last_sign_in_ip,:created_at,:updated_at,:role)`
+    result, err := DB.NamedExec(sql, _user)
 	if err != nil {
 		log.Println(err)
 		return 0, err
@@ -570,8 +573,8 @@ func (_user *User) Create() (int64, error) {
 
 // PostsCreate is used for User to create the associated objects Posts
 func (_user *User) PostsCreate(am map[string]interface{}) error {
-	am["user_id"] = _user.Id
-	_, err := CreatePost(am)
+			am["user_id"] = _user.Id
+		_, err := CreatePost(am)
 	return err
 }
 
@@ -582,15 +585,18 @@ func (_user *User) GetPosts() error {
 	_posts, err := UserGetPosts(_user.Id)
 	if err == nil {
 		_user.Posts = _posts
-	}
-	return err
+    }
+    return err
 }
 
 // UserGetPosts a helper fuction used to get associated objects for UserIncludesWhere().
 func UserGetPosts(id int64) ([]Post, error) {
-	_posts, err := FindPostsBy("user_id", id)
+			_posts, err := FindPostsBy("user_id", id)
 	return _posts, err
 }
+
+
+
 
 // Destroy is method used for a User object to be destroyed.
 func (_user *User) Destroy() error {
@@ -621,7 +627,7 @@ func DestroyUsers(ids ...int64) (int64, error) {
 	idsHolder := strings.Repeat(",?", len(ids)-1)
 	sql := fmt.Sprintf(`DELETE FROM users WHERE id IN (?%s)`, idsHolder)
 	idsT := []interface{}{}
-	for _, id := range ids {
+	for _,id := range ids {
 		idsT = append(idsT, interface{}(id))
 	}
 	stmt, err := DB.Preparex(DB.Rebind(sql))
@@ -658,6 +664,7 @@ func DestroyUsersWhere(where string, args ...interface{}) (int64, error) {
 	return cnt, nil
 }
 
+
 // Save method is used for a User object to update an existed record mainly.
 // If no id provided a new record will be created. FIXME: A UPSERT action will be implemented further.
 func (_user *User) Save() error {
@@ -677,8 +684,8 @@ func (_user *User) Save() error {
 	_user.UpdatedAt = time.Now()
 	sqlFmt := `UPDATE users SET %s WHERE id = %v`
 	sqlStr := fmt.Sprintf(sqlFmt, "email = :email, encrypted_password = :encrypted_password, reset_password_token = :reset_password_token, reset_password_sent_at = :reset_password_sent_at, remember_created_at = :remember_created_at, sign_in_count = :sign_in_count, current_sign_in_at = :current_sign_in_at, last_sign_in_at = :last_sign_in_at, current_sign_in_ip = :current_sign_in_ip, last_sign_in_ip = :last_sign_in_ip, updated_at = :updated_at, role = :role", _user.Id)
-	_, err = DB.NamedExec(sqlStr, _user)
-	return err
+    _, err = DB.NamedExec(sqlStr, _user)
+    return err
 }
 
 // UpdateUser is used to update a record with a id and map[string]interface{} typed key-value parameters.
@@ -690,7 +697,7 @@ func UpdateUser(id int64, am map[string]interface{}) error {
 	keys := allKeys(am)
 	sqlFmt := `UPDATE users SET %s WHERE id = %v`
 	setKeysArr := []string{}
-	for _, v := range keys {
+	for _,v := range keys {
 		s := fmt.Sprintf(" %s = :%s", v, v)
 		setKeysArr = append(setKeysArr, s)
 	}

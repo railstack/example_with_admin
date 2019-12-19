@@ -1,3 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>models - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<link rel="search" type="application/opensearchdescription+xml" title="godoc" href="/opensearch.xml" />
+
+
+<script>window.initFuncs = [];</script>
+
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.4";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+
+<a href="/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package models
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
 <!--
 	Copyright 2009 The Go Authors. All rights reserved.
 	Use of this source code is governed by a BSD-style
@@ -10,16 +79,16 @@
 	correspond to Go identifiers).
 -->
 
-	<script type='text/javascript'>
-	document.ANALYSIS_DATA = ;
-	document.CALLGRAPH = ;
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
 	</script>
 
 	
 		
 		<div id="short-nav">
 			<dl>
-			<dd><code>import "/Users/binjoy/projects/GoOnRails/examples/simple_example_with_admin/go_app/models"</code></dd>
+			<dd><code>import "models"</code></dd>
 			</dl>
 			<dl>
 			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
@@ -315,13 +384,13 @@ Package models includes the functions on the model User.
 			<p>
 			<span style="font-size:90%">
 			
-				<a href="/db.go">db.go</a>
+				<a href="/src/models/db.go">db.go</a>
 			
-				<a href="/gor_post.go">gor_post.go</a>
+				<a href="/src/models/gor_post.go">gor_post.go</a>
 			
-				<a href="/gor_user.go">gor_user.go</a>
+				<a href="/src/models/gor_user.go">gor_user.go</a>
 			
-				<a href="/utils.go">utils.go</a>
+				<a href="/src/models/utils.go">utils.go</a>
 			
 			</span>
 			</p>
@@ -329,42 +398,7 @@ Package models includes the functions on the model User.
 		</div><!-- .expanded -->
 		</div><!-- #pkg-index -->
 
-		<div id="pkg-callgraph" class="toggle" style="display: none">
-		<div class="collapsed">
-			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
-		</div> <!-- .expanded -->
-		<div class="expanded">
-			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
-			<p>
-			  In the call graph viewer below, each node
-			  is a function belonging to this package
-			  and its children are the functions it
-			  calls&mdash;perhaps dynamically.
-			</p>
-			<p>
-			  The root nodes are the entry points of the
-			  package: functions that may be called from
-			  outside the package.
-			  There may be non-exported or anonymous
-			  functions among them if they are called
-			  dynamically from another package.
-			</p>
-			<p>
-			  Click a node to visit that function's source code.
-			  From there you can visit its callers by
-			  clicking its declaring <code>func</code>
-			  token.
-			</p>
-			<p>
-			  Functions may be omitted if they were
-			  determined to be unreachable in the
-			  particular programs or tests that were
-			  analyzed.
-			</p>
-			<!-- Zero means show all package entry points. -->
-			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
-		</div>
-		</div> <!-- #pkg-callgraph -->
+		
 
 		
 		
@@ -377,7 +411,7 @@ Package models includes the functions on the model User.
 		
 			
 			
-			<h2 id="CreatePost">func <a href="/gor_post.go?s=15597:15654#L479">CreatePost</a>
+			<h2 id="CreatePost">func <a href="/src/models/gor_post.go?s=15553:15610#L482">CreatePost</a>
 				<a class="permalink" href="#CreatePost">&#xb6;</a>
 				
 				
@@ -394,7 +428,7 @@ A named params is key-value map like map[string]interface{}{&#34;first_name&#34;
 		
 			
 			
-			<h2 id="CreateUser">func <a href="/gor_user.go?s=22988:23045#L507">CreateUser</a>
+			<h2 id="CreateUser">func <a href="/src/models/gor_user.go?s=22887:22944#L510">CreateUser</a>
 				<a class="permalink" href="#CreateUser">&#xb6;</a>
 				
 				
@@ -411,7 +445,7 @@ A named params is key-value map like map[string]interface{}{&#34;first_name&#34;
 		
 			
 			
-			<h2 id="DestroyPost">func <a href="/gor_post.go?s=17477:17509#L550">DestroyPost</a>
+			<h2 id="DestroyPost">func <a href="/src/models/gor_post.go?s=17441:17473#L555">DestroyPost</a>
 				<a class="permalink" href="#DestroyPost">&#xb6;</a>
 				
 				
@@ -427,7 +461,7 @@ DestroyPost will destroy a Post record specified by the id parameter.
 		
 			
 			
-			<h2 id="DestroyPosts">func <a href="/gor_post.go?s=17736:17782#L560">DestroyPosts</a>
+			<h2 id="DestroyPosts">func <a href="/src/models/gor_post.go?s=17700:17746#L565">DestroyPosts</a>
 				<a class="permalink" href="#DestroyPosts">&#xb6;</a>
 				
 				
@@ -443,7 +477,7 @@ DestroyPosts will destroy Post records those specified by the ids parameters.
 		
 			
 			
-			<h2 id="DestroyPostsWhere">func <a href="/gor_post.go?s=18489:18561#L587">DestroyPostsWhere</a>
+			<h2 id="DestroyPostsWhere">func <a href="/src/models/gor_post.go?s=18452:18524#L592">DestroyPostsWhere</a>
 				<a class="permalink" href="#DestroyPostsWhere">&#xb6;</a>
 				
 				
@@ -461,7 +495,7 @@ And this func will not call the association dependent action
 		
 			
 			
-			<h2 id="DestroyUser">func <a href="/gor_user.go?s=25729:25761#L595">DestroyUser</a>
+			<h2 id="DestroyUser">func <a href="/src/models/gor_user.go?s=25648:25680#L601">DestroyUser</a>
 				<a class="permalink" href="#DestroyUser">&#xb6;</a>
 				
 				
@@ -477,7 +511,7 @@ DestroyUser will destroy a User record specified by the id parameter.
 		
 			
 			
-			<h2 id="DestroyUsers">func <a href="/gor_user.go?s=25988:26034#L605">DestroyUsers</a>
+			<h2 id="DestroyUsers">func <a href="/src/models/gor_user.go?s=25907:25953#L611">DestroyUsers</a>
 				<a class="permalink" href="#DestroyUsers">&#xb6;</a>
 				
 				
@@ -493,7 +527,7 @@ DestroyUsers will destroy User records those specified by the ids parameters.
 		
 			
 			
-			<h2 id="DestroyUsersWhere">func <a href="/gor_user.go?s=26741:26813#L632">DestroyUsersWhere</a>
+			<h2 id="DestroyUsersWhere">func <a href="/src/models/gor_user.go?s=26659:26731#L638">DestroyUsersWhere</a>
 				<a class="permalink" href="#DestroyUsersWhere">&#xb6;</a>
 				
 				
@@ -511,7 +545,7 @@ And this func will not call the association dependent action
 		
 			
 			
-			<h2 id="PostCount">func <a href="/gor_post.go?s=10765:10802#L318">PostCount</a>
+			<h2 id="PostCount">func <a href="/src/models/gor_post.go?s=10721:10758#L321">PostCount</a>
 				<a class="permalink" href="#PostCount">&#xb6;</a>
 				
 				
@@ -527,7 +561,7 @@ PostCount get the count of all the Post records.
 		
 			
 			
-			<h2 id="PostCountWhere">func <a href="/gor_post.go?s=11003:11078#L328">PostCountWhere</a>
+			<h2 id="PostCountWhere">func <a href="/src/models/gor_post.go?s=10959:11034#L331">PostCountWhere</a>
 				<a class="permalink" href="#PostCountWhere">&#xb6;</a>
 				
 				
@@ -543,7 +577,7 @@ PostCountWhere get the count of all the Post records with a where clause.
 		
 			
 			
-			<h2 id="PostIds">func <a href="/gor_post.go?s=12154:12193#L368">PostIds</a>
+			<h2 id="PostIds">func <a href="/src/models/gor_post.go?s=12110:12149#L371">PostIds</a>
 				<a class="permalink" href="#PostIds">&#xb6;</a>
 				
 				
@@ -559,7 +593,7 @@ PostIds get all the IDs of Post records.
 		
 			
 			
-			<h2 id="PostIdsWhere">func <a href="/gor_post.go?s=12390:12459#L378">PostIdsWhere</a>
+			<h2 id="PostIdsWhere">func <a href="/src/models/gor_post.go?s=12346:12415#L381">PostIdsWhere</a>
 				<a class="permalink" href="#PostIdsWhere">&#xb6;</a>
 				
 				
@@ -575,7 +609,7 @@ PostIdsWhere get all the IDs of Post records by where restriction.
 		
 			
 			
-			<h2 id="PostIntCol">func <a href="/gor_post.go?s=12600:12687#L384">PostIntCol</a>
+			<h2 id="PostIntCol">func <a href="/src/models/gor_post.go?s=12556:12643#L387">PostIntCol</a>
 				<a class="permalink" href="#PostIntCol">&#xb6;</a>
 				
 				
@@ -591,7 +625,7 @@ PostIntCol get some int64 typed column of Post by where restriction.
 		
 			
 			
-			<h2 id="PostStrCol">func <a href="/gor_post.go?s=13083:13171#L403">PostStrCol</a>
+			<h2 id="PostStrCol">func <a href="/src/models/gor_post.go?s=13039:13127#L406">PostStrCol</a>
 				<a class="permalink" href="#PostStrCol">&#xb6;</a>
 				
 				
@@ -607,7 +641,7 @@ PostStrCol get some string typed column of Post by where restriction.
 		
 			
 			
-			<h2 id="UpdatePost">func <a href="/gor_post.go?s=19793:19851#L630">UpdatePost</a>
+			<h2 id="UpdatePost">func <a href="/src/models/gor_post.go?s=19763:19821#L636">UpdatePost</a>
 				<a class="permalink" href="#UpdatePost">&#xb6;</a>
 				
 				
@@ -623,7 +657,7 @@ UpdatePost is used to update a record with a id and map[string]interface{} typed
 		
 			
 			
-			<h2 id="UpdatePostsBySql">func <a href="/gor_post.go?s=21398:21467#L680">UpdatePostsBySql</a>
+			<h2 id="UpdatePostsBySql">func <a href="/src/models/gor_post.go?s=21367:21436#L686">UpdatePostsBySql</a>
 				<a class="permalink" href="#UpdatePostsBySql">&#xb6;</a>
 				
 				
@@ -640,7 +674,7 @@ using the &#39;?&#39; binding syntax.
 		
 			
 			
-			<h2 id="UpdateUser">func <a href="/gor_user.go?s=28389:28447#L675">UpdateUser</a>
+			<h2 id="UpdateUser">func <a href="/src/models/gor_user.go?s=28314:28372#L682">UpdateUser</a>
 				<a class="permalink" href="#UpdateUser">&#xb6;</a>
 				
 				
@@ -656,7 +690,7 @@ UpdateUser is used to update a record with a id and map[string]interface{} typed
 		
 			
 			
-			<h2 id="UpdateUsersBySql">func <a href="/gor_user.go?s=29994:30063#L725">UpdateUsersBySql</a>
+			<h2 id="UpdateUsersBySql">func <a href="/src/models/gor_user.go?s=29918:29987#L732">UpdateUsersBySql</a>
 				<a class="permalink" href="#UpdateUsersBySql">&#xb6;</a>
 				
 				
@@ -673,7 +707,7 @@ using the &#39;?&#39; binding syntax.
 		
 			
 			
-			<h2 id="UserCount">func <a href="/gor_user.go?s=17046:17083#L326">UserCount</a>
+			<h2 id="UserCount">func <a href="/src/models/gor_user.go?s=16890:16927#L329">UserCount</a>
 				<a class="permalink" href="#UserCount">&#xb6;</a>
 				
 				
@@ -689,7 +723,7 @@ UserCount get the count of all the User records.
 		
 			
 			
-			<h2 id="UserCountWhere">func <a href="/gor_user.go?s=17284:17359#L336">UserCountWhere</a>
+			<h2 id="UserCountWhere">func <a href="/src/models/gor_user.go?s=17128:17203#L339">UserCountWhere</a>
 				<a class="permalink" href="#UserCountWhere">&#xb6;</a>
 				
 				
@@ -705,7 +739,7 @@ UserCountWhere get the count of all the User records with a where clause.
 		
 			
 			
-			<h2 id="UserIds">func <a href="/gor_user.go?s=18946:18985#L396">UserIds</a>
+			<h2 id="UserIds">func <a href="/src/models/gor_user.go?s=18845:18884#L399">UserIds</a>
 				<a class="permalink" href="#UserIds">&#xb6;</a>
 				
 				
@@ -721,7 +755,7 @@ UserIds get all the IDs of User records.
 		
 			
 			
-			<h2 id="UserIdsWhere">func <a href="/gor_user.go?s=19182:19251#L406">UserIdsWhere</a>
+			<h2 id="UserIdsWhere">func <a href="/src/models/gor_user.go?s=19081:19150#L409">UserIdsWhere</a>
 				<a class="permalink" href="#UserIdsWhere">&#xb6;</a>
 				
 				
@@ -737,7 +771,7 @@ UserIdsWhere get all the IDs of User records by where restriction.
 		
 			
 			
-			<h2 id="UserIntCol">func <a href="/gor_user.go?s=19392:19479#L412">UserIntCol</a>
+			<h2 id="UserIntCol">func <a href="/src/models/gor_user.go?s=19291:19378#L415">UserIntCol</a>
 				<a class="permalink" href="#UserIntCol">&#xb6;</a>
 				
 				
@@ -753,7 +787,7 @@ UserIntCol get some int64 typed column of User by where restriction.
 		
 			
 			
-			<h2 id="UserStrCol">func <a href="/gor_user.go?s=19875:19963#L431">UserStrCol</a>
+			<h2 id="UserStrCol">func <a href="/src/models/gor_user.go?s=19774:19862#L434">UserStrCol</a>
 				<a class="permalink" href="#UserStrCol">&#xb6;</a>
 				
 				
@@ -770,7 +804,7 @@ UserStrCol get some string typed column of User by where restriction.
 		
 			
 			
-			<h2 id="Post">type <a href="/gor_post.go?s=281:840#L10">Post</a>
+			<h2 id="Post">type <a href="/src/models/gor_post.go?s=283:796#L12">Post</a>
 				<a class="permalink" href="#Post">&#xb6;</a>
 				
 				
@@ -797,7 +831,7 @@ UserStrCol get some string typed column of User by where restriction.
 
 			
 				
-				<h3 id="AllPosts">func <a href="/gor_post.go?s=10384:10425#L308">AllPosts</a>
+				<h3 id="AllPosts">func <a href="/src/models/gor_post.go?s=10340:10381#L311">AllPosts</a>
 					<a class="permalink" href="#AllPosts">&#xb6;</a>
 					
 					
@@ -811,7 +845,7 @@ AllPosts get all the Post records.
 				
 			
 				
-				<h3 id="FindPost">func <a href="/gor_post.go?s=6192:6230#L201">FindPost</a>
+				<h3 id="FindPost">func <a href="/src/models/gor_post.go?s=6149:6187#L204">FindPost</a>
 					<a class="permalink" href="#FindPost">&#xb6;</a>
 					
 					
@@ -825,7 +859,7 @@ FindPost find a single post by an ID.
 				
 			
 				
-				<h3 id="FindPostBy">func <a href="/gor_post.go?s=9352:9413#L283">FindPostBy</a>
+				<h3 id="FindPostBy">func <a href="/src/models/gor_post.go?s=9308:9369#L286">FindPostBy</a>
 					<a class="permalink" href="#FindPostBy">&#xb6;</a>
 					
 					
@@ -839,7 +873,7 @@ FindPostBy find a single post by a field name and a value.
 				
 			
 				
-				<h3 id="FindPostBySql">func <a href="/gor_post.go?s=14583:14649#L445">FindPostBySql</a>
+				<h3 id="FindPostBySql">func <a href="/src/models/gor_post.go?s=14539:14605#L448">FindPostBySql</a>
 					<a class="permalink" href="#FindPostBySql">&#xb6;</a>
 					
 					
@@ -855,7 +889,7 @@ will return only One record in the table &#34;users&#34; whose first_name is &#3
 				
 			
 				
-				<h3 id="FindPosts">func <a href="/gor_post.go?s=8586:8630#L261">FindPosts</a>
+				<h3 id="FindPosts">func <a href="/src/models/gor_post.go?s=8543:8587#L264">FindPosts</a>
 					<a class="permalink" href="#FindPosts">&#xb6;</a>
 					
 					
@@ -869,7 +903,7 @@ FindPosts find one or more posts by the given ID(s).
 				
 			
 				
-				<h3 id="FindPostsBy">func <a href="/gor_post.go?s=9883:9957#L296">FindPostsBy</a>
+				<h3 id="FindPostsBy">func <a href="/src/models/gor_post.go?s=9839:9913#L299">FindPostsBy</a>
 					<a class="permalink" href="#FindPostsBy">&#xb6;</a>
 					
 					
@@ -883,7 +917,7 @@ FindPostsBy find all posts by a field name and a value.
 				
 			
 				
-				<h3 id="FindPostsBySql">func <a href="/gor_post.go?s=15139:15217#L463">FindPostsBySql</a>
+				<h3 id="FindPostsBySql">func <a href="/src/models/gor_post.go?s=15095:15173#L466">FindPostsBySql</a>
 					<a class="permalink" href="#FindPostsBySql">&#xb6;</a>
 					
 					
@@ -899,7 +933,7 @@ will return those records in the table &#34;users&#34; whose first_name is &#34;
 				
 			
 				
-				<h3 id="FindPostsWhere">func <a href="/gor_post.go?s=13761:13841#L424">FindPostsWhere</a>
+				<h3 id="FindPostsWhere">func <a href="/src/models/gor_post.go?s=13717:13797#L427">FindPostsWhere</a>
 					<a class="permalink" href="#FindPostsWhere">&#xb6;</a>
 					
 					
@@ -915,7 +949,7 @@ will return those records in the table &#34;users&#34; whose first_name is &#34;
 				
 			
 				
-				<h3 id="FirstPost">func <a href="/gor_post.go?s=6718:6749#L215">FirstPost</a>
+				<h3 id="FirstPost">func <a href="/src/models/gor_post.go?s=6675:6706#L218">FirstPost</a>
 					<a class="permalink" href="#FirstPost">&#xb6;</a>
 					
 					
@@ -929,7 +963,7 @@ FirstPost find the first one post by ID ASC order.
 				
 			
 				
-				<h3 id="FirstPosts">func <a href="/gor_post.go?s=7162:7203#L226">FirstPosts</a>
+				<h3 id="FirstPosts">func <a href="/src/models/gor_post.go?s=7119:7160#L229">FirstPosts</a>
 					<a class="permalink" href="#FirstPosts">&#xb6;</a>
 					
 					
@@ -943,7 +977,7 @@ FirstPosts find the first N posts by ID ASC order.
 				
 			
 				
-				<h3 id="LastPost">func <a href="/gor_post.go?s=7651:7681#L238">LastPost</a>
+				<h3 id="LastPost">func <a href="/src/models/gor_post.go?s=7608:7638#L241">LastPost</a>
 					<a class="permalink" href="#LastPost">&#xb6;</a>
 					
 					
@@ -957,7 +991,7 @@ LastPost find the last one post by ID DESC order.
 				
 			
 				
-				<h3 id="LastPosts">func <a href="/gor_post.go?s=8094:8134#L249">LastPosts</a>
+				<h3 id="LastPosts">func <a href="/src/models/gor_post.go?s=8051:8091#L252">LastPosts</a>
 					<a class="permalink" href="#LastPosts">&#xb6;</a>
 					
 					
@@ -971,7 +1005,7 @@ LastPosts find the last N posts by ID DESC order.
 				
 			
 				
-				<h3 id="PostIncludesWhere">func <a href="/gor_post.go?s=11599:11698#L347">PostIncludesWhere</a>
+				<h3 id="PostIncludesWhere">func <a href="/src/models/gor_post.go?s=11555:11654#L350">PostIncludesWhere</a>
 					<a class="permalink" href="#PostIncludesWhere">&#xb6;</a>
 					
 					
@@ -985,7 +1019,7 @@ PostIncludesWhere get the Post associated models records, currently it&#39;s not
 				
 			
 				
-				<h3 id="UserGetPosts">func <a href="/gor_user.go?s=25312:25355#L580">UserGetPosts</a>
+				<h3 id="UserGetPosts">func <a href="/src/models/gor_user.go?s=25226:25269#L583">UserGetPosts</a>
 					<a class="permalink" href="#UserGetPosts">&#xb6;</a>
 					
 					
@@ -1001,7 +1035,7 @@ UserGetPosts a helper fuction used to get associated objects for UserIncludesWhe
 
 			
 				
-				<h3 id="Post.Create">func (*Post) <a href="/gor_post.go?s=16264:16306#L506">Create</a>
+				<h3 id="Post.Create">func (*Post) <a href="/src/models/gor_post.go?s=16220:16262#L509">Create</a>
 					<a class="permalink" href="#Post.Create">&#xb6;</a>
 					
 					
@@ -1016,7 +1050,7 @@ Create is a method for Post to create a record.
 				
 			
 				
-				<h3 id="Post.CreateUser">func (*Post) <a href="/gor_post.go?s=17040:17102#L534">CreateUser</a>
+				<h3 id="Post.CreateUser">func (*Post) <a href="/src/models/gor_post.go?s=17004:17066#L539">CreateUser</a>
 					<a class="permalink" href="#Post.CreateUser">&#xb6;</a>
 					
 					
@@ -1031,7 +1065,7 @@ CreateUser is a method for a Post object to create an associated User record.
 				
 			
 				
-				<h3 id="Post.Destroy">func (*Post) <a href="/gor_post.go?s=17233:17267#L541">Destroy</a>
+				<h3 id="Post.Destroy">func (*Post) <a href="/src/models/gor_post.go?s=17197:17231#L546">Destroy</a>
 					<a class="permalink" href="#Post.Destroy">&#xb6;</a>
 					
 					
@@ -1046,7 +1080,7 @@ Destroy is method used for a Post object to be destroyed.
 				
 			
 				
-				<h3 id="Post.Save">func (*Post) <a href="/gor_post.go?s=19092:19123#L608">Save</a>
+				<h3 id="Post.Save">func (*Post) <a href="/src/models/gor_post.go?s=19056:19087#L614">Save</a>
 					<a class="permalink" href="#Post.Save">&#xb6;</a>
 					
 					
@@ -1062,7 +1096,7 @@ If no id provided a new record will be created. FIXME: A UPSERT action will be i
 				
 			
 				
-				<h3 id="Post.Update">func (*Post) <a href="/gor_post.go?s=20441:20499#L652">Update</a>
+				<h3 id="Post.Update">func (*Post) <a href="/src/models/gor_post.go?s=20410:20468#L658">Update</a>
 					<a class="permalink" href="#Post.Update">&#xb6;</a>
 					
 					
@@ -1077,7 +1111,7 @@ Update is a method used to update a Post record with the map[string]interface{} 
 				
 			
 				
-				<h3 id="Post.UpdateAttributes">func (*Post) <a href="/gor_post.go?s=20765:20833#L661">UpdateAttributes</a>
+				<h3 id="Post.UpdateAttributes">func (*Post) <a href="/src/models/gor_post.go?s=20734:20802#L667">UpdateAttributes</a>
 					<a class="permalink" href="#Post.UpdateAttributes">&#xb6;</a>
 					
 					
@@ -1092,7 +1126,7 @@ UpdateAttributes method is supposed to be used to update Post records as corresp
 				
 			
 				
-				<h3 id="Post.UpdateColumns">func (*Post) <a href="/gor_post.go?s=21093:21158#L670">UpdateColumns</a>
+				<h3 id="Post.UpdateColumns">func (*Post) <a href="/src/models/gor_post.go?s=21062:21127#L676">UpdateColumns</a>
 					<a class="permalink" href="#Post.UpdateColumns">&#xb6;</a>
 					
 					
@@ -1109,7 +1143,7 @@ UpdateColumns method is supposed to be used to update Post records as correspond
 		
 			
 			
-			<h2 id="PostPage">type <a href="/gor_post.go?s=875:1105#L21">PostPage</a>
+			<h2 id="PostPage">type <a href="/src/models/gor_post.go?s=831:1061#L23">PostPage</a>
 				<a class="permalink" href="#PostPage">&#xb6;</a>
 				
 				
@@ -1144,7 +1178,7 @@ DataStruct for the pagination
 
 			
 				
-				<h3 id="PostPage.Current">func (*PostPage) <a href="/gor_post.go?s=1174:1219#L35">Current</a>
+				<h3 id="PostPage.Current">func (*PostPage) <a href="/src/models/gor_post.go?s=1130:1175#L37">Current</a>
 					<a class="permalink" href="#PostPage.Current">&#xb6;</a>
 					
 					
@@ -1159,7 +1193,7 @@ Current get the current page of PostPage object for pagination.
 				
 			
 				
-				<h3 id="PostPage.GetPage">func (*PostPage) <a href="/gor_post.go?s=3998:4066#L122">GetPage</a>
+				<h3 id="PostPage.GetPage">func (*PostPage) <a href="/src/models/gor_post.go?s=3954:4022#L124">GetPage</a>
 					<a class="permalink" href="#PostPage.GetPage">&#xb6;</a>
 					
 					
@@ -1175,7 +1209,7 @@ the parameter passed in, i.e. one of &#34;previous, current or next&#34;.
 				
 			
 				
-				<h3 id="PostPage.Next">func (*PostPage) <a href="/gor_post.go?s=2952:2994#L91">Next</a>
+				<h3 id="PostPage.Next">func (*PostPage) <a href="/src/models/gor_post.go?s=2908:2950#L93">Next</a>
 					<a class="permalink" href="#PostPage.Next">&#xb6;</a>
 					
 					
@@ -1190,7 +1224,7 @@ Next get the next page of PostPage object for pagination.
 				
 			
 				
-				<h3 id="PostPage.Previous">func (*PostPage) <a href="/gor_post.go?s=2009:2055#L61">Previous</a>
+				<h3 id="PostPage.Previous">func (*PostPage) <a href="/src/models/gor_post.go?s=1965:2011#L63">Previous</a>
 					<a class="permalink" href="#PostPage.Previous">&#xb6;</a>
 					
 					
@@ -1207,7 +1241,7 @@ Previous get the previous page of PostPage object for pagination.
 		
 			
 			
-			<h2 id="User">type <a href="/gor_user.go?s=281:1730#L10">User</a>
+			<h2 id="User">type <a href="/src/models/gor_user.go?s=283:1574#L12">User</a>
 				<a class="permalink" href="#User">&#xb6;</a>
 				
 				
@@ -1242,7 +1276,7 @@ Previous get the previous page of PostPage object for pagination.
 
 			
 				
-				<h3 id="AllUsers">func <a href="/gor_user.go?s=16066:16107#L316">AllUsers</a>
+				<h3 id="AllUsers">func <a href="/src/models/gor_user.go?s=15910:15951#L319">AllUsers</a>
 					<a class="permalink" href="#AllUsers">&#xb6;</a>
 					
 					
@@ -1256,7 +1290,7 @@ AllUsers get all the User records.
 				
 			
 				
-				<h3 id="FindUser">func <a href="/gor_user.go?s=7082:7120#L209">FindUser</a>
+				<h3 id="FindUser">func <a href="/src/models/gor_user.go?s=6927:6965#L212">FindUser</a>
 					<a class="permalink" href="#FindUser">&#xb6;</a>
 					
 					
@@ -1270,7 +1304,7 @@ FindUser find a single user by an ID.
 				
 			
 				
-				<h3 id="FindUserBy">func <a href="/gor_user.go?s=13836:13897#L291">FindUserBy</a>
+				<h3 id="FindUserBy">func <a href="/src/models/gor_user.go?s=13680:13741#L294">FindUserBy</a>
 					<a class="permalink" href="#FindUserBy">&#xb6;</a>
 					
 					
@@ -1284,7 +1318,7 @@ FindUserBy find a single user by a field name and a value.
 				
 			
 				
-				<h3 id="FindUserBySql">func <a href="/gor_user.go?s=21974:22040#L473">FindUserBySql</a>
+				<h3 id="FindUserBySql">func <a href="/src/models/gor_user.go?s=21873:21939#L476">FindUserBySql</a>
 					<a class="permalink" href="#FindUserBySql">&#xb6;</a>
 					
 					
@@ -1300,7 +1334,7 @@ will return only One record in the table &#34;users&#34; whose first_name is &#3
 				
 			
 				
-				<h3 id="FindUsers">func <a href="/gor_user.go?s=12471:12515#L269">FindUsers</a>
+				<h3 id="FindUsers">func <a href="/src/models/gor_user.go?s=12316:12360#L272">FindUsers</a>
 					<a class="permalink" href="#FindUsers">&#xb6;</a>
 					
 					
@@ -1314,7 +1348,7 @@ FindUsers find one or more users by the given ID(s).
 				
 			
 				
-				<h3 id="FindUsersBy">func <a href="/gor_user.go?s=14966:15040#L304">FindUsersBy</a>
+				<h3 id="FindUsersBy">func <a href="/src/models/gor_user.go?s=14810:14884#L307">FindUsersBy</a>
 					<a class="permalink" href="#FindUsersBy">&#xb6;</a>
 					
 					
@@ -1328,7 +1362,7 @@ FindUsersBy find all users by a field name and a value.
 				
 			
 				
-				<h3 id="FindUsersBySql">func <a href="/gor_user.go?s=22530:22608#L491">FindUsersBySql</a>
+				<h3 id="FindUsersBySql">func <a href="/src/models/gor_user.go?s=22429:22507#L494">FindUsersBySql</a>
 					<a class="permalink" href="#FindUsersBySql">&#xb6;</a>
 					
 					
@@ -1344,7 +1378,7 @@ will return those records in the table &#34;users&#34; whose first_name is &#34;
 				
 			
 				
-				<h3 id="FindUsersWhere">func <a href="/gor_user.go?s=20553:20633#L452">FindUsersWhere</a>
+				<h3 id="FindUsersWhere">func <a href="/src/models/gor_user.go?s=20452:20532#L455">FindUsersWhere</a>
 					<a class="permalink" href="#FindUsersWhere">&#xb6;</a>
 					
 					
@@ -1360,7 +1394,7 @@ will return those records in the table &#34;users&#34; whose first_name is &#34;
 				
 			
 				
-				<h3 id="FirstUser">func <a href="/gor_user.go?s=8207:8238#L223">FirstUser</a>
+				<h3 id="FirstUser">func <a href="/src/models/gor_user.go?s=8052:8083#L226">FirstUser</a>
 					<a class="permalink" href="#FirstUser">&#xb6;</a>
 					
 					
@@ -1374,7 +1408,7 @@ FirstUser find the first one user by ID ASC order.
 				
 			
 				
-				<h3 id="FirstUsers">func <a href="/gor_user.go?s=9250:9291#L234">FirstUsers</a>
+				<h3 id="FirstUsers">func <a href="/src/models/gor_user.go?s=9095:9136#L237">FirstUsers</a>
 					<a class="permalink" href="#FirstUsers">&#xb6;</a>
 					
 					
@@ -1388,7 +1422,7 @@ FirstUsers find the first N users by ID ASC order.
 				
 			
 				
-				<h3 id="LastUser">func <a href="/gor_user.go?s=10338:10368#L246">LastUser</a>
+				<h3 id="LastUser">func <a href="/src/models/gor_user.go?s=10183:10213#L249">LastUser</a>
 					<a class="permalink" href="#LastUser">&#xb6;</a>
 					
 					
@@ -1402,7 +1436,7 @@ LastUser find the last one user by ID DESC order.
 				
 			
 				
-				<h3 id="LastUsers">func <a href="/gor_user.go?s=11380:11420#L257">LastUsers</a>
+				<h3 id="LastUsers">func <a href="/src/models/gor_user.go?s=11225:11265#L260">LastUsers</a>
 					<a class="permalink" href="#LastUsers">&#xb6;</a>
 					
 					
@@ -1416,7 +1450,7 @@ LastUsers find the last N users by ID DESC order.
 				
 			
 				
-				<h3 id="UserIncludesWhere">func <a href="/gor_user.go?s=17880:17979#L355">UserIncludesWhere</a>
+				<h3 id="UserIncludesWhere">func <a href="/src/models/gor_user.go?s=17724:17823#L358">UserIncludesWhere</a>
 					<a class="permalink" href="#UserIncludesWhere">&#xb6;</a>
 					
 					
@@ -1432,7 +1466,7 @@ UserIncludesWhere get the User associated models records, currently it&#39;s not
 
 			
 				
-				<h3 id="User.Create">func (*User) <a href="/gor_user.go?s=23655:23697#L534">Create</a>
+				<h3 id="User.Create">func (*User) <a href="/src/models/gor_user.go?s=23554:23596#L537">Create</a>
 					<a class="permalink" href="#User.Create">&#xb6;</a>
 					
 					
@@ -1447,7 +1481,7 @@ Create is a method for User to create a record.
 				
 			
 				
-				<h3 id="User.Destroy">func (*User) <a href="/gor_user.go?s=25485:25519#L586">Destroy</a>
+				<h3 id="User.Destroy">func (*User) <a href="/src/models/gor_user.go?s=25404:25438#L592">Destroy</a>
 					<a class="permalink" href="#User.Destroy">&#xb6;</a>
 					
 					
@@ -1462,7 +1496,7 @@ Destroy is method used for a User object to be destroyed.
 				
 			
 				
-				<h3 id="User.GetPosts">func (*User) <a href="/gor_user.go?s=25088:25123#L571">GetPosts</a>
+				<h3 id="User.GetPosts">func (*User) <a href="/src/models/gor_user.go?s=24996:25031#L574">GetPosts</a>
 					<a class="permalink" href="#User.GetPosts">&#xb6;</a>
 					
 					
@@ -1479,7 +1513,7 @@ the object will get the associated Posts attributes evaluated in the struct.
 				
 			
 				
-				<h3 id="User.PostsCreate">func (*User) <a href="/gor_user.go?s=24741:24804#L562">PostsCreate</a>
+				<h3 id="User.PostsCreate">func (*User) <a href="/src/models/gor_user.go?s=24646:24709#L565">PostsCreate</a>
 					<a class="permalink" href="#User.PostsCreate">&#xb6;</a>
 					
 					
@@ -1494,7 +1528,7 @@ PostsCreate is used for User to create the associated objects Posts
 				
 			
 				
-				<h3 id="User.Save">func (*User) <a href="/gor_user.go?s=27344:27375#L653">Save</a>
+				<h3 id="User.Save">func (*User) <a href="/src/models/gor_user.go?s=27263:27294#L660">Save</a>
 					<a class="permalink" href="#User.Save">&#xb6;</a>
 					
 					
@@ -1510,7 +1544,7 @@ If no id provided a new record will be created. FIXME: A UPSERT action will be i
 				
 			
 				
-				<h3 id="User.Update">func (*User) <a href="/gor_user.go?s=29037:29095#L697">Update</a>
+				<h3 id="User.Update">func (*User) <a href="/src/models/gor_user.go?s=28961:29019#L704">Update</a>
 					<a class="permalink" href="#User.Update">&#xb6;</a>
 					
 					
@@ -1525,7 +1559,7 @@ Update is a method used to update a User record with the map[string]interface{} 
 				
 			
 				
-				<h3 id="User.UpdateAttributes">func (*User) <a href="/gor_user.go?s=29361:29429#L706">UpdateAttributes</a>
+				<h3 id="User.UpdateAttributes">func (*User) <a href="/src/models/gor_user.go?s=29285:29353#L713">UpdateAttributes</a>
 					<a class="permalink" href="#User.UpdateAttributes">&#xb6;</a>
 					
 					
@@ -1540,7 +1574,7 @@ UpdateAttributes method is supposed to be used to update User records as corresp
 				
 			
 				
-				<h3 id="User.UpdateColumns">func (*User) <a href="/gor_user.go?s=29689:29754#L715">UpdateColumns</a>
+				<h3 id="User.UpdateColumns">func (*User) <a href="/src/models/gor_user.go?s=29613:29678#L722">UpdateColumns</a>
 					<a class="permalink" href="#User.UpdateColumns">&#xb6;</a>
 					
 					
@@ -1557,7 +1591,7 @@ UpdateColumns method is supposed to be used to update User records as correspond
 		
 			
 			
-			<h2 id="UserPage">type <a href="/gor_user.go?s=1765:1995#L29">UserPage</a>
+			<h2 id="UserPage">type <a href="/src/models/gor_user.go?s=1609:1839#L31">UserPage</a>
 				<a class="permalink" href="#UserPage">&#xb6;</a>
 				
 				
@@ -1592,7 +1626,7 @@ DataStruct for the pagination
 
 			
 				
-				<h3 id="UserPage.Current">func (*UserPage) <a href="/gor_user.go?s=2064:2109#L43">Current</a>
+				<h3 id="UserPage.Current">func (*UserPage) <a href="/src/models/gor_user.go?s=1908:1953#L45">Current</a>
 					<a class="permalink" href="#UserPage.Current">&#xb6;</a>
 					
 					
@@ -1607,7 +1641,7 @@ Current get the current page of UserPage object for pagination.
 				
 			
 				
-				<h3 id="UserPage.GetPage">func (*UserPage) <a href="/gor_user.go?s=4888:4956#L130">GetPage</a>
+				<h3 id="UserPage.GetPage">func (*UserPage) <a href="/src/models/gor_user.go?s=4732:4800#L132">GetPage</a>
 					<a class="permalink" href="#UserPage.GetPage">&#xb6;</a>
 					
 					
@@ -1623,7 +1657,7 @@ the parameter passed in, i.e. one of &#34;previous, current or next&#34;.
 				
 			
 				
-				<h3 id="UserPage.Next">func (*UserPage) <a href="/gor_user.go?s=3842:3884#L99">Next</a>
+				<h3 id="UserPage.Next">func (*UserPage) <a href="/src/models/gor_user.go?s=3686:3728#L101">Next</a>
 					<a class="permalink" href="#UserPage.Next">&#xb6;</a>
 					
 					
@@ -1638,7 +1672,7 @@ Next get the next page of UserPage object for pagination.
 				
 			
 				
-				<h3 id="UserPage.Previous">func (*UserPage) <a href="/gor_user.go?s=2899:2945#L69">Previous</a>
+				<h3 id="UserPage.Previous">func (*UserPage) <a href="/src/models/gor_user.go?s=2743:2789#L71">Previous</a>
 					<a class="permalink" href="#UserPage.Previous">&#xb6;</a>
 					
 					
@@ -1660,4 +1694,22 @@ Previous get the previous page of UserPage object for pagination.
 
 
 
+
+
+
+<div id="footer">
+Build version go1.13.4.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+</body>
+</html>
 
