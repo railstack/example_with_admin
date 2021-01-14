@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'go-on-rails', '~> 0.4.0'
 gem 'devise'
-gem 'rails_admin', '~> 1.2'
+gem 'rails_admin', '~> 1.4'
 gem 'cancancan', '~> 2.0'
 gem 'webpacker', '~> 3.0'
 
